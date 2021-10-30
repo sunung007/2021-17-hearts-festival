@@ -1,0 +1,196 @@
+.company .page-header {
+  position: relative;
+  padding: 2rem;
+
+  background: url("../../assets/banner-background.svg") center center no-repeat;
+  background-size: cover;
+}
+
+.company .page-header .page-title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 6px black;
+}
+
+.company .page-header .page-title .subtitle {
+  font-size: 0.5em;
+  position: relative;
+  margin-bottom: 2em;
+}
+.company .page-header .page-title .subtitle::before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+
+  width: 20rem;
+  height: 10rem;
+
+  background: url("../../assets/subtitle-background.svg") center center
+    no-repeat;
+  background-size: 100%;
+}
+
+.company .page-header .page-title .title {
+  position: relative;
+  word-break: keep-all;
+}
+.company .page-header .page-title .title::before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -2;
+  transform: translate(-50%, -50%) rotate(10deg);
+
+  width: 35rem;
+  height: 30rem;
+
+  background: url("../../assets/title-background.svg") center center no-repeat;
+  background-size: 100%;
+}
+
+/* 기업 이름 */
+.company-title {
+  padding-top: 4rem;
+}
+.company-title-name-and-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.company-title-name {
+  position: relative;
+
+  color: white;
+  font-size: 2em;
+  font-family: black-gothic;
+}
+.company-title-name::before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -2;
+  transform: translate(-50%, -50%);
+
+  width: 12rem;
+  height: 30rem;
+
+  background: url("../../assets/company-name-background.svg") center center
+    no-repeat;
+  background-size: 100%;
+}
+
+/* 기업 로고 */
+.company-title-logo {
+  margin-left: 4em;
+}
+.company-title-logo img {
+  height: 2em;
+}
+
+/* 기업 태그들 */
+.company-tags {
+  font-family: noto-sans-light;
+}
+.company-tags > span {
+  margin-right: 1em;
+}
+
+/* 질의응답 */
+.company-interview-wrapper {
+  --background-color: white;
+
+  padding: 1.2em;
+  margin-bottom: 1em;
+
+  background-color: var(--background-color);
+
+  border: 1px solid var(--color-dark-blue);
+  box-shadow: 0 4px 4px 0px rgb(0 0 0 / 16%);
+}
+.company-interview-question,
+.company-interview-answer {
+  display: flex;
+}
+.company-interview-question {
+  /* padding: 1rem 2rem;
+  margin: 0 -2rem;
+
+  background: #eee;
+  border-radius: 10rem; */
+}
+.company-interview-answer {
+  margin-top: 1em;
+  /* margin: 1em 0 2em 0; */
+  font-family: noto-sans-light;
+}
+.company-interview-content {
+  position: relative;
+  z-index: 10;
+  margin-top: 0.4rem;
+  /* text-indent: 2em; */
+}
+
+/* 질의응답 : Q or A */
+.company-interview-type {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  margin-right: 0.4em;
+
+  font-size: 2rem;
+  font-family: black-gothic;
+}
+.company-interview-type::after {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 120%;
+  z-index: 0;
+
+  width: 1.2em;
+  height: 0.5em;
+  border-top: 0.5px solid var(--color-dark-blue);
+
+  --rotate-deg: -45deg;
+  transform: translateX(-50%) rotate(var(--rotate-deg));
+  -webkit-transform: translateX(-50%) rotate(var(--rotate-deg));
+  -moz-transform: translateX(-50%) rotate(var(--rotate-deg));
+  -ms-transform: translateX(-50%) rotate(var(--rotate-deg));
+  -o-transform: translateX(-50%) rotate(var(--rotate-deg));
+}
+.company-interview-question .company-interview-type::after {
+  background-color: var(--background-color);
+}
+.company-interview-answer .company-interview-type::after {
+  background-color: white;
+}
+
+.company-youtube-wrapper {
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  min-height: 300px;
+}
+.company-youtube-wrapper .youtube-player {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+
+@media screen and (max-width: 700px) {
+}

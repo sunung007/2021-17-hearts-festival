@@ -1,0 +1,16 @@
+.page-title {
+  font-family: black-gothic;
+  font-size: 3em;
+}
+.title {
+  font-size: 1.5em;
+}
+
+.inner-padding > * {
+  padding: 2rem 4rem;
+  /* padding: 3rem 4rem 2rem 4rem; */
+}
+
+.font-light {
+  font-family: noto-sans-light;
+}
