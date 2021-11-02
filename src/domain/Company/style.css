@@ -89,6 +89,11 @@
   background-size: 100%;
 }
 
+/* 아직 준비 안된 기업 */
+.company-not-ready {
+  text-align: center;
+}
+
 /* 기업 이름 */
 .company-title {
   padding-top: 4rem;
@@ -137,9 +142,6 @@
 }
 
 /* 기업 태그들 */
-.company-tags {
-  font-family: noto-sans-light;
-}
 .company-tags > span {
   margin-right: 1em;
 }
@@ -255,6 +257,17 @@
   height: 100%;
   min-height: 300px;
 }
+.company-youtube-wrapper .youtube-player-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-gray);
+  border-radius: 0.5em;
+}
 
 @media screen and (max-width: 700px) {
+  .company-pictures {
+    grid-template-columns: 1fr;
+  }
 }

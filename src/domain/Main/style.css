@@ -6,56 +6,40 @@
   background-size: cover;
 }
 
+.main .page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .main .page-header .page-title {
-  position: absolute;
-  right: 17%;
-  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 
-  width: fit-content;
+  width: 80%;
 
   color: white;
   text-align: right;
   text-shadow: 1px 1px 6px black;
   word-break: keep-all;
-
-  transform: translate(0, -50%);
-  -webkit-transform: translate(0, -50%);
-  -moz-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  -o-transform: translate(0, -50%);
 }
-.main .page-header .page-title::before {
-  content: "";
+.main .page-header .page-title .title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 
+  position: relative;
+}
+.main .page-header .page-title .subtitle {
+  font-size: 0.6em;
+}
+.main .page-header .page-title .main-header-title-background {
   position: absolute;
-  top: 50%;
-  left: 50%;
   z-index: -1;
-  transform: translate(-50%, -50%) rotate(10deg);
-  -webkit-transform: translate(-50%, -50%) rotate(10deg);
-  -moz-transform: translate(-50%, -50%) rotate(10deg);
-  -ms-transform: translate(-50%, -50%) rotate(10deg);
-  -o-transform: translate(-50%, -50%) rotate(10deg);
-
-  width: 45rem;
-  max-width: 112vw;
-  height: 30rem;
-
-  background: url("../../assets/title-background.svg") center center no-repeat;
-  background-size: 100%;
-}
-
-.main .page-header-intro {
-  position: absolute;
-  left: 0;
-  bottom: 20%;
-
-  width: 100%;
-
-  font-family: black-gothic;
-  font-size: 2em;
-  text-align: center;
-  word-break: keep-all;
+  top: -80px;
+  right: -150px;
+  transform: rotate(5deg);
 }
 
 /* 기업 리스트 */
@@ -106,6 +90,8 @@
 
   background-color: white;
   border-radius: var(--border-radius);
+
+  text-align: center;
 }
 /* 전면부 */
 .home-company-box > .home-company-box-front {
@@ -156,15 +142,8 @@
   .main .page-header {
     padding: 0;
   }
-  .main .page-header .page-title {
-    left: 50%;
-    padding: 2rem;
-
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
+  .main .page-header .title {
+    font-size: 1.2em;
   }
 
   .home-company-list {
