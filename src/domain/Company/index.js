@@ -9,8 +9,13 @@ import {
 } from "../../hooks/common";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowDown, faHome} from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowDown,
+  faArrowLeft,
+  faHome,
+} from "@fortawesome/free-solid-svg-icons";
 import {useScrollFadeIn} from "../../hooks/useScrollFadeIn";
+import {Link} from "react-router-dom";
 
 const companyInfo = {
   id: 0,
@@ -19,7 +24,7 @@ const companyInfo = {
   tags: [1, 2, 3],
   intro: (
     <>
-      <h1>삼성전자</h1>
+      {/* <h2 className={"section-title"}>삼성전자</h2> */}
       <p>서울특별시 서초구 강남대로 222 ...</p>
     </>
   ),
@@ -30,7 +35,7 @@ const companyInfo = {
     ],
     ["질문", "답변"],
   ],
-  movie: "", // 링크
+  movie: "https://www.youtube.com/embed/FGGWeZ6oeaM?feature=oembed", // 링크
 };
 
 export default function Company({history, match}) {
@@ -42,7 +47,14 @@ export default function Company({history, match}) {
       {/* 페이지 상단 헤더 */}
       <Page className={"page-header"}>
         <div className={"page-title"}>
-          <div className={"subtitle"}>17 Hearts Festver</div>
+          <div className={"subtitle"}>
+            <Link to={"/"}>
+              <span className={"page-title-go-back-home-arrow"}>
+                <FontAwesomeIcon icon={faArrowLeft} />{" "}
+              </span>
+              <span>17 Hearts Festver</span>
+            </Link>
+          </div>
           <div className={"title"}>{companyInfo.name}</div>
         </div>
 
@@ -61,11 +73,11 @@ export default function Company({history, match}) {
 
       {/* 내용 */}
       <div className={"inner-padding"}>
-        <div className={"company-title"}>
+        {/* <div className={"company-title"}>
           <div className={"company-title-name-and-logo"}>
-            {/* 회사명 */}
+            회사명
             <span className={"company-title-name"}>{companyInfo.name}</span>
-            {/* 회사 로고 */}
+            회사 로고
             <span className={"company-title-logo"}>
               <img src={companyInfo.logo} alt={"로고"} />
             </span>
@@ -78,12 +90,25 @@ export default function Company({history, match}) {
               </span>
             ))}
           </div>
-        </div>
+        </div> */}
 
         <Page
           className={"company-intro"}
           style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
+          shadow={false}
         >
+          <h2 className={"section-title"}>{companyInfo.name}</h2>
+          <br />
+
+          <div className={"company-tags"}>
+            {companyInfo.tags.map((tag, index) => (
+              <span key={index}>
+                #_SDGs_{tag}_{SDGS[tag]}
+              </span>
+            ))}
+          </div>
+          <br />
+
           {companyInfo.intro}
         </Page>
 
@@ -104,21 +129,22 @@ export default function Company({history, match}) {
           </ul>
         </div>
 
-        <Page
-          className={"company-pictures"}
-          style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
-        >
-          <div>인터뷰 영상</div>
-          <div className={"company-youtube-wrapper"}>
-            <iframe
-              className={"youtube-player"}
-              id="youtube-player"
-              title="youtube"
-              type="text/html"
-              src={companyInfo.movie || "https://youtube.com/"}
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            ></iframe>
+        <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}}>
+          <h2 className={"section-title"}>인터뷰 영상</h2>
+          <br />
+
+          <div className={"company-pictures"}>
+            <div className={"company-youtube-wrapper"}>
+              <iframe
+                className={"youtube-player"}
+                id="youtube-player"
+                title="youtube"
+                type="text/html"
+                src={companyInfo.movie}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              ></iframe>
+            </div>
           </div>
         </Page>
       </div>

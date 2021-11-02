@@ -2,13 +2,28 @@
   font-family: black-gothic;
   font-size: 3em;
 }
+
 .title {
   font-size: 1.5em;
 }
+.section-title {
+  text-align: center;
+  font-size: 2em;
+}
+.section-title::after {
+  /* border: 1px solid black; */
+}
+.subtitle {
+  font-size: 0.7em;
+  margin-left: 0.5em;
+}
 
-.inner-padding > * {
-  padding: 2rem 4rem;
-  /* padding: 3rem 4rem 2rem 4rem; */
+.inner-padding .page-inner,
+.inner-padding > *:not(.page) {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 .font-light {
