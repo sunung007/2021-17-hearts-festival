@@ -1,11 +1,3 @@
-export const goToBottom = (e) => {
-  window.scrollTo({
-    top: window.innerHeight,
-    left: 0,
-    behavior: "smooth",
-  });
-};
-
 export const goToHome = (history) => {
   history.push("/");
 };

@@ -1,49 +1,126 @@
 import "./style.css";
 
+import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+
 import Page from "../../components/Page";
-import {
-  BACKGROUND_COLOR_GRAY,
-  goToBottom,
-  goToHome,
-  SDGS,
-} from "../../hooks/common";
+import {useScrollFadeIn} from "../../hooks/useScrollFadeIn";
+import {useScrollToBody} from "../../hooks/useScrollToBody";
+import {BACKGROUND_COLOR_GRAY, goToHome, SDGS} from "../../hooks/common";
+
+import {companyList} from "../../data/company";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowDown, faHome} from "@fortawesome/free-solid-svg-icons";
-import {useScrollFadeIn} from "../../hooks/useScrollFadeIn";
+import {
+  faArrowDown,
+  faArrowLeft,
+  faHome,
+} from "@fortawesome/free-solid-svg-icons";
 
-const companyInfo = {
-  id: 0,
-  name: "삼성전자",
-  logo: "../../assets/logos/hyundai.svg",
-  tags: [1, 2, 3],
-  intro: (
+function Qna({qna, index}) {
+  const fadeInAnimation = useScrollFadeIn("up", 1, index / 5);
+
+  return (
+    <li
+      key={index}
+      className={"company-interview-wrapper"}
+      {...fadeInAnimation}
+    >
+      <div className={"company-interview-question"}>
+        <div className={"company-interview-type"}>Q</div>
+        <div className={"company-interview-content"}>{qna[0]}</div>
+      </div>
+      <div className={"company-interview-answer"}>
+        <span className={"company-interview-type"}>A</span>
+        <span className={"company-interview-content"}>{qna[1]}</span>
+      </div>
+    </li>
+  );
+}
+
+function CompanyInterview({company}) {
+  return (
     <>
-      <h1>삼성전자</h1>
-      <p>서울특별시 서초구 강남대로 222 ...</p>
+      <Page
+        className={"company-intro"}
+        style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
+        shadow={false}
+      >
+        <h1 className={"section-title"}>{company?.name}</h1>
+        <br />
+
+        <div className={"company-tags font-light"}>
+          {company?.tags.map((tag, index) => (
+            <span key={index}>
+              #_SDGs_{tag}_{SDGS[tag]}
+            </span>
+          ))}
+        </div>
+        <br />
+
+        <div className={"font-light"}>{company?.intro}</div>
+      </Page>
+
+      <ul className={"company-interview-summary"}>
+        {company?.qna.map((qna, index) => (
+          <Qna qna={qna} index={index} />
+        ))}
+      </ul>
+
+      <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}}>
+        <h1 className={"section-title"}>인터뷰 영상</h1>
+        <br />
+
+        <div className={"company-pictures"}>
+          <div className={"company-youtube-wrapper"}>
+            {company.movie.length === 0 ? (
+              <div className={"youtube-player youtube-player-error"}>
+                준비 중입니다.
+              </div>
+            ) : (
+              <iframe
+                className={"youtube-player"}
+                id="youtube-player"
+                title="youtube"
+                type="text/html"
+                src={company?.movie}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              ></iframe>
+            )}
+          </div>
+        </div>
+      </Page>
     </>
-  ),
-  qna: [
-    [
-      "1질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문질문",
-      "답변",
-    ],
-    ["질문", "답변"],
-  ],
-  movie: "", // 링크
-};
+  );
+}
 
 export default function Company({history, match}) {
-  const fadeInAnimation = useScrollFadeIn();
-  const cid = match.params.cid;
+  const [body, scrollToBody] = useScrollToBody();
+  const [companyData, setCompanyData] = useState({});
+
+  useEffect(() => {
+    const cid = parseInt(match.params.cid);
+    const tmpCompany = companyList.filter((entry) => entry.id === cid);
+    if (tmpCompany.length === 0) history.push("/error");
+    else setCompanyData(tmpCompany[0]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={"company"}>
       {/* 페이지 상단 헤더 */}
       <Page className={"page-header"}>
         <div className={"page-title"}>
-          <div className={"subtitle"}>17 Hearts Festver</div>
-          <div className={"title"}>{companyInfo.name}</div>
+          <div className={"subtitle"}>
+            <Link to={"/"}>
+              <span className={"page-title-go-back-home-arrow"}>
+                <FontAwesomeIcon icon={faArrowLeft} />{" "}
+              </span>
+              <span>17 Hearts Festver</span>
+            </Link>
+          </div>
+          <div className={"title"}>{companyData?.name}</div>
         </div>
 
         <div className={"page-header-down-float"}>
@@ -53,7 +130,7 @@ export default function Company({history, match}) {
           </button>
 
           {/* 아래로 내려가는 버튼 */}
-          <button onClick={goToBottom}>
+          <button onClick={scrollToBody}>
             <FontAwesomeIcon icon={faArrowDown} />
           </button>
         </div>
@@ -61,66 +138,13 @@ export default function Company({history, match}) {
 
       {/* 내용 */}
       <div className={"inner-padding"}>
-        <div className={"company-title"}>
-          <div className={"company-title-name-and-logo"}>
-            {/* 회사명 */}
-            <span className={"company-title-name"}>{companyInfo.name}</span>
-            {/* 회사 로고 */}
-            <span className={"company-title-logo"}>
-              <img src={companyInfo.logo} alt={"로고"} />
-            </span>
-          </div>
-          <br />
-          <div className={"company-tags"}>
-            {companyInfo.tags.map((tag, index) => (
-              <span key={index}>
-                #_SDGs_{tag}_{SDGS[tag]}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <Page
-          className={"company-intro"}
-          style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
-        >
-          {companyInfo.intro}
-        </Page>
-
-        <div {...fadeInAnimation} className={"company-interview-summary"}>
-          <ul>
-            {companyInfo.qna.map((qna, index) => (
-              <li key={index} className={"company-interview-wrapper"}>
-                <div className={"company-interview-question"}>
-                  <div className={"company-interview-type"}>Q</div>
-                  <div className={"company-interview-content"}>{qna[0]}</div>
-                </div>
-                <div className={"company-interview-answer"}>
-                  <span className={"company-interview-type"}>A</span>
-                  <span className={"company-interview-content"}>{qna[1]}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <Page
-          className={"company-pictures"}
-          style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
-        >
-          <div>인터뷰 영상</div>
-          <div className={"company-youtube-wrapper"}>
-            <iframe
-              className={"youtube-player"}
-              id="youtube-player"
-              title="youtube"
-              type="text/html"
-              src={companyInfo.movie || "https://youtube.com/"}
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            ></iframe>
-          </div>
-        </Page>
+        {companyData.hasOwnProperty("id") && companyData.isReady ? (
+          <CompanyInterview ref={body} company={companyData} />
+        ) : (
+          <Page className={"company-not-ready font-light"}>
+            해당 기업은 인터뷰 준비 중입니다.
+          </Page>
+        )}
       </div>
     </div>
   );
