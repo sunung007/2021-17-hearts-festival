@@ -15,7 +15,7 @@ import {useScrollToBody} from "../../hooks/useScrollToBody";
 import {companyList} from "../../data/company";
 
 function CompanyList({company, index}) {
-  const fadeAnimation = useScrollFadeIn("right", 1, index / 5);
+  const fadeAnimation = useScrollFadeIn("right", 1, (index / 12) * 2);
 
   return (
     <li className={"home-company-item"} {...fadeAnimation}>

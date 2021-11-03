@@ -6,15 +6,16 @@
 .title {
   font-size: 1.5em;
 }
+.subtitle {
+  font-size: 0.7em;
+}
+
 .section-title {
   text-align: center;
   font-size: 2em;
 }
 .section-title::after {
   /* border: 1px solid black; */
-}
-.subtitle {
-  font-size: 0.7em;
 }
 
 .inner-padding .page-inner,
@@ -27,4 +28,8 @@
 
 .font-light {
   font-family: noto-sans-light;
+}
+
+.no-display {
+  display: none;
 }

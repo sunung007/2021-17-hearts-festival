@@ -68,7 +68,7 @@ function CompanyInterview({company}) {
       </ul>
 
       <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}}>
-        <h1 className={"section-title"}>인터뷰 영상</h1>
+        <h1 className={"section-title"}>인터뷰</h1>
         <br />
 
         <div className={"company-pictures"}>
@@ -117,7 +117,7 @@ export default function Company({history, match}) {
               <span className={"page-title-go-back-home-arrow"}>
                 <FontAwesomeIcon icon={faArrowLeft} />{" "}
               </span>
-              <span>17 Hearts Festver</span>
+              <span>17 Hearts Festiver</span>
             </Link>
           </div>
           <div className={"title"}>{companyData?.name}</div>
@@ -137,9 +137,9 @@ export default function Company({history, match}) {
       </Page>
 
       {/* 내용 */}
-      <div className={"inner-padding"}>
+      <div className={"inner-padding"} ref={body}>
         {companyData.hasOwnProperty("id") && companyData.isReady ? (
-          <CompanyInterview ref={body} company={companyData} />
+          <CompanyInterview company={companyData} />
         ) : (
           <Page className={"company-not-ready font-light"}>
             해당 기업은 인터뷰 준비 중입니다.

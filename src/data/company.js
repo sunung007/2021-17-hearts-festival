@@ -49,4 +49,114 @@ export const companyList = [
     qna: [["", ""]],
     movie: "", // 링크
   },
+  {
+    id: 2,
+    name: "한국개발전략연구소(KDS)",
+    isReady: false,
+    date: "",
+    logo: "",
+    tags: [],
+    intro: <></>,
+    qna: [["", ""]],
+    movie: "", // 링크
+  },
+  {
+    id: 3,
+    name: "SPC 행복한 재단",
+    isReady: false,
+    date: "",
+    logo: "",
+    tags: [],
+    intro: <></>,
+    qna: [["", ""]],
+    movie: "", // 링크
+  },
+  {
+    id: 4,
+    name: "환경재단",
+    isReady: false,
+    date: "",
+    logo: "",
+    tags: [],
+    intro: <></>,
+    qna: [["", ""]],
+    movie: "", // 링크
+  },
+  {
+    id: 5,
+    name: "어썸스쿨",
+    isReady: false,
+    date: "",
+    logo: "",
+    tags: [],
+    intro: <></>,
+    qna: [["", ""]],
+    movie: "", // 링크
+  },
+  {
+    id: 6,
+    name: "닥터노아",
+    isReady: false,
+    date: "",
+    logo: "",
+    tags: [],
+    intro: <></>,
+    qna: [["", ""]],
+    movie: "", // 링크
+  },
+  {
+    id: 7,
+    name: "MYSC",
+    isReady: false,
+    date: "",
+    logo: "",
+    tags: [],
+    intro: <></>,
+    qna: [["", ""]],
+    movie: "", // 링크
+  },
+  {
+    id: 8,
+    name: "루트임팩트",
+    isReady: false,
+    date: "",
+    logo: "",
+    tags: [],
+    intro: <></>,
+    qna: [["", ""]],
+    movie: "", // 링크
+  },
+  {
+    id: 9,
+    name: "상상우리",
+    isReady: false,
+    date: "",
+    logo: "",
+    tags: [],
+    intro: <></>,
+    qna: [["", ""]],
+    movie: "", // 링크
+  },
+  {
+    id: 10,
+    name: "파타고니아 코리아",
+    isReady: false,
+    date: "",
+    logo: "",
+    tags: [],
+    intro: <></>,
+    qna: [["", ""]],
+    movie: "", // 링크
+  },
+  {
+    id: 11,
+    name: "LG전자",
+    isReady: false,
+    date: "",
+    logo: "",
+    tags: [],
+    intro: <></>,
+    qna: [["", ""]],
+    movie: "", // 링크
+  },
 ];

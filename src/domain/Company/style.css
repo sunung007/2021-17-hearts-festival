@@ -170,14 +170,14 @@
   -ms-transition-property: "margin";
   -o-transition-property: "margin";
 
-  transition-duration: 300ms;
-  -webkit-transition-duration: 300ms;
-  -moz-transition-duration: 300ms;
-  -ms-transition-duration: 300ms;
-  -o-transition-duration: 300ms;
+  transition-duration: 100ms;
+  -webkit-transition-duration: 100ms;
+  -moz-transition-duration: 100ms;
+  -ms-transition-duration: 100ms;
+  -o-transition-duration: 100ms;
 }
 .company-interview-wrapper:hover {
-  margin: -0.3em 0 1.3em 0;
+  margin: -0.5em 0 1.5em 0;
 }
 
 .company-interview-question,
