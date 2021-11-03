@@ -48,12 +48,15 @@
     no-repeat;
   background-size: 100%;
 }
-
+.company .page-header .page-title .subtitle:hover {
+}
 .company .page-header .page-title .subtitle .page-title-go-back-home-arrow {
   /* display: none; */
   /* font-size: 0; */
   width: 0 !important;
   overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
   transition: all 300ms ease;
 }
 .company
@@ -62,6 +65,8 @@
   .subtitle:hover
   .page-title-go-back-home-arrow {
   font-size: 1em;
+  opacity: 1;
+  visibility: visible;
 }
 
 .company .page-header .page-title .title {
@@ -82,7 +87,7 @@
   -ms-transform: translate(-50%, -50%) rotate(10deg);
   -o-transform: translate(-50%, -50%) rotate(10deg);
 
-  width: 35rem;
+  width: 40rem;
   height: 30rem;
 
   background: url("../../assets/title-background.svg") center center no-repeat;
