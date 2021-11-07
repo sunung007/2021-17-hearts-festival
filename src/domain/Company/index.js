@@ -39,6 +39,10 @@ function Qna({qna, index}) {
 }
 
 function CompanyInterview({company}) {
+  const [curImgIndex, setCurImgIndex] = useState(
+    company.imgs.length > 0 ? 0 : -1
+  );
+
   return (
     <>
       <Page
@@ -71,7 +75,20 @@ function CompanyInterview({company}) {
         <h1 className={"section-title"}>인터뷰</h1>
         <br />
 
-        <div className={"company-pictures"}>
+        <div
+          className={"company-pictures-wrapper"}
+          style={
+            curImgIndex === -1
+              ? {
+                  display: "flex",
+                  flexDirection: "row",
+                  alignContent: "center",
+                  justifyContent: "center",
+                }
+              : {}
+          }
+        >
+          {/* 유튜브 */}
           <div className={"company-youtube-wrapper"}>
             {company.movie.length === 0 ? (
               <div className={"youtube-player youtube-player-error"}>
@@ -84,12 +101,36 @@ function CompanyInterview({company}) {
                 title="youtube"
                 type="text/html"
                 src={company?.movie}
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               ></iframe>
             )}
           </div>
+
+          {/* 확대 사진 */}
+          {curImgIndex > -1 && (
+            <div className={"company-picture"}>
+              <img src={company.imgs[curImgIndex]} alt={""} />
+            </div>
+          )}
         </div>
+
+        {/* 사진 리스트 */}
+        {curImgIndex > -1 && (
+          <div className={"company-picture-slide-wrapper"}>
+            <ul className={"company-picture-slide"}>
+              {company?.imgs.map((img, index) => (
+                <li
+                  className={"company-picture"}
+                  key={index}
+                  onClick={() => setCurImgIndex(index)}
+                >
+                  <img src={img} alt={""} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </Page>
     </>
   );

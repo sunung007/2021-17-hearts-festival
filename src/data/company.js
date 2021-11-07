@@ -4,11 +4,12 @@ export const companyList = [
     name: "사회혁신센터(샘플)",
     isReady: true,
     date: "2021.09.30.",
-    logo: "../../assets/logos/hyundai.svg",
+    logo: require("../assets/logos/seventeen-hearts.png").default,
     tags: [1, 2, 3],
     intro: (
       <>
         <p>서울특별시 서초구 강남대로 222 ...</p>
+        <br />
         <p>
           앞서 언급한 글로벌 지속가능 기업 등은 유엔 경제사회이사회
           특별협의지위기구 ‘UN SDGs협회’가 선정했다. 세계 주요 기업을 대상으로
@@ -37,13 +38,25 @@ export const companyList = [
       ["질문 내용", "답변 내용"],
     ],
     movie: "https://www.youtube.com/embed/FGGWeZ6oeaM?feature=oembed", // 링크
+    imgs: [
+      "https://cdn.pixabay.com/photo/2021/10/28/20/20/hut-6750482_1280.jpg",
+      "https://cdn.pixabay.com/photo/2019/10/23/06/30/hamburg-4570577_960_720.jpg",
+      "https://cdn.pixabay.com/photo/2021/10/26/16/51/amsterdam-6744567_960_720.jpg",
+      "https://cdn.pixabay.com/photo/2021/10/28/20/20/hut-6750482_1280.jpg",
+      "https://cdn.pixabay.com/photo/2021/10/28/20/20/hut-6750482_1280.jpg",
+      "https://cdn.pixabay.com/photo/2021/10/28/20/20/hut-6750482_1280.jpg",
+      "https://cdn.pixabay.com/photo/2021/10/28/20/20/hut-6750482_1280.jpg",
+      "https://cdn.pixabay.com/photo/2021/10/28/20/20/hut-6750482_1280.jpg",
+      "https://cdn.pixabay.com/photo/2021/10/28/20/20/hut-6750482_1280.jpg",
+      "https://cdn.pixabay.com/photo/2021/10/28/20/20/hut-6750482_1280.jpg",
+    ],
   },
   {
     id: 1,
     name: "한국국제협력단(KOICA)",
     isReady: false,
     date: "",
-    logo: "",
+    logo: require("../assets/logos/koica.png").default,
     tags: [],
     intro: <></>,
     qna: [["", ""]],

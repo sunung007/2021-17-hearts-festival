@@ -2,7 +2,6 @@ import "./style.css";
 
 import {Link} from "react-router-dom";
 
-// import {ReactComponent as hyundai} from "../../assets/logos/hyundai.svg";
 import titleBackground from "../../assets/title-background.svg";
 
 import Page from "../../components/Page";
@@ -15,14 +14,20 @@ import {useScrollToBody} from "../../hooks/useScrollToBody";
 import {companyList} from "../../data/company";
 
 function CompanyList({company, index}) {
-  const fadeAnimation = useScrollFadeIn("right", 1, (index / 12) * 2);
+  const fadeAnimation = useScrollFadeIn("right", 0.9, index / 9);
 
   return (
     <li className={"home-company-item"} {...fadeAnimation}>
       <Link to={`/company/${company.id}`}>
         <div className={"home-company-box"}>
           <div className={"home-company-box-front"}>
-            <img src={company.logo} alt={company.name} />
+            <img
+              src={
+                company.logo ||
+                require("../../assets/logos/seventeen-hearts.png").default
+              }
+              alt={company.name}
+            />
           </div>
           <div className={"home-company-box-hover"}>{company.name}</div>
         </div>
@@ -113,6 +118,10 @@ export default function Main() {
               <CompanyList company={company} key={index} index={index} />
             ))}
           </ul>
+        </Page>
+
+        <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}}>
+          <h1 className={"section-title"}>함께한 사람들</h1>
         </Page>
       </div>
     </div>

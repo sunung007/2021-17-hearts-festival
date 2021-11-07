@@ -14,6 +14,7 @@ function App() {
   return (
     <HashRouter>
       <Header />
+
       <Route exact path={"/"} component={Main} />
       <Route exact path={"/company/:cid"} component={Company} />
 
