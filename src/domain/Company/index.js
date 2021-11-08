@@ -50,9 +50,15 @@ function CompanyInterview({company}) {
         style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
         shadow={false}
       >
+        {/* 기업명 */}
         <h1 className={"section-title"}>{company?.name}</h1>
+        {/* 기업 로고 */}
+        <div className={"company-intro-logo"}>
+          <img src={company.logo} alt={""} />
+        </div>
         <br />
 
+        {/* 기업과 연관된 SDGs */}
         <div className={"company-tags font-light"}>
           {company?.tags.map((tag, index) => (
             <span key={index}>
@@ -62,31 +68,26 @@ function CompanyInterview({company}) {
         </div>
         <br />
 
+        {/* 기업 소개 문구 */}
         <div className={"font-light"}>{company?.intro}</div>
       </Page>
 
+      {/* 인터뷰 요약 */}
       <ul className={"company-interview-summary"}>
         {company?.qna.map((qna, index) => (
           <Qna qna={qna} index={index} />
         ))}
       </ul>
 
+      {/* 인터뷰 영상 & 사진 */}
       <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}}>
         <h1 className={"section-title"}>인터뷰</h1>
         <br />
 
         <div
-          className={"company-pictures-wrapper"}
-          style={
-            curImgIndex === -1
-              ? {
-                  display: "flex",
-                  flexDirection: "row",
-                  alignContent: "center",
-                  justifyContent: "center",
-                }
-              : {}
-          }
+          className={`company-pictures-wrapper ${
+            curImgIndex === -1 && "only-youtube"
+          }`}
         >
           {/* 유튜브 */}
           <div className={"company-youtube-wrapper"}>
@@ -117,19 +118,24 @@ function CompanyInterview({company}) {
 
         {/* 사진 리스트 */}
         {curImgIndex > -1 && (
-          <div className={"company-picture-slide-wrapper"}>
-            <ul className={"company-picture-slide"}>
-              {company?.imgs.map((img, index) => (
-                <li
-                  className={"company-picture"}
-                  key={index}
-                  onClick={() => setCurImgIndex(index)}
-                >
-                  <img src={img} alt={""} />
-                </li>
-              ))}
-            </ul>
-          </div>
+          <>
+            <div className={"company-picture-slide-wrapper"}>
+              <ul className={"company-picture-slide"}>
+                {company?.imgs.map((img, index) => (
+                  <li
+                    className={"company-picture"}
+                    key={index}
+                    onClick={() => setCurImgIndex(index)}
+                  >
+                    <img src={img} alt={""} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={"company-picture-slide-helper font-light"}>
+              * 크게 보기 위해서는 해당 사진을 누르세요.
+            </div>
+          </>
         )}
       </Page>
     </>

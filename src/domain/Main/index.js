@@ -110,7 +110,10 @@ export default function Main() {
 
         {/* 기업 리스트 */}
         <Page>
-          <h1 className={"section-title"}>참여 기업</h1>
+          <h1 className={"section-title"}>
+            <div>참여 기업</div>
+            <div className={"subtitle font-light"}>Companies</div>
+          </h1>
           <br />
 
           <ul className={"home-company-list"}>
@@ -121,7 +124,10 @@ export default function Main() {
         </Page>
 
         <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}}>
-          <h1 className={"section-title"}>함께한 사람들</h1>
+          <h1 className={"section-title"}>
+            <div>함께한 사람들</div>
+            <div className={"subtitle font-light"}>Epilogue</div>
+          </h1>
         </Page>
       </div>
     </div>

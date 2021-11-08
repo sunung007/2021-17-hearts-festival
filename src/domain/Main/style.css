@@ -118,13 +118,17 @@
   font-size: 3em;
   text-shadow: 5px 5px 5px rgb(0 0 0 / 16%);
 
-  transform: scale(50%);
-  -webkit-transform: scale(50%);
-  -moz-transform: scale(50%);
-  -ms-transform: scale(50%);
-  -o-transform: scale(50%);
+  transform: scale(80%);
+  -webkit-transform: scale(80%);
+  -moz-transform: scale(80%);
+  -ms-transform: scale(80%);
+  -o-transform: scale(80%);
 
-  transition-duration: 800ms;
+  transition-duration: 700ms;
+  -webkit-transition-duration: 700ms;
+  -moz-transition-duration: 700ms;
+  -ms-transition-duration: 700ms;
+  -o-transition-duration: 700ms;
 }
 .home-company-box:hover > .home-company-box-hover {
   visibility: visible;

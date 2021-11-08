@@ -139,11 +139,12 @@
 }
 
 /* 기업 로고 */
-.company-title-logo {
-  margin-left: 4em;
+.company-intro-logo {
+  height: 4em;
 }
-.company-title-logo img {
-  height: 2em;
+.company-intro-logo img {
+  width: auto;
+  height: 100%;
 }
 
 /* 기업 태그들 */
@@ -169,17 +170,11 @@
   border-radius: 0.5rem;
   box-shadow: 0 4px 4px 0px rgb(0 0 0 / 10%);
 
-  transition-property: "margin";
-  -webkit-transition-property: "margin";
-  -moz-transition-property: "margin";
-  -ms-transition-property: "margin";
-  -o-transition-property: "margin";
-
-  transition-duration: 100ms;
-  -webkit-transition-duration: 100ms;
-  -moz-transition-duration: 100ms;
-  -ms-transition-duration: 100ms;
-  -o-transition-duration: 100ms;
+  transition: margin 500ms ease-in-out !important;
+  -webkit-transition: margin 500ms ease-in-out !important;
+  -moz-transition: margin 500ms ease-in-out !important;
+  -ms-transition: margin 500ms ease-in-out !important;
+  -o-transition: margin 500ms ease-in-out !important;
 }
 .company-interview-wrapper:hover {
   margin: -0.5em 0 1.5em 0;
@@ -255,16 +250,31 @@
   height: 400px;
   margin-bottom: 1em;
 }
+/* 사진이 없는 경우 */
+.only-youtube {
+  grid-template-columns: 1fr;
+  width: 800px;
+  height: 450px;
+  margin: 0 auto;
+}
 
 /* 상단 큰 사진 */
 .company-pictures-wrapper .company-picture {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+
   width: 100%;
   height: 100%;
+
   overflow: hidden;
+  background-color: black;
 }
 .company-pictures-wrapper .company-picture img {
   width: auto;
   height: auto;
+  max-height: 100%;
   max-height: 100%;
 
   animation: fadeIn 500ms ease-in-out;
@@ -301,28 +311,55 @@
   width: 100%;
   overflow: auto hidden;
 }
+/* 스크롤바 */
+.company-picture-slide-wrapper::-webkit-scrollbar {
+  height: 8px;
+  opacity: 0.8;
+}
+/* 스크롤바 막대 */
+.company-picture-slide-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--color-dark-blue);
+  border-radius: 10rem;
+}
+/* 스크롤바 여백 */
+.company-picture-slide-wrapper::-webkit-scrollbar-track {
+  background-color: var(--color-gray);
+  border-radius: 10rem;
+}
+
 .company-picture-slide {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 
   min-width: 100%;
   width: max-content;
   height: fit-content;
 
   white-space: nowrap;
-  background-color: var(--color-gray);
+  /* background-color: var(--color-gray); */
 }
 .company-picture-slide .company-picture {
   /* width: 300px; */
   height: 150px;
   margin-right: 0.5em;
   cursor: pointer;
+
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.company-picture-slide .company-picture:hover {
+  opacity: 0.7;
 }
 .company-picture-slide .company-picture img {
   width: auto;
   height: auto;
   max-width: 100%;
   max-height: 100%;
+}
+/* 도움말 */
+.company-picture-slide-helper {
+  font-size: 0.85em;
 }
 
 @media screen and (max-width: 700px) {
