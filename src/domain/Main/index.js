@@ -12,9 +12,6 @@ import {faArrowDown} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useScrollToBody} from "../../hooks/useScrollToBody";
 import {companyList} from "../../data/company";
-import {useEffect} from "react";
-import {fbApp} from "../../hooks/firebase";
-import {useCallback} from "react";
 
 function CompanyList({company, index}) {
   const fadeAnimation = useScrollFadeIn("right", 0.9, index / 9);
@@ -41,16 +38,6 @@ function CompanyList({company, index}) {
 
 export default function Main() {
   const [body, scrollToBody] = useScrollToBody();
-
-  const fetchData = useCallback(() => {
-    fbApp
-      .collection("company")
-      .get()
-      .then((r) => console.log(r));
-  }, []);
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
 
   return (
     <div className={"main"}>
