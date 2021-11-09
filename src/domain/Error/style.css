@@ -8,3 +8,11 @@
 
   text-align: center;
 }
+
+.error-go-home {
+  color: var(--color-dark-blue);
+  cursor: pointer;
+}
+.error-go-home:hover {
+  /* color: var(--color-light-blue); */
+}

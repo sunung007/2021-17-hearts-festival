@@ -20,9 +20,9 @@ export default function Error() {
           <p>링크를 다시 확인해 주세요.</p>
           <br />
 
-          <button onClick={() => history.push("/")}>
+          <div className={"error-go-home"} onClick={() => history.push("/")}>
             <FontAwesomeIcon icon={faArrowLeft} /> 홈으로 돌아가기
-          </button>
+          </div>
         </div>
       </div>
     );

@@ -42,6 +42,15 @@ a {
   text-decoration: none;
 }
 
+::selection {
+  background-color: var(--color-dark-blue);
+  color: white;
+}
+::-moz-selection {
+  background-color: var(--color-dark-blue);
+  color: white;
+}
+
 /* 검은 고딕(타이틀) */
 @font-face {
   font-family: "black-gothic";

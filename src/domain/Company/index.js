@@ -12,10 +12,36 @@ import {companyList} from "../../data/company";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
+  faArrowAltCircleUp,
   faArrowDown,
   faArrowLeft,
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
+
+function GuestComment() {
+  const commentEnroll = () => {};
+
+  return (
+    <Page>
+      <h1 className={"section-title"}>
+        <div>방명록</div>
+        <div className={"subtitle font-light"}>Interview</div>
+      </h1>
+      <br />
+
+      <div>
+        <form className={"guest-comment-enroll"} onSubmit={commentEnroll}>
+          <input id={"quest-comment"} type={"text"} className={"font-light"} />
+          <button className={"guest-comment-enroll-btn"}>
+            <FontAwesomeIcon icon={faArrowAltCircleUp} />
+          </button>
+        </form>
+
+        <ul></ul>
+      </div>
+    </Page>
+  );
+}
 
 function Qna({qna, index}) {
   const fadeInAnimation = useScrollFadeIn("up", 1, index / 5);
@@ -80,8 +106,11 @@ function CompanyInterview({company}) {
       </ul>
 
       {/* 인터뷰 영상 & 사진 */}
-      <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}}>
-        <h1 className={"section-title"}>인터뷰</h1>
+      <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}} shadow={false}>
+        <h1 className={"section-title"}>
+          <div>인터뷰</div>
+          <div className={"subtitle font-light"}>Interview</div>
+        </h1>
         <br />
 
         <div
@@ -138,6 +167,8 @@ function CompanyInterview({company}) {
           </>
         )}
       </Page>
+
+      <GuestComment />
     </>
   );
 }
