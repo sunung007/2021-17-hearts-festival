@@ -1,0 +1,227 @@
+.main-banner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.main-banner-wrapper {
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: max-content;
+  height: fit-content;
+
+  white-space: nowrap;
+
+  transition: all 800ms ease-out;
+}
+.main-banner-wrapper > li {
+  width: 100vw;
+}
+/* 배너 높이 지정 */
+.main-banner-wrapper .page-header {
+  height: 800px;
+}
+
+/* 배너 전환 화살표 */
+.main-banner-change-btn {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 20;
+
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+
+  width: 100vw;
+  padding: 0 2em;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: var(--color-gray);
+  font-size: 1.5em;
+}
+.main-banner-change-btn > span {
+  cursor: pointer;
+  opacity: 0.6;
+
+  --animation-duration: 200ms;
+  transition: all var(--animation-duration);
+  -webkit-transition: all var(--animation-duration);
+  -moz-transition: all var(--animation-duration);
+  -ms-transition: all var(--animation-duration);
+  -o-transition: all var(--animation-duration);
+}
+.main-banner-change-btn > span:hover {
+  opacity: 1;
+  color: white;
+}
+
+/* 포스터 배너 */
+.main-banner-item-poster .page-header {
+  position: relative;
+  padding: 2rem;
+  width: 100vw;
+
+  background: url("../../../assets/main-background.svg") center center no-repeat;
+  background-size: cover;
+}
+
+.main-banner-item-poster .page-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.main-banner-item-poster .page-header .page-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  width: 80%;
+
+  color: white;
+  text-align: right;
+  text-shadow: 1px 1px 6px black;
+  word-break: keep-all;
+}
+.main-banner-item-poster .page-header .page-title .title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  position: relative;
+}
+.main-banner-item-poster .page-header .page-title .subtitle {
+  font-size: 0.6em;
+}
+.main-banner-item-poster
+  .page-header
+  .page-title
+  .main-header-title-background {
+  position: absolute;
+  z-index: -1;
+  top: -80px;
+  right: -150px;
+  transform: rotate(5deg);
+}
+
+/* 일반 배너 */
+.main-banner-item {
+  width: 100%;
+  height: 100%;
+}
+.main-banner-item {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.main-banner-item .page-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  color: white;
+  background: none;
+}
+
+.main-banner-item .page-header-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 1200px;
+
+  padding: 0 3rem;
+  margin: 0 auto;
+}
+
+/* 배너 기업 로고 */
+.main-banner-item .main-banner-logo {
+  width: 20%;
+  min-width: 100px;
+  margin: 3em 0;
+}
+.main-banner-item .main-banner-logo img {
+  width: 100%;
+  height: auto;
+}
+
+/* 배너 글씨 */
+.main-banner-item .page-title {
+  font-family: noto-sans-regular;
+  font-size: 2em;
+
+  word-break: keep-all;
+  white-space: break-spaces;
+}
+.main-banner-item .page-title .subtitle {
+  font-family: noto-sans-light;
+  font-size: 1em;
+}
+.main-banner-item .page-title .title {
+  font-family: noto-sans-bold;
+  /* font-family: gong-gothic; */
+}
+
+/* 배너 사진 */
+.main-banner-item .main-banner-background {
+  position: absolute;
+  z-index: -1;
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.main-banner-item .main-banner-background img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}
+
+/* 배너 버튼 */
+.main-banner-item .main-banner-btn {
+  padding: 0.5em 1.5em;
+  margin-top: 2em;
+
+  border: none;
+  border-radius: 10em;
+
+  font-size: 0.6em;
+  color: white;
+  background-color: var(--color-dark-blue);
+
+  cursor: pointer;
+  box-shadow: 0 5px 7px 2px rgb(0 0 0 / 16%);
+
+  --animation-duration: 500ms;
+  transition: all var(--animation-duration);
+}
+.main-banner-item .main-banner-btn:hover {
+  color: var(--color-dark-blue);
+  background-color: white;
+}
+
+@media screen and (max-width: 1000px) {
+  .main-banner-background img {
+    max-width: none !important;
+    max-height: 100% !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .main-banner-change-btn {
+    padding: 0 1em;
+  }
+}

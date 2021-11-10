@@ -169,12 +169,6 @@
   border: 1px solid var(--color-dark-blue);
   border-radius: 0.5rem;
   box-shadow: 0 4px 4px 0px rgb(0 0 0 / 10%);
-
-  /* transition: margin 500ms ease-in-out !important;
-  -webkit-transition: margin 500ms ease-in-out !important;
-  -moz-transition: margin 500ms ease-in-out !important;
-  -ms-transition: margin 500ms ease-in-out !important;
-  -o-transition: margin 500ms ease-in-out !important; */
 }
 .company-interview-wrapper:hover {
   margin: -0.5em 0 1.5em 0;
@@ -184,23 +178,14 @@
 .company-interview-answer {
   display: flex;
 }
-.company-interview-question {
-  /* padding: 1rem 2rem;
-  margin: 0 -2rem;
-
-  background: #eee;
-  border-radius: 10rem; */
-}
 .company-interview-answer {
   margin-top: 1em;
-  /* margin: 1em 0 2em 0; */
   font-family: noto-sans-light;
 }
 .company-interview-content {
   position: relative;
   z-index: 10;
   margin-top: 0.4rem;
-  /* text-indent: 2em; */
 }
 
 /* 질의응답 : Q or A */
@@ -214,8 +199,6 @@
   font-family: black-gothic;
 }
 .company-interview-type::after {
-  --rotate-deg: -45deg;
-
   content: "";
 
   position: absolute;
@@ -227,6 +210,7 @@
   height: 0.5em;
   border-top: 0.5px solid var(--color-dark-blue);
 
+  --rotate-deg: -45deg;
   transform: translateX(-50%) rotate(var(--rotate-deg));
   -webkit-transform: translateX(-50%) rotate(var(--rotate-deg));
   -moz-transform: translateX(-50%) rotate(var(--rotate-deg));

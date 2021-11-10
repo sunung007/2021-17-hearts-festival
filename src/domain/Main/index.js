@@ -2,17 +2,14 @@ import "./style.css";
 
 import {Link} from "react-router-dom";
 
-import titleBackground from "../../assets/title-background.svg";
-
 import Page from "../../components/Page";
 import {BACKGROUND_COLOR_GRAY} from "../../hooks/common";
 import {useScrollFadeIn} from "../../hooks/useScrollFadeIn";
 
-import {faArrowDown} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useScrollToBody} from "../../hooks/useScrollToBody";
 import {companyList} from "../../data/company";
 import {participants} from "../../data/participants";
+import MainBanner from "./MainBanner";
 
 function CompanyList({company, index}) {
   const fadeAnimation = useScrollFadeIn("right", 0.9, index / 9);
@@ -43,34 +40,7 @@ export default function Main() {
   return (
     <div className={"main"}>
       {/* 페이지 상단 헤더 */}
-      <Page className={"page-header"}>
-        <div className={"page-title"}>
-          <div className={"title"}>
-            <h4 className={"subtitle"}>6th</h4>
-            <div>17 Hearts</div>
-            <div>Festival</div>
-            <div className={"subtitle"}>2021.9.25~28</div>
-            <img
-              className={"main-header-title-background"}
-              src={titleBackground}
-              alt={"background"}
-            />
-          </div>
-
-          <br />
-          <h4 className={"page-header-intro subtitle"}>
-            사랑의 실천으로 세상과 사람을 바꾸는 한양의 사회혁신축제에 여러분을
-            초대합니다.
-          </h4>
-        </div>
-
-        {/* 아래로 내려가는 버튼 */}
-        <div className={"page-header-down-float"}>
-          <button onClick={scrollToBody}>
-            <FontAwesomeIcon icon={faArrowDown} />
-          </button>
-        </div>
-      </Page>
+      <MainBanner scrollToBody={scrollToBody} />
 
       <div className={"inner-padding"} ref={body}>
         {/* 사랑의 실천 소개 */}
