@@ -1,17 +1,21 @@
 import "./style.css";
+
+import {useState} from "react";
+import {useHistory} from "react-router";
+
+import Page from "../../../components/Page";
 import titleBackground from "../../../assets/title-background.svg";
+
+import {banners} from "../../../data/banner";
+import {companyList} from "../../../data/company";
 
 import {
   faArrowDown,
   faChevronLeft,
   faChevronRight,
+  faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Page from "../../../components/Page";
-import {banners} from "../../../data/banner";
-import {useState} from "react";
-import {useHistory} from "react-router";
-import {companyList} from "../../../data/company";
 
 export default function MainBanner({scrollToBody}) {
   const totalBanner = banners.length + 1;
@@ -53,7 +57,7 @@ export default function MainBanner({scrollToBody}) {
               </div>
 
               <br />
-              <h4 className={"page-header-intro subtitle"}>
+              <h4 className={"subtitle"}>
                 사랑의 실천으로 세상과 사람을 바꾸는 한양의 사회혁신축제에
                 여러분을 초대합니다.
               </h4>
@@ -103,8 +107,21 @@ export default function MainBanner({scrollToBody}) {
         </span>
       </div>
 
-      {/* 아래로 내려가는 버튼 */}
       <div className={"page-header-down-float"}>
+        {/* 배너 전환 점 */}
+        <ul className={"banner-list-circle"}>
+          {Array.from({length: totalBanner}, (v, i) => i).map((a, index) => (
+            <li
+              key={index}
+              className={index === curBanner && "banner-list-circle-current"}
+              onClick={() => setCurBanner(index)}
+            >
+              <FontAwesomeIcon icon={faCircle} />
+            </li>
+          ))}
+        </ul>
+
+        {/* 아래로 내려가는 버튼 */}
         <button onClick={scrollToBody}>
           <FontAwesomeIcon icon={faArrowDown} />
         </button>

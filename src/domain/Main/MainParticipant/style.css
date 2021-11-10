@@ -1,0 +1,148 @@
+/* 제목 세션 */
+.home-with-people-title-page {
+  padding-bottom: 1em !important;
+}
+
+/* 상세보기 */
+.home-with-people-detail {
+  display: flex;
+  flex-direction: row;
+
+  overflow: hidden;
+  font-size: 1.2em;
+
+  transition: all 500ms;
+}
+
+.open-height {
+  --animation-duration: 800ms;
+  animation: openHeight var(--animation-duration) ease-in backwards;
+  -webkit-animation: openHeight var(--animation-duration) ease-in backwards;
+  -moz-animation: openHeight var(--animation-duration) ease-in backwards;
+  -ms-animation: openHeight var(--animation-duration) ease-in backwards;
+  -o-animation: openHeight var(--animation-duration) ease-in backwards;
+}
+
+@keyframes openHeight {
+  0% {
+    opacity: 0;
+    background-color: rgb(225, 234, 247);
+    max-height: 0 !important;
+    padding-bottom: -100% !important;
+  }
+
+  50% {
+  }
+
+  100% {
+    opacity: 1;
+    /* max-height: 300px !important; */
+  }
+}
+
+/* 사진 */
+.home-with-people-detail-img {
+  margin: 0 auto;
+  border-radius: 0.5em;
+  overflow: hidden;
+
+  width: 200px;
+  max-height: 300px;
+}
+.home-with-people-detail-img img,
+.home-with-people-detail-img svg {
+  width: 100% !important;
+  height: 100% !important;
+  color: gray;
+}
+
+/* 내용 */
+.home-with-people-detail-content {
+  width: 100%;
+  margin-left: 2em;
+}
+
+/* 정보 */
+.home-with-people-detail-info {
+  margin-bottom: 0.7em;
+}
+.home-with-people-detail-info > span:first-child {
+  font-size: 1.6em;
+  font-family: noto-sans-bold;
+}
+
+/* 전체 리스트 */
+.home-with-people-page {
+  padding-top: 1em !important;
+}
+.home-with-people-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 1em;
+  row-gap: 1em;
+}
+
+/* 리스트 각각 */
+.home-with-people {
+  display: flex;
+  flex-direction: row;
+
+  padding: 2em 1.4em;
+  border-radius: 0.5em;
+  background-color: white;
+  cursor: pointer;
+
+  --trasnition-time: 500ms;
+  transition: all var(--trasnition-time);
+  -webkit-transition: all var(--trasnition-time);
+  -moz-transition: all var(--trasnition-time);
+  -ms-transition: all var(--trasnition-time);
+  -o-transition: all var(--trasnition-time);
+}
+
+/* 이미지 */
+.home-with-people-img {
+  width: 180px;
+  height: 130px;
+
+  color: gray;
+
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+.home-with-people-img img,
+.home-with-people-img svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* 정보 */
+.home-with-people-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+  margin-left: 1em;
+  text-align: center;
+}
+.home-with-people:hover {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 4px 2px rgb(0 0 0 / 16%);
+}
+.home-with-people > h2 {
+  margin-bottom: 0.3em;
+}
+
+/* 반응형 */
+@media screen and (max-width: 1000px) {
+  .home-with-people-wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .home-with-people-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}

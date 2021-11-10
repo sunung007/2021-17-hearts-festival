@@ -3,6 +3,10 @@
   height: 100%;
   position: relative;
 }
+.main-banner * {
+  word-break: keep-all;
+  white-space: break-spaces;
+}
 
 .main-banner-wrapper {
   position: relative;
@@ -64,6 +68,32 @@
   color: white;
 }
 
+/* 배너 전환 점 */
+.main-banner .page-header-down-float {
+  flex-direction: column;
+  align-items: center;
+  cursor: auto;
+}
+.banner-list-circle {
+  display: flex;
+  flex-direction: row;
+
+  margin-bottom: 1rem;
+  font-size: 0.6rem;
+}
+.banner-list-circle-current {
+  color: white !important;
+}
+.banner-list-circle > li {
+  margin: 0 0.2rem;
+  color: var(--color-gray);
+  cursor: pointer;
+}
+
+.banner-list-circle > li:hover {
+  color: gray;
+}
+
 /* 포스터 배너 */
 .main-banner-item-poster .page-header {
   position: relative;
@@ -90,7 +120,6 @@
   color: white;
   text-align: right;
   text-shadow: 1px 1px 6px black;
-  word-break: keep-all;
 }
 .main-banner-item-poster .page-header .page-title .title {
   display: flex;
@@ -162,9 +191,6 @@
 .main-banner-item .page-title {
   font-family: noto-sans-regular;
   font-size: 2em;
-
-  word-break: keep-all;
-  white-space: break-spaces;
 }
 .main-banner-item .page-title .subtitle {
   font-family: noto-sans-light;

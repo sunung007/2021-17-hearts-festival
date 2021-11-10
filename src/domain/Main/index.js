@@ -8,8 +8,8 @@ import {useScrollFadeIn} from "../../hooks/useScrollFadeIn";
 
 import {useScrollToBody} from "../../hooks/useScrollToBody";
 import {companyList} from "../../data/company";
-import {participants} from "../../data/participants";
 import MainBanner from "./MainBanner";
+import MainParticipant from "./MainParticipant";
 
 function CompanyList({company, index}) {
   const fadeAnimation = useScrollFadeIn("right", 0.9, index / 9);
@@ -48,30 +48,26 @@ export default function Main() {
           <h1 className={"section-title"}>Seventeen Hearts Festival</h1>
           <br />
 
-          <p className={"font-light"}>
-            <center>
-              한양학원의 건학정신은 근면, 정직, 겸손, 봉사할 수 있는
-              <br />
-              인간형성을 도모하고, 나만을 위한 것이 아니라
-              <br />
-              지역 사회, 나라와 겨레, 나아가 인류를 위해 이바지하는 위대한
-              <br />
-              사랑의 실천자를 기르는 데 있다.
-            </center>
-          </p>
+          <center className={"font-light"}>
+            한양학원의 건학정신은 근면, 정직, 겸손, 봉사할 수 있는
+            <br />
+            인간형성을 도모하고, 나만을 위한 것이 아니라
+            <br />
+            지역 사회, 나라와 겨레, 나아가 인류를 위해 이바지하는 위대한
+            <br />
+            사랑의 실천자를 기르는 데 있다.
+          </center>
           <br />
 
-          <p className={"font-light"}>
-            <center>
-              한양대학교는 이러한 사랑의 실천자를 체인지메이커(Changemaker)라고
-              부릅니다.
-              <br />
-              크기와 방법에 상관 없이 더 나은 세상을 위한 긍정적인 변화를 만들어
-              낸다면
-              <br />
-              우리는 모두 체인지메이커입니다.
-            </center>
-          </p>
+          <center className={"font-light"}>
+            한양대학교는 이러한 사랑의 실천자를 체인지메이커(Changemaker)라고
+            부릅니다.
+            <br />
+            크기와 방법에 상관 없이 더 나은 세상을 위한 긍정적인 변화를 만들어
+            낸다면
+            <br />
+            우리는 모두 체인지메이커입니다.
+          </center>
         </Page>
 
         {/* 기업 리스트 */}
@@ -89,29 +85,7 @@ export default function Main() {
           </ul>
         </Page>
 
-        <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}}>
-          <h1 className={"section-title"}>
-            <div>함께한 사람들</div>
-            <div className={"subtitle font-light"}>Epilogue</div>
-          </h1>
-          <br />
-
-          <ul className={"home-with-people-wrapper"}>
-            {participants.map((participant, index) => (
-              <li className={"home-with-people"} key={index}>
-                <h2>{participant.name}</h2>
-                <p className={"font-light"}>
-                  {participant.dept.map((dept, index) => (
-                    <>
-                      {dept}
-                      <br />
-                    </>
-                  ))}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </Page>
+        <MainParticipant />
       </div>
     </div>
   );
