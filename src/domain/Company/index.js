@@ -162,7 +162,7 @@ function CompanyInterview({company}) {
               </ul>
             </div>
             <div className={"company-picture-slide-helper font-light"}>
-              * 크게 보기 위해서는 해당 사진을 누르세요.
+              * 사진을 누르면 크게 보입니다.
             </div>
           </>
         )}

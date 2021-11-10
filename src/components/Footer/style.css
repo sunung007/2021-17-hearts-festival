@@ -3,3 +3,23 @@ footer {
   font-size: 0.8em;
   font-family: noto-sans-light;
 }
+
+.footer-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  margin-bottom: 2em;
+}
+.footer-logos > li {
+  height: 40px;
+  line-height: 40px;
+
+  margin: 0 1em;
+  vertical-align: middle;
+}
+.footer-logos img {
+  width: auto;
+  height: 100%;
+}

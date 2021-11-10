@@ -27,7 +27,8 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: black-gothic;
+  font-family: gong-gothic;
+  /* font-family: black-gothic; */
   font-weight: normal;
 }
 
@@ -85,4 +86,20 @@ a {
 @font-face {
   font-family: "noto-sans-ultra-bold";
   src: url("./fonts/NotoSansKR-Black.otf");
+}
+
+/* 아시마루 */
+@font-face {
+  font-family: "gong-gothic";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "gong-gothic-bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }

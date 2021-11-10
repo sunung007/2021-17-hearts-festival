@@ -48,7 +48,7 @@
   grid-template-columns: 1fr 1fr 1fr;
 
   column-gap: 1em;
-  row-gap: 2em;
+  row-gap: 1em;
 }
 .home-company-item {
   position: relative;
@@ -141,6 +141,35 @@
   -moz-transform: scale(100%);
   -ms-transform: scale(100%);
   -o-transform: scale(100%);
+}
+
+/* 함께한 사람들 */
+.home-with-people-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 1em;
+  row-gap: 1em;
+}
+.home-with-people {
+  padding: 2em;
+  border-radius: 0.5em;
+  text-align: center;
+  background-color: white;
+  cursor: pointer;
+
+  --trasnition-time: 500ms;
+  transition: all var(--trasnition-time);
+  -webkit-transition: all var(--trasnition-time);
+  -moz-transition: all var(--trasnition-time);
+  -ms-transition: all var(--trasnition-time);
+  -o-transition: all var(--trasnition-time);
+}
+.home-with-people:hover {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 4px 2px rgb(0 0 0 / 16%);
+}
+.home-with-people > h2 {
+  margin-bottom: 0.3em;
 }
 
 /* 반응형 */
