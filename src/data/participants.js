@@ -1,17 +1,17 @@
 export const participants = [
   // 직원
-  {
-    name: "이효진",
-    dept: ["한양대학교", "사회혁신센터"],
-    img: "https://cdn.pixabay.com/photo/2021/08/31/11/58/woman-6588614_960_720.jpg",
-    feel: "느낀점",
-  },
-  {
-    name: "김예솔",
-    dept: ["한양대학교", "사회혁신센터"],
-    img: "https://cdn.pixabay.com/photo/2021/08/31/11/58/woman-6588614_960_720.jpg",
-    feel: "느낀점",
-  },
+  // {
+  //   name: "이효진",
+  //   dept: ["한양대학교", "사회혁신센터"],
+  //   img: "https://cdn.pixabay.com/photo/2021/08/31/11/58/woman-6588614_960_720.jpg",
+  //   feel: "느낀점",
+  // },
+  // {
+  //   name: "김예솔",
+  //   dept: ["한양대학교", "사회혁신센터"],
+  //   img: "https://cdn.pixabay.com/photo/2021/08/31/11/58/woman-6588614_960_720.jpg",
+  //   feel: "느낀점",
+  // },
 
   // 학생
   {

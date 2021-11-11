@@ -1,6 +1,6 @@
 import "./style.css";
 
-import {useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {useHistory} from "react-router";
 
 import Page from "../../../components/Page";
@@ -22,18 +22,20 @@ export default function MainBanner({scrollToBody}) {
   const history = useHistory();
   const [curBanner, setCurBanner] = useState(0);
 
-  const changeBannerToLeft = () => {
+  const changeBannerToLeft = () =>
     setCurBanner(
       curBanner < 1 ? totalBanner - 1 : (curBanner - 1) % totalBanner
     );
-  };
-  const changeBannerToRight = () => {
+  const changeBannerToRight = useCallback(() => {
     setCurBanner((curBanner + 1) % totalBanner);
-  };
+  }, [curBanner, totalBanner]);
 
-  const bannerBtnClick = (e) => {
-    history.push(`/company/${e.target.id}`);
-  };
+  const bannerBtnClick = (e) => history.push(`/company/${e.target.id}`);
+
+  useEffect(() => {
+    const tick = setTimeout(changeBannerToRight, 2700);
+    return () => clearTimeout(tick);
+  }, [changeBannerToRight, curBanner]);
 
   return (
     <div className={"main-banner"}>

@@ -1,6 +1,5 @@
 {
   "name": "17-hearts-festival",
-  "homepage": "http://sunung007.github.io/2021-17-hearts-festival",
   "version": "0.1.0",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

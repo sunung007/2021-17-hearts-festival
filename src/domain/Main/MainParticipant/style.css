@@ -78,8 +78,8 @@
 .home-with-people-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 1em;
   row-gap: 1em;
+  column-gap: 1em;
 }
 
 /* 리스트 각각 */
@@ -88,6 +88,7 @@
   flex-direction: row;
 
   padding: 2em 1.4em;
+
   border-radius: 0.5em;
   background-color: white;
   cursor: pointer;
@@ -135,14 +136,19 @@
 }
 
 /* 반응형 */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1150px) {
   .home-with-people-wrapper {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .home-with-people-wrapper {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media screen and (max-width: 700px) {
   .home-with-people-wrapper {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 }
