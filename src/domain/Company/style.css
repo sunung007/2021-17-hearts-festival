@@ -2,62 +2,67 @@
   position: relative;
   padding: 2rem;
 
-  background: url("../../assets/banner-background.svg") center center no-repeat;
-  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .company .page-header .page-title {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-
   color: white;
   text-align: center;
   text-shadow: 1px 1px 6px black;
 }
-
 .company .page-header .page-title .subtitle {
-  font-size: 0.5em;
   position: relative;
-  margin-bottom: 2em;
+  width: fit-content;
+
+  padding: 0 0.5em;
+  margin: 0 auto 1em auto;
+  font-family: noto-sans-light;
 }
-.company .page-header .page-title .subtitle::before {
+/* 소제목 hover 시 밑줄 */
+.company .page-header .page-title .subtitle::after {
   content: "";
 
   position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: -1;
+  left: 0;
+  bottom: -0.4em;
 
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
+  width: 0;
+  height: 3px;
 
-  width: 20rem;
-  height: 10rem;
+  border-radius: 10em;
+  opacity: 0.5;
+  background-color: white;
 
-  background: url("../../assets/subtitle-background.svg") center center
-    no-repeat;
-  background-size: 100%;
+  --animatin-duration: 300ms;
+  transition: all var(--animatin-duration) ease-out;
+  -webkit-transition: all var(--animatin-duration) ease-out;
+  -moz-transition: all var(--animatin-duration) ease-out;
+  -ms-transition: all var(--animatin-duration) ease-out;
+  -o-transition: all var(--animatin-duration) ease-out;
 }
-.company .page-header .page-title .subtitle:hover {
+.company .page-header .page-title .subtitle:hover::after {
+  content: "";
+
+  width: 100%;
 }
+/* 소제목 hover 시 화살표 */
 .company .page-header .page-title .subtitle .page-title-go-back-home-arrow {
-  /* display: none; */
-  /* font-size: 0; */
   width: 0 !important;
   overflow: hidden;
   visibility: hidden;
   opacity: 0;
-  transition: all 300ms ease;
+
+  --animatin-duration: 300ms;
+  transition: all var(--animatin-duration) ease;
+  -webkit-transition: all var(--animatin-duration) ease;
+  -moz-transition: all var(--animatin-duration) ease;
+  -ms-transition: all var(--animatin-duration) ease;
+  -o-transition: all var(--animatin-duration) ease;
 }
 .company
   .page-header
@@ -69,73 +74,48 @@
   visibility: visible;
 }
 
-.company .page-header .page-title .title {
-  position: relative;
-  word-break: keep-all;
+/* 배너 배경 */
+.company-banner-background {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: black;
 }
-.company .page-header .page-title .title::before {
+.company-banner-background::before {
   content: "";
 
   position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: -2;
+  width: 100%;
+  height: 100%;
 
-  transform: translate(-50%, -50%) rotate(10deg);
-  -webkit-transform: translate(-50%, -50%) rotate(10deg);
-  -moz-transform: translate(-50%, -50%) rotate(10deg);
-  -ms-transform: translate(-50%, -50%) rotate(10deg);
-  -o-transform: translate(-50%, -50%) rotate(10deg);
-
-  width: 40rem;
-  height: 30rem;
-
-  background: url("../../assets/title-background.svg") center center no-repeat;
-  background-size: 100%;
+  background: black;
+  background: linear-gradient(
+    0deg,
+    rgba(2, 85, 138, 0) 0%,
+    rgba(2, 85, 138, 0.6) 0%,
+    rgba(0, 0, 0, 0) 35%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.company-banner-background img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
 }
 
 /* 아직 준비 안된 기업 */
 .company-not-ready {
   text-align: center;
-}
-
-/* 기업 이름 */
-.company-title {
-  padding-top: 4rem;
-}
-.company-title-name-and-logo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.company-title-name {
-  position: relative;
-
-  color: white;
-  font-size: 2em;
-  font-family: black-gothic;
-}
-.company-title-name::before {
-  content: "";
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: -2;
-
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-
-  width: 12rem;
-  height: 30rem;
-
-  background: url("../../assets/company-name-background.svg") center center
-    no-repeat;
-  background-size: 100%;
 }
 
 /* 기업 로고 */
@@ -321,16 +301,20 @@
   height: fit-content;
 
   white-space: nowrap;
-  /* background-color: var(--color-gray); */
 }
 .company-picture-slide .company-picture {
-  /* width: 300px; */
   height: 150px;
   margin-right: 0.5em;
   cursor: pointer;
 
   opacity: 1;
-  transition: opacity 300ms;
+
+  --animation-duration: 300ms;
+  transition: all var(--animation-duration);
+  -webkit-transition: all var(--animation-duration);
+  -moz-transition: all var(--animation-duration);
+  -ms-transition: all var(--animation-duration);
+  -o-transition: all var(--animation-duration);
 }
 .company-picture-slide .company-picture:hover {
   opacity: 0.7;
@@ -380,6 +364,13 @@
   border: none;
   background: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  .company-banner-background img {
+    max-width: none !important;
+    max-height: 100% !important;
+  }
 }
 
 @media screen and (max-width: 700px) {

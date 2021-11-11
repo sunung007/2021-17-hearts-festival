@@ -1,6 +1,7 @@
 .page-title {
-  font-family: black-gothic;
-  font-size: 3em;
+  font-family: gong-gothic;
+  /* font-family: black-gothic; */
+  font-size: 2.2em;
 }
 
 .title {
@@ -13,9 +14,6 @@
 .section-title {
   text-align: center;
   font-size: 2em;
-}
-.section-title::after {
-  /* border: 1px solid black; */
 }
 
 .inner-padding .page-inner,
@@ -32,4 +30,25 @@
 
 .no-display {
   display: none;
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar {
+  width: 8px;
+  opacity: 0.8;
+}
+/* 스크롤바 막대 */
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-dark-blue);
+  border-radius: 10rem;
+}
+/* 스크롤바 여백 */
+::-webkit-scrollbar-track {
+  background-color: var(--color-gray);
+}
+
+@media screen and (max-width: 700px) {
+  .only-browser {
+    display: none !important;
+  }
 }

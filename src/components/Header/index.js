@@ -3,34 +3,41 @@ import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
-import {useLocation} from "react-router";
 
-export default function Header() {
-  const location = useLocation();
+export default function Header({
+  scrollToIntro,
+  scrollToInterview,
+  scrollToPictures,
+}) {
   const [headerShow, setHeaderShow] = useState(false);
 
-  const headerScrollEvent = () =>
-    setHeaderShow(window.scrollY > window.innerHeight);
+  const headerScrollEvent = () => setHeaderShow(window.scrollY >= 600);
 
   useEffect(() => {
     document.addEventListener("scroll", headerScrollEvent);
     return () => document.removeEventListener("scroll", headerScrollEvent);
   }, []);
 
-  if (location.pathname !== "/")
-    return (
-      <header
-        id={"header"}
-        className={headerShow ? "header-show" : "header-hide"}
-      >
-        <div className={"header-container"}>
+  return (
+    <header
+      id={"header"}
+      className={headerShow ? "header-show" : "header-hide"}
+    >
+      <div className={"header-container"}>
+        <div>
           <Link to={"/"}>
             <h2 className={"header-title"}>
               <FontAwesomeIcon icon={faArrowLeft} /> Seventeen Hearts Festival
             </h2>
           </Link>
         </div>
-      </header>
-    );
-  else return <></>;
+
+        <ul className={"header-menus font-light only-browser"}>
+          <li onClick={scrollToIntro}>기업소개</li>
+          <li onClick={scrollToInterview}>인터뷰 내용</li>
+          <li onClick={scrollToPictures}>인터뷰 보기</li>
+        </ul>
+      </div>
+    </header>
+  );
 }

@@ -19,7 +19,7 @@ function MainParticipantDetail({curParticipant}) {
   else
     return (
       <Page
-        parentClassName={`${animation && "open-height"}`}
+        parentClassName={`${animation ? "open-height" : undefined}`}
         className={"home-with-people-detail"}
         parentOnAnimationEnd={onAnimationEnd}
         shadow={false}
@@ -93,14 +93,11 @@ export default function MainParticipant() {
               {/* 사람 정보 */}
               <div className={"home-with-people-info"}>
                 <h2>{participant.name}</h2>
-                <p className={"font-light"}>
+                <div className={"font-light"}>
                   {participant.dept.map((dept, index) => (
-                    <>
-                      {dept}
-                      <br />
-                    </>
+                    <p key={index}>{dept}</p>
                   ))}
-                </p>
+                </div>
               </div>
             </li>
           ))}

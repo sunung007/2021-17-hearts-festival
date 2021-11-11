@@ -1,7 +1,6 @@
 import "./style.css";
 
 import {useCallback, useEffect, useState} from "react";
-import {useHistory} from "react-router";
 
 import Page from "../../../components/Page";
 import titleBackground from "../../../assets/title-background.svg";
@@ -16,11 +15,12 @@ import {
   faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Link} from "react-router-dom";
 
 export default function MainBanner({scrollToBody}) {
   const totalBanner = banners.length + 1;
-  const history = useHistory();
   const [curBanner, setCurBanner] = useState(0);
+  const [isStop, setIsStop] = useState(false);
 
   const changeBannerToLeft = () =>
     setCurBanner(
@@ -30,12 +30,12 @@ export default function MainBanner({scrollToBody}) {
     setCurBanner((curBanner + 1) % totalBanner);
   }, [curBanner, totalBanner]);
 
-  const bannerBtnClick = (e) => history.push(`/company/${e.target.id}`);
-
   useEffect(() => {
-    const tick = setTimeout(changeBannerToRight, 2700);
+    const tick = setTimeout(() => {
+      !isStop && changeBannerToRight();
+    }, 3500);
     return () => clearTimeout(tick);
-  }, [changeBannerToRight, curBanner]);
+  }, [changeBannerToRight, isStop]);
 
   return (
     <div className={"main-banner"}>
@@ -54,7 +54,7 @@ export default function MainBanner({scrollToBody}) {
                 <img
                   className={"main-header-title-background"}
                   src={titleBackground}
-                  alt={"background"}
+                  alt={""}
                 />
               </div>
 
@@ -74,12 +74,14 @@ export default function MainBanner({scrollToBody}) {
                 <div className={"page-title"}>
                   <div className={"subtitle"}>{banner.subtitle}</div>
                   <div className={"title"}>{banner.title}</div>
+
+                  {/* 인터뷰 보기 버튼 */}
                   <button
                     className={"main-banner-btn font-light"}
-                    onClick={bannerBtnClick}
-                    id={banner.id}
+                    onMouseOver={() => setIsStop(true)}
+                    onMouseLeave={() => setIsStop(false)}
                   >
-                    인터뷰 바로가기
+                    <Link to={`/company/${banner.id}`}>인터뷰 보기</Link>
                   </button>
                 </div>
 
@@ -115,7 +117,9 @@ export default function MainBanner({scrollToBody}) {
           {Array.from({length: totalBanner}, (v, i) => i).map((a, index) => (
             <li
               key={index}
-              className={index === curBanner && "banner-list-circle-current"}
+              className={
+                index === curBanner ? "banner-list-circle-current" : undefined
+              }
               onClick={() => setCurBanner(index)}
             >
               <FontAwesomeIcon icon={faCircle} />

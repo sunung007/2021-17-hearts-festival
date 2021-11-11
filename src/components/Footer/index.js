@@ -62,7 +62,7 @@ export default function Footer() {
         <br />
         <p>
           <a href="mailto:sunung007@hanyang.ac.kr">
-            사이트 관련 문의 : 한양대학교 사회혁신센터 김선웅{" "}
+            사이트 오류 제보 및 문의 : 한양대학교 사회혁신센터 김선웅{" "}
             <u>sunung007@hanyang.ac.kr</u>
           </a>
         </p>

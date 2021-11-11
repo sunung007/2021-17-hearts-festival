@@ -6,7 +6,7 @@ export const banners = [
     background: require("../assets/banners/hyu-sic.jpg").default,
   },
   {
-    id: 7,
+    id: 6,
     subtitle: "플라스틱을 줄이자!",
     title: "Dr.NOAH",
     background: require("../assets/banners/hyu-sic.jpg").default,

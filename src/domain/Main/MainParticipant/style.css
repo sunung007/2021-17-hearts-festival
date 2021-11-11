@@ -11,7 +11,12 @@
   overflow: hidden;
   font-size: 1.2em;
 
-  transition: all 500ms;
+  --animation-duration: 500ms;
+  transition: all var(--animation-duration);
+  -webkit-transition: all var(--animation-duration);
+  -moz-transition: all var(--animation-duration);
+  -ms-transition: all var(--animation-duration);
+  -o-transition: all var(--animation-duration);
 }
 
 .open-height {
