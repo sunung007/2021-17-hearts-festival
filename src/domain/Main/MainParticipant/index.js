@@ -77,7 +77,9 @@ export default function MainParticipant() {
         <ul className={"home-with-people-wrapper"}>
           {participants.map((participant, index) => (
             <li
-              className={"home-with-people"}
+              className={`home-with-people ${
+                curParticipant === index ? "cur-people" : undefined
+              }`}
               key={index}
               onClick={() => changePeople(index)}
             >

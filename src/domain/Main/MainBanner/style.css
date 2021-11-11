@@ -122,7 +122,7 @@
 
   color: white;
   text-align: right;
-  text-shadow: 1px 1px 6px black;
+  text-shadow: 1px 1px 2px black;
 }
 .main-banner-item-poster .page-header .page-title .title {
   display: flex;
@@ -281,4 +281,14 @@
   .main-banner-change-btn {
     padding: 0 1em;
   }
+}
+
+.gofo-name {
+  color: gray;
+  font-family: noto-sans-ultra-light;
+
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 100;
 }

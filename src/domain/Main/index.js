@@ -44,7 +44,7 @@ export default function Main() {
 
       <div className={"inner-padding"} ref={body}>
         {/* 사랑의 실천 소개 */}
-        <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}} shadow={false}>
+        <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}}>
           <h1 className={"section-title"}>Seventeen Hearts Festival</h1>
           <br />
 
@@ -71,7 +71,7 @@ export default function Main() {
         </Page>
 
         {/* 기업 리스트 */}
-        <Page>
+        <Page parentClassName={"home-company-list-page"}>
           <h1 className={"section-title"}>
             <div>참여 기업</div>
             <div className={"subtitle font-light"}>Companies</div>

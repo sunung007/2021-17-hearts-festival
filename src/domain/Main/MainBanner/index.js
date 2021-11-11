@@ -132,6 +132,9 @@ export default function MainBanner({scrollToBody}) {
           <FontAwesomeIcon icon={faArrowDown} />
         </button>
       </div>
+
+      {/* 내 이름 */}
+      <div className={"gofo-name"}>DESIGNED BY. GOFO</div>
     </div>
   );
 }

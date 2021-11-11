@@ -3,48 +3,50 @@ import "./style.css";
 export default function Footer() {
   return (
     <footer>
-      <ul className={"footer-logos"}>
-        <li>주관</li>
-        <li>
-          <a
-            href={"https://hvc.hanyang.ac.kr"}
-            target={"_blank"}
-            rel={"noreferrer"}
-          >
-            <img
-              src={require("../../assets/logos/hyu-sic.png").default}
-              alt={"한양대 사회혁신센터"}
-            />
-          </a>
-        </li>
+      <div className={"footer-logos"}>
+        <div className={"footer-logos-wrapper"}>
+          <div className={"footer-logos-label"}>주최</div>
+          <div className={"footer-logos-items"}>
+            <a
+              href={"https://hanyang.ac.kr"}
+              target={"_blank"}
+              rel={"noreferrer"}
+            >
+              <img
+                src={require("../../assets/logos/hyu.png").default}
+                alt={"한양대"}
+              />
+            </a>
 
-        <li>주최</li>
-        <li>
-          <a
-            href={"https://hanyang.ac.kr"}
-            target={"_blank"}
-            rel={"noreferrer"}
-          >
-            <img
-              src={require("../../assets/logos/hyu.png").default}
-              alt={"한양대"}
-            />
-          </a>
-        </li>
+            <a
+              href={"https://lincplus.hanyang.ac.kr/"}
+              target={"_blank"}
+              rel={"noreferrer"}
+            >
+              <img
+                src={require("../../assets/logos/hyu-linc.png").default}
+                alt={"한양대 LINC"}
+              />
+            </a>
+          </div>
+        </div>
 
-        <li>
-          <a
-            href={"https://lincplus.hanyang.ac.kr/"}
-            target={"_blank"}
-            rel={"noreferrer"}
-          >
-            <img
-              src={require("../../assets/logos/hyu-linc.png").default}
-              alt={"한양대 LINC"}
-            />
-          </a>
-        </li>
-      </ul>
+        <div className={"footer-logos-wrapper"}>
+          <div className={"footer-logos-label"}>주관</div>
+          <div className={"footer-logos-items"}>
+            <a
+              href={"https://hvc.hanyang.ac.kr"}
+              target={"_blank"}
+              rel={"noreferrer"}
+            >
+              <img
+                src={require("../../assets/logos/hyu-sic.png").default}
+                alt={"한양대 사회혁신센터"}
+              />
+            </a>
+          </div>
+        </div>
+      </div>
 
       <div>
         <p>Copyright 2021. Hanyang University Social Innovation Center</p>
@@ -58,13 +60,6 @@ export default function Footer() {
           <u>
             <a href="tel:02.2220.1004">02.2220.1004</a>
           </u>
-        </p>
-        <br />
-        <p>
-          <a href="mailto:sunung007@hanyang.ac.kr">
-            사이트 오류 제보 및 문의 : 한양대학교 사회혁신센터 김선웅{" "}
-            <u>sunung007@hanyang.ac.kr</u>
-          </a>
         </p>
       </div>
     </footer>

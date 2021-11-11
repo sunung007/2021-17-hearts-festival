@@ -105,6 +105,19 @@
   -ms-transition: all var(--trasnition-time);
   -o-transition: all var(--trasnition-time);
 }
+.home-with-people:hover {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 4px 2px rgb(0 0 0 / 16%);
+}
+
+/* 현재 선택된 사람 */
+.home-with-people-wrapper .cur-people {
+  color: white !important;
+  background-color: var(--color-dark-blue) !important;
+}
+.home-with-people-wrapper .cur-people .home-with-people-img {
+  color: white;
+}
 
 /* 이미지 */
 .home-with-people-img {
@@ -131,10 +144,6 @@
   width: 100%;
   margin-left: 1em;
   text-align: center;
-}
-.home-with-people:hover {
-  background: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 2px 4px 2px rgb(0 0 0 / 16%);
 }
 .home-with-people > h2 {
   margin-bottom: 0.3em;

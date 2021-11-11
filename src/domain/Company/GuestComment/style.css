@@ -1,0 +1,50 @@
+.guest-comment input,
+.guest-comment-enroll-btn {
+  height: 3em;
+
+  padding: 0 1em;
+  position: relative;
+
+  border: 1px solid var(--color-gray);
+  border-radius: 10em;
+
+  font-size: 1em;
+}
+.guest-comment input:focus {
+  outline: none;
+}
+
+/* 방명록 입력창 */
+.guest-comment-enroll input {
+  width: 100%;
+}
+/* 학과/이름 입력창 */
+.guest-comment-detail-info {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 0.5em 0;
+}
+.guest-comment-detail-info input {
+  width: 49%;
+}
+/* 댓글 달기 버튼 */
+.guest-comment-enroll-btn {
+  width: 100%;
+  color: white;
+  background-color: var(--color-dark-blue);
+  cursor: pointer;
+
+  --animation-duration: 300ms;
+  transition: all var(--animation-duration) ease-out;
+  -webkit-transition: all var(--animation-duration) ease-out;
+  -moz-transition: all var(--animation-duration) ease-out;
+  -ms-transition: all var(--animation-duration) ease-out;
+  -o-transition: all var(--animation-duration) ease-out;
+}
+.guest-comment-enroll-btn:hover {
+  background-color: var(--color-light-blue);
+}

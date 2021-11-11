@@ -2,10 +2,13 @@ export const companyList = [
   {
     id: 0,
     name: "사회혁신센터(샘플)",
+    logo: require("../assets/logos/seventeen-hearts.png").default,
+
     isReady: true,
     date: "2021.09.30.",
-    logo: require("../assets/logos/seventeen-hearts.png").default,
+
     tags: [1, 2, 3],
+    oneline: "세상을 바꿔가는",
     intro: (
       <>
         <p>서울특별시 서초구 강남대로 222 ...</p>
@@ -33,6 +36,7 @@ export const companyList = [
         </p>
       </>
     ),
+
     qna: [
       ["질문 내용", "답변 내용"],
       ["질문 내용", "답변 내용"],
@@ -53,121 +57,165 @@ export const companyList = [
   {
     id: 1,
     name: "한국국제협력단(KOICA)",
+    logo: require("../assets/logos/koica.png").default,
+
     isReady: false,
     date: "",
-    logo: require("../assets/logos/koica.png").default,
+
     tags: [],
+    oneline: "",
     intro: <></>,
+
     qna: [["", ""]],
     movie: "", // 링크
   },
   {
     id: 2,
     name: "한국개발전략연구소(KDS)",
+    logo: require("../assets/logos/kds.jpeg").default,
+
     isReady: false,
     date: "",
-    logo: require("../assets/logos/kds.jpeg").default,
+
     tags: [],
+    oneline: "",
     intro: <></>,
+
     qna: [["", ""]],
     movie: "", // 링크
   },
   {
     id: 3,
     name: "SPC 행복한 재단",
+    logo: require("../assets/logos/spc.png").default,
+
     isReady: false,
     date: "",
-    logo: require("../assets/logos/spc.png").default,
+
     tags: [],
+    oneline: "",
     intro: <></>,
+
     qna: [["", ""]],
     movie: "", // 링크
   },
   {
     id: 4,
     name: "환경재단",
+    logo: require("../assets/logos/green-foundation.png").default,
+
     isReady: false,
     date: "",
-    logo: require("../assets/logos/green-foundation.png").default,
+
     tags: [],
+    oneline: "",
     intro: <></>,
+
     qna: [["", ""]],
     movie: "", // 링크
   },
   {
     id: 5,
     name: "어썸스쿨",
+    logo: require("../assets/logos/awesome-school.png").default,
+
     isReady: false,
     date: "",
-    logo: require("../assets/logos/awesome-school.png").default,
+
     tags: [],
+    oneline: "",
     intro: <></>,
+
     qna: [["", ""]],
     movie: "", // 링크
   },
   {
     id: 6,
     name: "닥터노아",
+    logo: require("../assets/logos/dr-noah.png").default,
+
     isReady: false,
     date: "",
-    logo: require("../assets/logos/dr-noah.png").default,
+
     tags: [],
+    oneline: "",
     intro: <></>,
+
     qna: [["", ""]],
     movie: "", // 링크
   },
   {
     id: 7,
     name: "MYSC",
+    logo: require("../assets/logos/mysc.png").default,
+
     isReady: false,
     date: "",
-    logo: require("../assets/logos/mysc.png").default,
+
     tags: [],
+    oneline: "",
     intro: <></>,
+
     qna: [["", ""]],
     movie: "", // 링크
   },
   {
     id: 8,
     name: "루트임팩트",
+    logo: require("../assets/logos/root-impact.png").default,
+
     isReady: false,
     date: "",
-    logo: require("../assets/logos/root-impact.png").default,
+
     tags: [],
+    oneline: "",
     intro: <></>,
+
     qna: [["", ""]],
     movie: "", // 링크
   },
   {
     id: 9,
     name: "상상우리",
+    logo: require("../assets/logos/sangsang-woori.png").default,
+
     isReady: false,
     date: "",
-    logo: require("../assets/logos/sangsang-woori.png").default,
+
     tags: [],
+    oneline: "",
     intro: <></>,
+
     qna: [["", ""]],
     movie: "", // 링크
   },
   {
     id: 10,
     name: "파타고니아 코리아",
+    logo: require("../assets/logos/patagonia.png").default,
+
     isReady: false,
     date: "",
-    logo: require("../assets/logos/patagonia.png").default,
+
     tags: [],
+    oneline: "",
     intro: <></>,
+
     qna: [["", ""]],
     movie: "", // 링크
   },
   {
     id: 11,
     name: "LG전자",
+    logo: require("../assets/logos/lg.png").default,
+
     isReady: false,
     date: "",
-    logo: require("../assets/logos/lg.png").default,
+
     tags: [],
+    oneline: "",
     intro: <></>,
+
     qna: [["", ""]],
     movie: "", // 링크
   },
