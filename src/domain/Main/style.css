@@ -15,7 +15,7 @@
 
   background: url("../../assets/backgrounds/circle-scatter-lightblue.svg")
     center center no-repeat;
-  background-size: 100% auto;
+  background-size: cover;
   filter: opacity(0.35);
 }
 
@@ -141,6 +141,10 @@
 
   .home-company-box {
     margin-bottom: 2em;
+  }
+  .home-company-box > .home-company-box-hover {
+    font-size: 1.5em;
+    padding: 0 1em;
   }
   .home-company-item:nth-child(even) .home-company-box {
     margin-left: auto;
