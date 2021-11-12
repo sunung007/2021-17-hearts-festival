@@ -1,5 +1,6 @@
 {
   "name": "17-hearts-festival",
+  "license": "Copyright 2021 Gofo. MIT License",
   "version": "0.1.0",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

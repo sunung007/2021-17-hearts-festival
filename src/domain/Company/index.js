@@ -24,8 +24,9 @@ import {
 export default function Company({history, match}) {
   const [body, scrollToBody] = useScrollToBody();
   const [intro, scrollToIntro] = useScrollToBody(56);
-  const [interview, scrollToInterview] = useScrollToBody(56);
-  const [pictures, scrollToPictures] = useScrollToBody(56);
+  const [interviewRef, scrollToInterview] = useScrollToBody(56);
+  const [picturesRef, scrollToPictures] = useScrollToBody(56);
+  const [commentsRef, scrollToComments] = useScrollToBody(56);
 
   const [companyData, setCompanyData] = useState({});
 
@@ -43,6 +44,7 @@ export default function Company({history, match}) {
         scrollToIntro={scrollToIntro}
         scrollToInterview={scrollToInterview}
         scrollToPictures={scrollToPictures}
+        scrollToComments={scrollToComments}
       />
 
       <div className={"company"}>
@@ -91,8 +93,8 @@ export default function Company({history, match}) {
             <CompanyContent
               company={companyData}
               introSection={intro}
-              interviewSection={interview}
-              picturesSection={pictures}
+              interviewSection={interviewRef}
+              picturesSection={picturesRef}
             />
           ) : (
             <Page
@@ -104,6 +106,7 @@ export default function Company({history, match}) {
           )}
 
           {/* 방명록 */}
+          <div style={{height: 0, padding: 0}} ref={commentsRef} />
           <GuestComment cid={companyData.id} />
         </div>
       </div>

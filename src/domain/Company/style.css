@@ -14,6 +14,12 @@
   color: white;
   text-align: center;
   text-shadow: 1px 1px 6px black;
+
+  animation: company-title-move-up 1s ease-in-out 300ms;
+  -webkit-animation: company-title-move-up 1s ease-in-out 300ms;
+  -moz-animation: company-title-move-up 1s ease-in-out 300ms;
+  -ms-animation: company-title-move-up 1s ease-in-out 300ms;
+  -o-animation: company-title-move-up 1s ease-in-out 300ms;
 }
 .company .page-header .page-title .subtitle {
   position: relative;
@@ -72,6 +78,18 @@
   font-size: 1em;
   opacity: 1;
   visibility: visible;
+}
+@keyframes company-title-move-up {
+  0% {
+    overflow: hidden;
+    padding-top: 50%;
+    opacity: 0;
+  }
+  100% {
+    overflow: hidden;
+    padding-top: initial;
+    opacity: 1;
+  }
 }
 
 /* 배너 배경 */

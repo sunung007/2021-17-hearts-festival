@@ -162,8 +162,22 @@
 }
 
 @media screen and (max-width: 700px) {
+  .home-with-people-page {
+    padding: 1em 0 3rem 0 !important;
+  }
+
+  .home-with-people-wrapper {
+    display: flex;
+    overflow-x: auto;
+    padding: 0 2rem;
+  }
+  /* 스크롤바 */
+  .home-with-people-wrapper::-webkit-scrollbar {
+    height: 0;
+  }
+
   .home-with-people {
-    padding: 2em 1em;
+    padding: 1em;
     flex-direction: column;
     align-items: center;
   }

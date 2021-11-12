@@ -8,6 +8,7 @@ export default function Header({
   scrollToIntro,
   scrollToInterview,
   scrollToPictures,
+  scrollToComments,
 }) {
   const [headerShow, setHeaderShow] = useState(false);
 
@@ -34,9 +35,10 @@ export default function Header({
         </div>
 
         <ul className={"header-menus font-light"}>
-          <li onClick={scrollToIntro}>기업 소개</li>
+          <li onClick={scrollToIntro}>기업소개</li>
           <li onClick={scrollToInterview}>미리보기</li>
           <li onClick={scrollToPictures}>인터뷰/사진</li>
+          <li onClick={scrollToComments}>방명록</li>
         </ul>
       </div>
     </header>
