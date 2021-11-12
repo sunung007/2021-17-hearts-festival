@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
 import {initializeApp} from "firebase/app";
-import {getAnalytics} from "firebase/analytics";
 import {getFirestore, getDoc, setDoc, Timestamp, doc} from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -21,7 +20,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const fbApp = initializeApp(firebaseConfig);
 const fdDB = getFirestore(fbApp);
-const analytics = getAnalytics(fbApp);
 
 async function emptyArrayCreate(commentDoc) {
   await setDoc(commentDoc, {comments: []});
