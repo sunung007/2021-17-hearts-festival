@@ -123,9 +123,9 @@ export default function GuestComment({cid}) {
 
           <button className={"guest-comment-enroll-btn"}>방명록 쓰기</button>
 
-          <div className={"font-light"}>
+          <h5 className={"font-ultra-light"}>
             * 이메일은 이벤트 시 연락을 위해 받고 있습니다.
-          </div>
+          </h5>
         </form>
         <br />
 

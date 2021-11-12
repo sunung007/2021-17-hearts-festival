@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import {initializeApp} from "firebase/app";
 import {getFirestore, getDoc, setDoc, Timestamp, doc} from "firebase/firestore";
+import {collection} from "firebase/firestore";
+import {getDocs} from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -19,7 +21,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const fbApp = initializeApp(firebaseConfig);
-const fdDB = getFirestore(fbApp);
+const fbDB = getFirestore(fbApp);
 
 async function emptyArrayCreate(commentDoc) {
   await setDoc(commentDoc, {comments: []});
@@ -27,7 +29,7 @@ async function emptyArrayCreate(commentDoc) {
 }
 
 export async function getComments(companyId) {
-  const commentDoc = doc(fdDB, "comments", `${companyId}`);
+  const commentDoc = doc(fbDB, "comments", `${companyId}`);
   const docSnap = await getDoc(commentDoc);
 
   if (docSnap.exists()) {
@@ -48,7 +50,7 @@ export async function getComments(companyId) {
 }
 
 export async function enrollComments(companyId, newComment) {
-  const commentDoc = doc(fdDB, "comments", `${companyId}`);
+  const commentDoc = doc(fbDB, "comments", `${companyId}`);
   const docSnap = await getDoc(commentDoc);
   const datas = docSnap.data();
   const writeDatas = [
@@ -60,4 +62,14 @@ export async function enrollComments(companyId, newComment) {
   ];
 
   await setDoc(commentDoc, {comments: writeDatas}, {merge: true});
+}
+
+export async function getParticipants() {
+  const partCol = collection(fbDB, "participants");
+  // const partDoc = doc(fbDB, "participants", `${pid}`);
+  const docSnap = await getDocs(partCol);
+
+  let datas = [];
+  docSnap.forEach((doc) => datas.push(doc.data()));
+  return datas || [];
 }

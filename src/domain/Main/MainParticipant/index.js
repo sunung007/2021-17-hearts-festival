@@ -2,14 +2,14 @@ import "./style.css";
 
 import Page from "../../../components/Page";
 
-import {participants} from "../../../data/participants";
 import {BACKGROUND_COLOR_GRAY} from "../../../hooks/common";
 
 import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useState} from "react";
+import {getParticipants} from "../../../hooks/firebase";
 
-function MainParticipantDetail({curParticipant}) {
+function MainParticipantDetail({curParticipant, participant}) {
   const [animation, setAnimation] = useState(false);
   const onAnimationEnd = () => setAnimation(false);
 
@@ -25,8 +25,8 @@ function MainParticipantDetail({curParticipant}) {
         shadow={false}
       >
         <div className={"home-with-people-detail-img"}>
-          {participants[curParticipant].img ? (
-            <img src={participants[curParticipant].img} alt={""} />
+          {participant.img ? (
+            <img src={participant.img} alt={""} />
           ) : (
             <FontAwesomeIcon icon={faUserCircle} />
           )}
@@ -34,24 +34,27 @@ function MainParticipantDetail({curParticipant}) {
 
         <div className={"home-with-people-detail-content"}>
           <div className={"home-with-people-detail-info"}>
-            <span>{participants[curParticipant].name} </span>
-            <span className={"font-light"}>
-              {participants[curParticipant].dept.join(" ")}
-            </span>
+            <span>{participant.name} </span>
+            <span className={"font-light"}>{participant.dept.join(" ")}</span>
           </div>
 
-          <div className={"font-light"}>
-            {participants[curParticipant]?.feel}
-          </div>
+          <div className={"font-light"}>{participant?.feel}</div>
         </div>
       </Page>
     );
 }
 
 export default function MainParticipant() {
+  const [participants, setParticipants] = useState([]);
   const [curParticipant, setCurParticipant] = useState(-1);
   const changePeople = (index) =>
     setCurParticipant(index === curParticipant ? -1 : index);
+
+  useEffect(() => {
+    getParticipants().then((r) => {
+      setParticipants(r);
+    });
+  }, []);
 
   return (
     <>
@@ -67,7 +70,10 @@ export default function MainParticipant() {
       </Page>
 
       {/* 참여자 상세보기 */}
-      <MainParticipantDetail curParticipant={curParticipant} />
+      <MainParticipantDetail
+        curParticipant={curParticipant}
+        participant={participants[curParticipant]}
+      />
 
       {/* 참여자 목록 */}
       <Page
@@ -75,34 +81,35 @@ export default function MainParticipant() {
         className={"home-with-people-page"}
       >
         <ul className={"home-with-people-wrapper"}>
-          {participants.map((participant, index) => (
-            <li
-              className={`home-with-people ${
-                curParticipant === index ? "cur-people" : undefined
-              }`}
-              key={index}
-              onClick={() => changePeople(index)}
-            >
-              {/* 사람 사진 */}
-              <div className={"home-with-people-img"}>
-                {participant.img ? (
-                  <img src={participant.img} alt={""} />
-                ) : (
-                  <FontAwesomeIcon icon={faUserCircle} />
-                )}
-              </div>
-
-              {/* 사람 정보 */}
-              <div className={"home-with-people-info"}>
-                <h2>{participant.name}</h2>
-                <div className={"font-light"}>
-                  {participant.dept.map((dept, index) => (
-                    <p key={index}>{dept}</p>
-                  ))}
+          {participants.length > 0 &&
+            participants?.map((participant, index) => (
+              <li
+                className={`home-with-people ${
+                  curParticipant === index ? "cur-people" : undefined
+                }`}
+                key={index}
+                onClick={() => changePeople(index)}
+              >
+                {/* 사람 사진 */}
+                <div className={"home-with-people-img"}>
+                  {participant?.img ? (
+                    <img src={participant?.img} alt={""} />
+                  ) : (
+                    <FontAwesomeIcon icon={faUserCircle} />
+                  )}
                 </div>
-              </div>
-            </li>
-          ))}
+
+                {/* 사람 정보 */}
+                <div className={"home-with-people-info"}>
+                  <h2>{participant?.name}</h2>
+                  <div className={"font-light"}>
+                    {participant?.dept.map((dept, index) => (
+                      <p key={index}>{dept}</p>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            ))}
         </ul>
       </Page>
     </>
