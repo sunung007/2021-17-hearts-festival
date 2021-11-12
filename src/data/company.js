@@ -161,36 +161,6 @@ export const companyList = [
   },
   {
     id: 8,
-    name: "루트임팩트",
-    logo: require("../assets/logos/root-impact.png").default,
-
-    isReady: false,
-    date: "",
-
-    tags: [],
-    oneline: "",
-    intro: <></>,
-
-    qna: [["", ""]],
-    movie: "", // 링크
-  },
-  {
-    id: 9,
-    name: "상상우리",
-    logo: require("../assets/logos/sangsang-woori.png").default,
-
-    isReady: false,
-    date: "",
-
-    tags: [],
-    oneline: "",
-    intro: <></>,
-
-    qna: [["", ""]],
-    movie: "", // 링크
-  },
-  {
-    id: 10,
     name: "파타고니아 코리아",
     logo: require("../assets/logos/patagonia.png").default,
 
@@ -205,7 +175,7 @@ export const companyList = [
     movie: "", // 링크
   },
   {
-    id: 11,
+    id: 9,
     name: "LG전자",
     logo: require("../assets/logos/lg.png").default,
 

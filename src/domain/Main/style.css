@@ -28,7 +28,7 @@
 }
 .home-company-item {
   position: relative;
-  min-height: 200px;
+  height: 200px;
 }
 
 /* 기업 네모 상자 */
@@ -130,12 +130,9 @@
 }
 
 @media screen and (max-width: 700px) {
-  .home-company-list {
-    grid-template-columns: 1fr;
-  }
-
   .home-company-item {
     width: 100%;
+    height: 100px;
   }
   .home-company-cname {
     font-size: 2em;
@@ -168,5 +165,9 @@
   }
   .home-company-item:nth-child(even) .home-company-info {
     left: 0;
+  }
+
+  .home-company-box-front img {
+    max-width: 85%;
   }
 }
