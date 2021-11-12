@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import {initializeApp} from "firebase/app";
 import {getAnalytics} from "firebase/analytics";
+import {getFirestore, getDoc, setDoc, Timestamp, doc} from "firebase/firestore";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,6 +20,46 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const fbApp = initializeApp(firebaseConfig);
+const fdDB = getFirestore(fbApp);
 const analytics = getAnalytics(fbApp);
 
-export {fbApp, analytics};
+async function emptyArrayCreate(commentDoc) {
+  await setDoc(commentDoc, {comments: []});
+  return [];
+}
+
+export async function getComments(companyId) {
+  const commentDoc = doc(fdDB, "comments", `${companyId}`);
+  const docSnap = await getDoc(commentDoc);
+
+  if (docSnap.exists()) {
+    const datas = docSnap.data();
+    if (datas.hasOwnProperty("comments")) {
+      console.log("댓글을 성공적으로 읽어왔습니다.");
+      return datas.comments;
+    } else {
+      // comment array create
+      console.log(`Comment array 생성 : 문서 id ${companyId}`);
+      return emptyArrayCreate(commentDoc);
+    }
+  } else {
+    // documment and array create
+    console.log(`Documment and array 생성 : 문서 id ${companyId}`);
+    return emptyArrayCreate(commentDoc);
+  }
+}
+
+export async function enrollComments(companyId, newComment) {
+  const commentDoc = doc(fdDB, "comments", `${companyId}`);
+  const docSnap = await getDoc(commentDoc);
+  const datas = docSnap.data();
+  const writeDatas = [
+    ...datas?.comments,
+    {
+      ...newComment,
+      time: Timestamp.fromDate(new Date()),
+    },
+  ];
+
+  await setDoc(commentDoc, {comments: writeDatas}, {merge: true});
+}

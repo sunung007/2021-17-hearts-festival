@@ -16,7 +16,7 @@
   background: url("../../assets/backgrounds/circle-scatter-lightblue.svg")
     center center no-repeat;
   background-size: 100% auto;
-  filter: opacity(0.1);
+  filter: opacity(0.35);
 }
 
 .home-company-list {

@@ -12,7 +12,13 @@ export default function Page({
 }) {
   return (
     <div
-      className={`${parentClassName} ${shadow ? "" : "no-shadow"} page`}
+      className={`${parentClassName} ${
+        shadow
+          ? className === "page-header"
+            ? "shadow"
+            : undefined
+          : "no-shadow"
+      } page`}
       onAnimationEnd={parentOnAnimationEnd}
       style={style}
       {...props}

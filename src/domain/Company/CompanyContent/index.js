@@ -33,7 +33,7 @@ function CompanyPictures({movie, imgs}) {
     <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}}>
       <h1 className={"section-title"}>
         <div>인터뷰</div>
-        <div className={"subtitle font-light"}>Interview</div>
+        <div className={"subtitle"}>Interview</div>
       </h1>
       <br />
 
@@ -110,7 +110,9 @@ export default function CompanyContent({
         <div className={"company-intro-left"}>
           {/* 기업명 */}
           <h1 className={"section-title"}>
-            <div className={"subtitle font-light"}>{company?.oneline}</div>
+            <div className={"subtitle font-ultra-light"}>
+              {company?.oneline}
+            </div>
             <div>{company?.name}</div>
           </h1>
           <br />
@@ -125,7 +127,7 @@ export default function CompanyContent({
           <div className={"company-tag"}>
             {company?.tags.map((tag, index) => (
               <div key={index}>
-                <span className={"font-light"}>#SDGs{tag}_</span>
+                <span className={"font-ultra-light"}>#SDGs{tag}_</span>
                 {SDGS[tag]}
               </div>
             ))}
@@ -138,10 +140,11 @@ export default function CompanyContent({
       </Page>
 
       {/* 인터뷰 요약 */}
+      <div style={{height: 0, padding: 0}} ref={interviewSection} />
       <Page parentClassName={"company-interview-page"}>
-        <h1 className={"section-title"} ref={interviewSection}>
+        <h1 className={"section-title"}>
           <div>미리보기</div>
-          <div className={"subtitle font-light"}>Preview</div>
+          <div className={"subtitle"}>Preview</div>
         </h1>
         <br />
 

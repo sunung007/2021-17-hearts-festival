@@ -74,7 +74,7 @@ export default function Main() {
         <Page parentClassName={"home-company-list-page"}>
           <h1 className={"section-title"}>
             <div>참여 기업</div>
-            <div className={"subtitle font-light"}>Companies</div>
+            <div className={"subtitle"}>Companies</div>
           </h1>
           <br />
 

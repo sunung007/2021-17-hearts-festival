@@ -27,12 +27,13 @@ export default function Header({
         <div>
           <Link to={"/"}>
             <h2 className={"header-title"}>
-              <FontAwesomeIcon icon={faArrowLeft} /> Seventeen Hearts Festival
+              <FontAwesomeIcon icon={faArrowLeft} />
+              <span className={"only-browser"}> Seventeen Hearts Festival</span>
             </h2>
           </Link>
         </div>
 
-        <ul className={"header-menus font-light only-browser"}>
+        <ul className={"header-menus font-light"}>
           <li onClick={scrollToIntro}>기업 소개</li>
           <li onClick={scrollToInterview}>미리보기</li>
           <li onClick={scrollToPictures}>인터뷰/사진</li>

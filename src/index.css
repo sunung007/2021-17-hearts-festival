@@ -47,11 +47,9 @@ a {
 /* 스크롤바 */
 ::selection {
   background-color: var(--color-dark-blue);
-  color: white;
 }
 ::-moz-selection {
   background-color: var(--color-dark-blue);
-  color: white;
 }
 
 /* 얇은 폰트 */
@@ -69,10 +67,10 @@ a {
   font-family: "noto-sans-regular";
   src: url("./fonts/NotoSansKR-Regular.otf");
 }
-@font-face {
+/* @font-face {
   font-family: "noto-sans-regular-bold";
   src: url("./fonts/NotoSansKR-Medium.otf");
-}
+} */
 
 /* 굵은 폰트 */
 @font-face {

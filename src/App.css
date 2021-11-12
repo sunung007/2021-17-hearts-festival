@@ -10,10 +10,12 @@
 .subtitle {
   font-size: 0.7em;
 }
-
 .section-title {
   text-align: center;
   font-size: 2em;
+}
+.section-title .subtitle {
+  font-family: noto-sans-ultra-light;
 }
 
 .inner-padding .page-inner,
@@ -26,6 +28,9 @@
 
 .font-light {
   font-family: noto-sans-light;
+}
+.font-ultra-light {
+  font-family: noto-sans-ultra-light;
 }
 
 .no-display {

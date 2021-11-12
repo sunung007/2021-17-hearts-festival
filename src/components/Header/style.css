@@ -79,3 +79,15 @@ header {
   border-radius: 10em;
   background-color: var(--color-dark-blue);
 }
+
+@media screen and (max-width: 700px) {
+  .header-container {
+    justify-content: flex-start;
+  }
+  .header-menus {
+    flex-wrap: wrap;
+  }
+  .header-menus > li {
+    margin-left: 0.7em;
+  }
+}

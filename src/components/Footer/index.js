@@ -8,7 +8,7 @@ export default function Footer() {
           <div className={"footer-logos-label"}>주최</div>
           <div className={"footer-logos-items"}>
             <a
-              href={"https://hanyang.ac.kr"}
+              href={"https://www.hanyang.ac.kr/"}
               target={"_blank"}
               rel={"noreferrer"}
             >

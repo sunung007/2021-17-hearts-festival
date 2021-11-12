@@ -3,6 +3,8 @@ import "./style.css";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
+import CompanyContent from "./CompanyContent";
+import GuestComment from "./GuestComment";
 import Header from "../../components/Header";
 import Page from "../../components/Page";
 
@@ -18,14 +20,12 @@ import {
   faChevronLeft,
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
-import CompanyContent from "./CompanyContent";
-import GuestComment from "./GuestComment";
 
 export default function Company({history, match}) {
   const [body, scrollToBody] = useScrollToBody();
-  const [intro, scrollToIntro] = useScrollToBody();
-  const [interview, scrollToInterview] = useScrollToBody();
-  const [pictures, scrollToPictures] = useScrollToBody();
+  const [intro, scrollToIntro] = useScrollToBody(56);
+  const [interview, scrollToInterview] = useScrollToBody(56);
+  const [pictures, scrollToPictures] = useScrollToBody(56);
 
   const [companyData, setCompanyData] = useState({});
 
@@ -98,14 +98,13 @@ export default function Company({history, match}) {
             <Page
               className={"company-not-ready font-light"}
               style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
-              shadow={false}
             >
               해당 기업은 인터뷰 준비 중입니다.
             </Page>
           )}
 
           {/* 방명록 */}
-          <GuestComment />
+          <GuestComment cid={companyData.id} />
         </div>
       </div>
     </>
