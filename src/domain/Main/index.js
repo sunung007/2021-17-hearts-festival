@@ -10,9 +10,11 @@ import {useScrollToBody} from "../../hooks/useScrollToBody";
 import {companyList} from "../../data/company";
 import MainBanner from "./MainBanner";
 import MainParticipant from "./MainParticipant";
+import {clubs} from "../../data/clubs";
 
 function CompanyList({company, index}) {
-  const fadeAnimation = useScrollFadeIn("right", 0.9, index / 9);
+  const fadeAnimation = useScrollFadeIn("right", 0.9, (index % 3) / 6);
+  // const fadeAnimation = useScrollFadeIn("right", 1, 0);
 
   return (
     <li className={"home-company-item"} {...fadeAnimation}>
@@ -81,6 +83,21 @@ export default function Main() {
           <ul className={"home-company-list"}>
             {companyList.map((company, index) => (
               <CompanyList company={company} key={index} index={index} />
+            ))}
+          </ul>
+        </Page>
+
+        {/* 기업 리스트 */}
+        <Page parentClassName={"home-club-list-page"}>
+          <h1 className={"section-title"}>
+            <div>참여 동아리</div>
+            <div className={"subtitle"}>Clubs</div>
+          </h1>
+          <br />
+
+          <ul className={"home-company-list"}>
+            {clubs.map((club, index) => (
+              <CompanyList company={club} key={index} index={index} />
             ))}
           </ul>
         </Page>

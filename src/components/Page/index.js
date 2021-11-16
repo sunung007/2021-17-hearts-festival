@@ -1,6 +1,7 @@
 import "./style.css";
 
 export default function Page({
+  parentId,
   parentClassName,
   className,
   style,
@@ -12,6 +13,7 @@ export default function Page({
 }) {
   return (
     <div
+      id={parentId}
       className={`${parentClassName} ${
         shadow
           ? className === "page-header"

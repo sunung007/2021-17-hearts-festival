@@ -4,45 +4,22 @@
 }
 
 /* 상세보기 */
+.home-with-people-detail-page {
+  height: 100%;
+  max-height: 0;
+
+  overflow: hidden;
+
+  transition: all 2s ease-out;
+}
+.open-height {
+  max-height: 1000px;
+}
+
 .home-with-people-detail {
   display: flex;
   flex-direction: row;
-
-  overflow: hidden;
   font-size: 1.2em;
-
-  --animation-duration: 500ms;
-  transition: all var(--animation-duration);
-  -webkit-transition: all var(--animation-duration);
-  -moz-transition: all var(--animation-duration);
-  -ms-transition: all var(--animation-duration);
-  -o-transition: all var(--animation-duration);
-}
-
-.open-height {
-  --animation-duration: 800ms;
-  animation: openHeight var(--animation-duration) ease-in backwards;
-  -webkit-animation: openHeight var(--animation-duration) ease-in backwards;
-  -moz-animation: openHeight var(--animation-duration) ease-in backwards;
-  -ms-animation: openHeight var(--animation-duration) ease-in backwards;
-  -o-animation: openHeight var(--animation-duration) ease-in backwards;
-}
-
-@keyframes openHeight {
-  0% {
-    opacity: 0;
-    background-color: rgb(225, 234, 247);
-    max-height: 0 !important;
-    padding-bottom: -100% !important;
-  }
-
-  50% {
-  }
-
-  100% {
-    opacity: 1;
-    /* max-height: 300px !important; */
-  }
 }
 
 /* 사진 */

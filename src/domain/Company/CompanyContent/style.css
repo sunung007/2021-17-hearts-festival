@@ -148,6 +148,10 @@
   /* object-fit: cover; */
 
   animation: fadeIn 500ms ease-in-out;
+  -webkit-animation: fadeIn 500ms ease-in-out;
+  -moz-animation: fadeIn 500ms ease-in-out;
+  -ms-animation: fadeIn 500ms ease-in-out;
+  -o-animation: fadeIn 500ms ease-in-out;
 }
 @keyframes fadeIn {
   0% {

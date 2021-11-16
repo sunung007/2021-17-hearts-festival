@@ -11,16 +11,28 @@
 }
 
 .company .page-header .page-title {
+  position: relative;
   color: white;
   text-align: center;
   text-shadow: 1px 1px 6px black;
 
-  animation: company-title-move-up 1s ease-in-out 300ms;
-  -webkit-animation: company-title-move-up 1s ease-in-out 300ms;
-  -moz-animation: company-title-move-up 1s ease-in-out 300ms;
-  -ms-animation: company-title-move-up 1s ease-in-out 300ms;
-  -o-animation: company-title-move-up 1s ease-in-out 300ms;
+  animation: company-title-move-up 1s ease-out;
+  -webkit-animation: company-title-move-up 1s ease-out;
+  -moz-animation: company-title-move-up 1s ease-out;
+  -ms-animation: company-title-move-up 1s ease-out;
+  -o-animation: company-title-move-up 1s ease-out;
 }
+@keyframes company-title-move-up {
+  0% {
+    padding-top: 3em;
+    opacity: 0;
+  }
+  100% {
+    padding-top: 0;
+    opacity: 1;
+  }
+}
+
 .company .page-header .page-title .subtitle {
   position: relative;
   width: fit-content;
@@ -53,7 +65,6 @@
 }
 .company .page-header .page-title .subtitle:hover::after {
   content: "";
-
   width: 100%;
 }
 /* 소제목 hover 시 화살표 */
@@ -78,18 +89,6 @@
   font-size: 1em;
   opacity: 1;
   visibility: visible;
-}
-@keyframes company-title-move-up {
-  0% {
-    overflow: hidden;
-    padding-top: 50%;
-    opacity: 0;
-  }
-  100% {
-    overflow: hidden;
-    padding-top: initial;
-    opacity: 1;
-  }
 }
 
 /* 배너 배경 */

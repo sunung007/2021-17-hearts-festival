@@ -15,7 +15,6 @@
 body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
 
   font-family: noto-sans-regular, noto-sans-regualr-bold, -apple-system,
     BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
@@ -44,12 +43,29 @@ a {
   text-decoration: none;
 }
 
-/* 스크롤바 */
+/* 블락 효과 */
 ::selection {
+  color: white;
   background-color: var(--color-dark-blue);
 }
 ::-moz-selection {
+  color: white;
   background-color: var(--color-dark-blue);
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar {
+  width: 8px;
+  opacity: 0.8;
+}
+/* 스크롤바 막대 */
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-dark-blue);
+  border-radius: 10rem;
+}
+/* 스크롤바 여백 */
+::-webkit-scrollbar-track {
+  background-color: var(--color-gray);
 }
 
 /* 얇은 폰트 */

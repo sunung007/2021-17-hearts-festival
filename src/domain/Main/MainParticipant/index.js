@@ -8,52 +8,25 @@ import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useState} from "react";
 import {getParticipants} from "../../../hooks/firebase";
-
-function MainParticipantDetail({curParticipant, participant}) {
-  const [animation, setAnimation] = useState(false);
-  const onAnimationEnd = () => setAnimation(false);
-
-  useEffect(() => setAnimation(curParticipant >= 0), [curParticipant]);
-
-  if (curParticipant < 0) return <></>;
-  else
-    return (
-      <Page
-        parentClassName={`${animation ? "open-height" : undefined}`}
-        className={"home-with-people-detail"}
-        parentOnAnimationEnd={onAnimationEnd}
-        shadow={false}
-      >
-        <div className={"home-with-people-detail-img"}>
-          {participant.img ? (
-            <img src={participant.img} alt={""} />
-          ) : (
-            <FontAwesomeIcon icon={faUserCircle} />
-          )}
-        </div>
-
-        <div className={"home-with-people-detail-content"}>
-          <div className={"home-with-people-detail-info"}>
-            <span>{participant.name} </span>
-            <span className={"font-light"}>{participant.dept.join(" ")}</span>
-          </div>
-
-          <div className={"font-light"}>{participant?.feel}</div>
-        </div>
-      </Page>
-    );
-}
+import {participants as dbParticipants} from "../../../data/not_used/participants";
 
 export default function MainParticipant() {
   const [participants, setParticipants] = useState([]);
-  const [curParticipant, setCurParticipant] = useState(-1);
-  const changePeople = (index) =>
-    setCurParticipant(index === curParticipant ? -1 : index);
+  const [curParticipant, setCurParticipant] = useState(0);
+  const [showDetail, setShowDetail] = useState(false);
+  const changePeople = (index) => {
+    if (index === curParticipant && showDetail) setShowDetail(false);
+    else {
+      setShowDetail(true);
+      setCurParticipant(index);
+    }
+  };
 
   useEffect(() => {
     getParticipants().then((r) => {
       setParticipants(r);
     });
+    // setParticipants(dbParticipants);
   }, []);
 
   return (
@@ -70,10 +43,34 @@ export default function MainParticipant() {
       </Page>
 
       {/* 참여자 상세보기 */}
-      <MainParticipantDetail
-        curParticipant={curParticipant}
-        participant={participants[curParticipant]}
-      />
+      <Page
+        parentClassName={`home-with-people-detail-page ${
+          showDetail ? "open-height" : undefined
+        }`}
+        className={"home-with-people-detail"}
+        shadow={false}
+      >
+        <div className={"home-with-people-detail-img"}>
+          {participants[curParticipant]?.img ? (
+            <img src={participants[curParticipant].img} alt={""} />
+          ) : (
+            <FontAwesomeIcon icon={faUserCircle} />
+          )}
+        </div>
+
+        <div className={"home-with-people-detail-content"}>
+          <div className={"home-with-people-detail-info"}>
+            <span>{participants[curParticipant]?.name} </span>
+            <span className={"font-light"}>
+              {participants[curParticipant]?.dept.join(" ")}
+            </span>
+          </div>
+
+          <div className={"font-light"}>
+            {participants[curParticipant]?.feel}
+          </div>
+        </div>
+      </Page>
 
       {/* 참여자 목록 */}
       <Page
@@ -85,7 +82,9 @@ export default function MainParticipant() {
             participants?.map((participant, index) => (
               <li
                 className={`home-with-people ${
-                  curParticipant === index ? "cur-people" : undefined
+                  showDetail && curParticipant === index
+                    ? "cur-people"
+                    : undefined
                 }`}
                 key={index}
                 onClick={() => changePeople(index)}
