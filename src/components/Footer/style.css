@@ -1,7 +1,12 @@
 footer {
   padding: 2rem;
+
+  color: white;
   font-size: 0.8em;
   font-family: noto-sans-light;
+
+  border-top: 1px solid var(--color-gray);
+  background-color: var(--color-blue);
 }
 
 .footer-logos {

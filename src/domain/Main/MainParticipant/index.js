@@ -2,13 +2,13 @@ import "./style.css";
 
 import Page from "../../../components/Page";
 
-import {BACKGROUND_COLOR_GRAY} from "../../../hooks/common";
+import {BACKGROUND_COLOR_GRAY} from "../../../data/common";
 
 import {faTimesCircle, faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useState} from "react";
 import {getParticipants} from "../../../hooks/firebase";
-import {participants as dbParticipants} from "../../../data/not_used/participants";
+// import {participants as dbParticipants} from "../../../data/not_used/participants";
 
 export default function MainParticipant() {
   const [participants, setParticipants] = useState([]);
@@ -23,10 +23,10 @@ export default function MainParticipant() {
   };
 
   useEffect(() => {
-    // getParticipants().then((r) => {
-    //   setParticipants(r);
-    // });
-    setParticipants(dbParticipants);
+    getParticipants().then((r) => {
+      setParticipants(r);
+    });
+    // setParticipants(dbParticipants);
   }, []);
 
   return (
@@ -34,11 +34,10 @@ export default function MainParticipant() {
       <Page
         className={"home-with-people-title-page"}
         style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
-        shadow={false}
       >
         <h1 className={"section-title"}>
           <div>함께한 사람들</div>
-          <div className={"subtitle font-light"}>Epilogue</div>
+          <div className={"subtitle font-light"}>Makers</div>
         </h1>
       </Page>
 
@@ -48,7 +47,6 @@ export default function MainParticipant() {
           showDetail ? "open-height" : undefined
         }`}
         className={"home-with-people-detail"}
-        shadow={false}
       >
         <div
           className={"home-with-people-detail-close-btn"}

@@ -9,18 +9,11 @@ export default function Page({
   props,
   onAnimationEnd,
   parentOnAnimationEnd,
-  shadow = true,
 }) {
   return (
     <div
       id={parentId}
-      className={`${parentClassName} ${
-        shadow
-          ? className === "page-header"
-            ? "shadow"
-            : undefined
-          : "no-shadow"
-      } page`}
+      className={`${parentClassName} page`}
       onAnimationEnd={parentOnAnimationEnd}
       style={style}
       {...props}

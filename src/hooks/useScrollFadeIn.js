@@ -1,5 +1,6 @@
 import {useRef, useEffect, useCallback} from "react";
-import {ANIMATION_DELAY_VALUE} from "./common";
+
+const ANIMATION_DELAY_VALUE = 0.1;
 
 export const useScrollFadeIn = (direction = "up", duration = 1, delay = 0) => {
   const dom = useRef();

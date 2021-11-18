@@ -1,9 +1,13 @@
 :root {
   --color-dark-blue: #02558a;
+  --color-blue: #5b96cd;
   --color-light-blue: #7eceff;
+
   --color-red: rgb(245, 65, 89);
   --color-gray: #ccc;
   --color-light-gray: rgb(223, 223, 223);
+
+  --color-main-banner: #5b96cdb6;
 }
 
 * {
@@ -28,7 +32,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: gong-gothic;
+  font-family: nixgon-bold;
   font-weight: normal;
 }
 
@@ -83,10 +87,6 @@ a {
   font-family: "noto-sans-regular";
   src: url("./fonts/NotoSansKR-Regular.otf");
 }
-/* @font-face {
-  font-family: "noto-sans-regular-bold";
-  src: url("./fonts/NotoSansKR-Medium.otf");
-} */
 
 /* 굵은 폰트 */
 @font-face {
@@ -98,18 +98,23 @@ a {
   src: url("./fonts/NotoSansKR-Black.otf");
 }
 
-/* 아시마루 */
+/* 타이틀 폰트 */
 @font-face {
-  font-family: "gong-gothic";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
+  font-family: "nixgon-light";
+  src: url("./fonts/nixgonfonts-light.ttf");
 }
 @font-face {
-  font-family: "gong-gothic-bold";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicBold.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
+  font-family: "nixgon";
+  src: url("./fonts/nixgonfonts-medium.ttf");
+}
+@font-face {
+  /* font-family: "gong-gothic-bold"; */
+  font-family: "nixgon-bold";
+  src: url("./fonts/nixgonfonts-bold.ttf");
+}
+
+/* 로고 폰트 */
+@font-face {
+  font-family: "logo";
+  src: url("./fonts/utoimage.ttf");
 }

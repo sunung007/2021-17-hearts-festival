@@ -18,5 +18,5 @@ export const SDGS = [
   "평화롭고 정의로운 사회 증진과 제도 구축",
   "이행수단과 글로벌 파트너십 강화",
 ];
-export const BACKGROUND_COLOR_GRAY = "#e1eaf7";
-export const ANIMATION_DELAY_VALUE = 0.1;
+// export const BACKGROUND_COLOR_GRAY = "#e1eaf7";
+export const BACKGROUND_COLOR_GRAY = "#C5E5FF";

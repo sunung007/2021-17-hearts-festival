@@ -3,7 +3,7 @@ import "./style.css";
 import {useCallback, useEffect, useState} from "react";
 
 import Page from "../../../components/Page";
-// import titleBackground from "../../../assets/title-background.svg";
+import mainTitle from "../../../assets/backgrounds/main-banner-logo.svg";
 
 import {banners} from "../../../data/banner";
 import {companyList} from "../../../data/company";
@@ -14,6 +14,7 @@ import {
   faChevronRight,
   faCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import {faPauseCircle} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Link} from "react-router-dom";
 
@@ -45,31 +46,7 @@ export default function MainBanner({scrollToBody}) {
       >
         <li className={"main-banner-item-poster"}>
           <Page className={"page-header"}>
-            <div className={"page-title"}>
-              <div className={"title"}>
-                <h4 className={"subtitle"}>6th</h4>
-                <div>
-                  Seventeen
-                  <br />
-                  Hearts
-                  <br />
-                  Festival
-                </div>
-                <br />
-                <div className={"subtitle"}>2021.9.25~28</div>
-                {/* <img
-                  className={"main-header-title-background"}
-                  src={titleBackground}
-                  alt={""}
-                /> */}
-              </div>
-
-              {/* <br /> */}
-              {/* <h4 className={"subtitle"}>
-                사랑의 실천으로 세상과 사람을 바꾸는 한양의 사회혁신축제에
-                여러분을 초대합니다.
-              </h4> */}
-            </div>
+            <img className={"main-header-logo"} src={mainTitle} alt={""} />
           </Page>
         </li>
 
@@ -118,8 +95,20 @@ export default function MainBanner({scrollToBody}) {
       </div>
 
       <div className={"page-header-down-float"}>
+        {/* 배너 전환 일시정지 */}
+        <div
+          className={"pause-alert"}
+          style={isStop ? {opacity: "1"} : {opacity: "0"}}
+        >
+          <FontAwesomeIcon icon={faPauseCircle} />
+        </div>
+
         {/* 배너 전환 점 */}
-        <ul className={"banner-list-circle"}>
+        <ul
+          className={"banner-list-circle"}
+          onMouseOver={() => setIsStop(true)}
+          onMouseLeave={() => setIsStop(false)}
+        >
           {Array.from({length: totalBanner}, (v, i) => i).map((a, index) => (
             <li
               key={index}

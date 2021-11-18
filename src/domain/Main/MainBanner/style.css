@@ -72,6 +72,15 @@
   color: white;
 }
 
+/* 배너 일시정지 표시 */
+.main-banner .page-header-down-float .pause-alert {
+  transition: all 500ms ease-in-out;
+  -webkit-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  -ms-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+}
+
 /* 배너 전환 점 */
 .main-banner .page-header-down-float {
   flex-direction: column;
@@ -93,7 +102,6 @@
   color: var(--color-gray);
   cursor: pointer;
 }
-
 .banner-list-circle > li:hover {
   color: gray;
 }
@@ -101,55 +109,40 @@
 /* 포스터 배너 */
 .main-banner-item-poster .page-header {
   position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 2rem;
   width: 100vw;
 
-  /* background: url("../../../assets/main-background.svg") center center no-repeat; */
-  background-size: cover;
-  border: 3em solid var(--color-dark-blue);
+  background: url("../../../assets/backgrounds/main-banner-background.svg")
+    center center;
+  background-color: var(--color-main-banner);
+  background-size: contain;
+  background-repeat: space;
 }
+.main-banner-item-poster .page-header::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  max-width: 950px;
+  max-height: 500px;
 
-.main-banner-item-poster .page-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-.main-banner-item-poster .page-header .page-title {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-
-  width: 80%;
-
-  color: white;
-  text-align: right;
-  text-shadow: 1px 1px 2px black;
-}
-.main-banner-item-poster .page-header .page-title .title {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-
-  position: relative;
-}
-.main-banner-item-poster .page-header .page-title .subtitle {
-  font-size: 0.6em;
-}
-.main-banner-item-poster
-  .page-header
-  .page-title
-  .main-header-title-background {
   position: absolute;
-  top: -80px;
-  right: -150px;
+  left: 50%;
+  top: 50%;
   z-index: -1;
+  transform: translate(-50%, -50%);
 
-  transform: rotate(5deg);
-  -webkit-transform: rotate(5deg);
-  -moz-transform: rotate(5deg);
-  -ms-transform: rotate(5deg);
-  -o-transform: rotate(5deg);
+  background-color: var(--color-main-banner);
+}
+.main-banner-item-poster .main-header-logo {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(100%, 400px);
 }
 
 /* 일반 배너 */
@@ -203,12 +196,12 @@
   font-size: 2em;
 }
 .main-banner-item .page-title .subtitle {
-  font-family: noto-sans-light;
+  font-family: nixgon-light;
+  margin-bottom: 0.5em;
   font-size: 1em;
 }
 .main-banner-item .page-title .title {
-  font-family: noto-sans-bold;
-  /* font-family: gong-gothic; */
+  font-family: nixgon-bold;
 }
 
 /* 배너 사진 */
@@ -262,10 +255,12 @@
   background-color: var(--color-dark-blue);
 
   cursor: pointer;
-  box-shadow: 0 5px 7px 2px rgb(0 0 0 / 16%);
 
-  --animation-duration: 500ms;
-  transition: all var(--animation-duration);
+  transition: all 500ms;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -ms-transition: all 500ms;
+  -o-transition: all 500ms;
 }
 .main-banner-item .main-banner-btn:hover {
   color: var(--color-dark-blue);
@@ -273,6 +268,9 @@
 }
 
 @media screen and (max-width: 1000px) {
+  .main-banner-item-poster .page-header {
+    background-repeat: repeat;
+  }
   .main-banner-background img {
     max-width: none !important;
     max-height: 100% !important;

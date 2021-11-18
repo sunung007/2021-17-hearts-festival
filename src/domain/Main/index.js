@@ -2,7 +2,7 @@ import "./style.css";
 
 import Page from "../../components/Page";
 
-import {BACKGROUND_COLOR_GRAY} from "../../hooks/common";
+import {BACKGROUND_COLOR_GRAY} from "../../data/common";
 import {useScrollToBody} from "../../hooks/useScrollToBody";
 
 import {companyList} from "../../data/company";
@@ -25,7 +25,16 @@ export default function Main() {
       <div className={"inner-padding"} ref={body}>
         {/* seventeen hearts festival 소개 */}
         <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}}>
-          <h1 className={"section-title"}>Seventeen Hearts Festival</h1>
+          <h1 className={"section-title"}>
+            <img
+              src={
+                require("../../assets/logos/seventeen-hearts-festival-logo-oneline.svg")
+                  .default
+              }
+              alt={"Seventeen Hearts Festival"}
+              style={{height: "100%", width: "auto", maxHeight: "2rem"}}
+            />
+          </h1>
           <br />
 
           <div className={"main-intro-content font-light"}>
@@ -59,6 +68,7 @@ export default function Main() {
             </p>
           </div>
 
+          <br />
           <br />
 
           <ul className={"main-intro-subsection"}>
@@ -101,8 +111,8 @@ export default function Main() {
         <div style={{height: 0, padding: 0}} ref={section1} />
         <Page parentClassName={"home-company-list-page"}>
           <h1 className={"section-title"}>
-            <div>참여 기업</div>
-            <div className={"subtitle"}>Companies</div>
+            <div>기업 인터뷰</div>
+            <div className={"subtitle"}>Interview to Companies</div>
           </h1>
           <br />
 

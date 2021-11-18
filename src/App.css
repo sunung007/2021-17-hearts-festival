@@ -3,7 +3,7 @@
 }
 
 .page-title {
-  font-family: gong-gothic;
+  font-family: nixgon-bold;
   font-size: 2.2em;
 }
 
@@ -14,11 +14,12 @@
   font-size: 0.7em;
 }
 .section-title {
+  font-family: nixgon-bold;
   text-align: center;
   font-size: 2em;
 }
 .section-title .subtitle {
-  font-family: noto-sans-ultra-light;
+  font-family: nixgon-light;
 }
 
 .inner-padding .page-inner,
@@ -26,7 +27,7 @@
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
 }
 
 .font-light {

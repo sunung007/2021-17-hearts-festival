@@ -8,7 +8,7 @@ import Company from "./domain/Company";
 import Club from "./domain/Club";
 import Error from "./domain/Error/index";
 
-export const URLS = ["/", "/error", "/company", "club"];
+export const URLS = ["/", "/error", "/company", "/club"];
 
 function App() {
   return (

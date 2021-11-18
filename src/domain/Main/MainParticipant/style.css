@@ -73,7 +73,10 @@
 }
 .home-with-people-detail-info > span:first-child {
   font-size: 1.6em;
-  font-family: noto-sans-bold;
+  font-family: nixgon-bold;
+}
+.home-with-people-detail-info > span:last-child {
+  font-family: nixgon-light;
 }
 
 /* 전체 리스트 */
@@ -107,7 +110,6 @@
 }
 .home-with-people:hover {
   background: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 2px 4px 2px rgb(0 0 0 / 16%);
 }
 
 /* 현재 선택된 사람 */

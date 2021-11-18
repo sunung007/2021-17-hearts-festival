@@ -1,54 +1,46 @@
 import "./style.css";
-import Page from "../../components/Page/index";
-import {Link} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import {clubs} from "../../data/clubs";
+import {useScrollToBody} from "../../hooks/useScrollToBody";
+import DetailHeaderPage from "../../components/DetailHeaderPage/index";
 
 export default function Club({history, match}) {
+  const [body, scrollToBody] = useScrollToBody();
+
+  const [clubData, setClubData] = useState({});
+  const [prevNext, setPrevNext] = useState([{}, {}]);
+
   useEffect(() => {
     const cid = parseInt(match.params.cid);
-    // const tmpCompany = companyList.filter((entry) => entry.id === cid);
+    const tmpCompany = clubs.filter((entry) => entry.id === cid);
 
-    // if (tmpCompany.length === 0) history.push("/error");
-    // else {
-    //   const index = companyList.indexOf(tmpCompany[0]);
-    //   setCompanyData(tmpCompany[0]);
-    //   setPrevNext([
-    //     index > 0 ? companyList[index - 1] : {},
-    //     index + 1 < companyList.length ? companyList[index + 1] : {},
-    //   ]);
-    // }
+    if (tmpCompany.length === 0) history.push("/error");
+    else {
+      const index = clubs.indexOf(tmpCompany[0]);
+      setClubData(tmpCompany[0]);
+      setPrevNext([
+        index > 0 ? clubs[index - 1] : {},
+        index + 1 < clubs.length ? clubs[index + 1] : {},
+      ]);
+    }
   }, [history, match.params.cid]);
 
   return (
-    <div>
+    <div className={"club"}>
       {/* 페이지 상단 헤더 */}
-      <Page className={"page-header"}>
-        <div className={"page-title"}>
-          <div className={"subtitle"}>
-            <Link to={"/"}>
-              <span className={"page-title-go-back-home-arrow"}>
-                <FontAwesomeIcon icon={faChevronLeft} />{" "}
-              </span>
-              <span>17 Hearts Festiver</span>
-            </Link>
-          </div>
+      <DetailHeaderPage
+        title={clubData?.name}
+        background={clubData?.banner}
+        prev={prevNext[0]}
+        next={prevNext[1]}
+        scrollToBody={scrollToBody}
+        baseURL={"/club"}
+      />
 
-          {/* <div className={"title"}>{companyData?.name}</div>
-          </div>
-
-          <div className={"company-banner-background"}>
-            <img
-              src={
-                banners.filter((r) => r.id === companyData?.id)[0]
-                  ?.background ||
-                require("../../assets/banners/default.png").default
-              }
-              alt={""}
-            /> */}
-        </div>
-      </Page>
+      {/* 내용 */}
+      <div className={"inner-padding"} ref={body}>
+        {clubData.hasOwnProperty("id") && clubData.isReady && <></>}
+      </div>
     </div>
   );
 }

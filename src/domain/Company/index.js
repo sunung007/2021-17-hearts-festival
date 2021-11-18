@@ -1,26 +1,20 @@
 import "./style.css";
 
 import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
 
 import CompanyContent from "./CompanyContent";
 import GuestComment from "./GuestComment";
+
 import Header from "../../components/Header";
 import Page from "../../components/Page";
+import DetailHeaderPage from "../../components/DetailHeaderPage";
 
-import {BACKGROUND_COLOR_GRAY} from "../../hooks/common";
 import {useScrollToBody} from "../../hooks/useScrollToBody";
+import {getCompanyInterview} from "../../hooks/firebase";
 
+import {BACKGROUND_COLOR_GRAY} from "../../data/common";
 import {banners} from "../../data/banner";
 import {companyList} from "../../data/company";
-
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {
-  faArrowDown,
-  faChevronLeft,
-  faHome,
-} from "@fortawesome/free-solid-svg-icons";
-import {getCompanyInterview} from "../../hooks/firebase";
 
 export default function Company({history, match}) {
   const [body, scrollToBody] = useScrollToBody();
@@ -73,68 +67,17 @@ export default function Company({history, match}) {
 
       <div className={"company"}>
         {/* 페이지 상단 헤더 */}
-        <Page className={"page-header"}>
-          <div className={"page-title"}>
-            <div className={"subtitle"}>
-              <Link to={"/"}>
-                <span className={"page-title-go-back-home-arrow"}>
-                  <FontAwesomeIcon icon={faChevronLeft} />{" "}
-                </span>
-                <span>Seventeen Hearts Festiver</span>
-              </Link>
-            </div>
-
-            <div className={"title"}>{companyData?.name}</div>
-          </div>
-
-          <div className={"company-banner-background"}>
-            <img
-              src={
-                companyData?.banner ||
-                banners.filter((r) => r.id === companyData?.id)[0]
-                  ?.background ||
-                require("../../assets/banners/default.png").default
-              }
-              alt={""}
-            />
-          </div>
-
-          <div className={"page-header-down-float"}>
-            <Link
-              to={`/company/${prevNext[0]?.id}`}
-              className={"go-sibling font-light"}
-              style={
-                !prevNext[0].hasOwnProperty("id") ? {visibility: "hidden"} : {}
-              }
-            >
-              {"< " + prevNext[0]?.name}
-            </Link>
-
-            <div>
-              {/* 홈으로 가는 버튼 */}
-              <button>
-                <Link to={"/"}>
-                  <FontAwesomeIcon icon={faHome} />
-                </Link>
-              </button>
-
-              {/* 아래로 내려가는 버튼 */}
-              <button onClick={scrollToBody}>
-                <FontAwesomeIcon icon={faArrowDown} />
-              </button>
-            </div>
-
-            <Link
-              to={`/company/${prevNext[1]?.id}`}
-              className={"go-sibling font-light"}
-              style={
-                !prevNext[1].hasOwnProperty("id") ? {visibility: "hidden"} : {}
-              }
-            >
-              {prevNext[1]?.name + " >"}
-            </Link>
-          </div>
-        </Page>
+        <DetailHeaderPage
+          title={companyData?.name}
+          background={
+            companyData?.banner ||
+            banners.filter((r) => r.id === companyData?.id)[0]?.background
+          }
+          prev={prevNext[0]}
+          next={prevNext[1]}
+          scrollToBody={scrollToBody}
+          baseURL={"/company"}
+        />
 
         {/* 내용 */}
         <div className={"inner-padding"} ref={body}>

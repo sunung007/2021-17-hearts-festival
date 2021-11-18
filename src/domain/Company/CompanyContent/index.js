@@ -1,7 +1,7 @@
 import "./style.css";
 
 import {useScrollFadeIn} from "../../../hooks/useScrollFadeIn";
-import {BACKGROUND_COLOR_GRAY, SDGS} from "../../../hooks/common";
+import {BACKGROUND_COLOR_GRAY, SDGS} from "../../../data/common";
 import Page from "../../../components/Page";
 import {useState} from "react";
 
