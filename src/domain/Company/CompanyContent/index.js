@@ -124,14 +124,14 @@ export default function CompanyContent({
           <br />
 
           {/* 기업과 연관된 SDGs */}
-          <div className={"company-tag"}>
+          <ul className={"company-tag"}>
             {company?.tags.map((tag, index) => (
-              <div key={index}>
-                <span className={"font-ultra-light"}>#SDGs{tag}_</span>
+              <li key={index}>
+                <span className={"font-light"}>#SDGs{tag}_</span>
                 {SDGS[tag]}
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
           <br />
         </div>
 

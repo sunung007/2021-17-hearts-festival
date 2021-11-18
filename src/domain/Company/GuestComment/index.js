@@ -125,8 +125,8 @@ export default function GuestComment({cid}) {
 
           <h5 className={"font-ultra-light"}>
             * 이메일은 경품 추첨 시 연락을 위해 받고 있습니다.
-            <br />* 이메일을 입력하지 않으면 댓글 삭제가 불가능하며, 경품 추첨
-            참여에 제한될 수 있습니다.
+            <br />* 이메일을 입력하지 않으면 경품 추첨 참여에 제한될 수
+            있습니다.
           </h5>
         </form>
         <br />

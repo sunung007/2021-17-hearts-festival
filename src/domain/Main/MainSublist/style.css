@@ -1,0 +1,99 @@
+.home-sublist-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  column-gap: 1em;
+  row-gap: 1em;
+}
+.home-sublist-item {
+  position: relative;
+  height: 200px;
+}
+
+/* 기업 네모 상자 */
+.home-sublist-item .home-sublist-box {
+  --border-radius: 0.5rem;
+
+  width: 100%;
+  height: 100%;
+
+  border: 1px solid var(--color-gray);
+  border-radius: var(--border-radius);
+
+  transition-duration: 1s;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+
+  perspective: 300px;
+}
+.home-sublist-box > .home-sublist-box-front,
+.home-sublist-box > .home-sublist-box-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  background-color: white;
+  border-radius: var(--border-radius);
+
+  text-align: center;
+}
+/* 전면부 */
+.home-sublist-box > .home-sublist-box-front {
+  visibility: visible;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.home-sublist-box-front img {
+  width: auto;
+  height: auto;
+  max-width: 50%;
+  max-height: 50%;
+}
+/* 후면부 */
+.home-sublist-box > .home-sublist-box-hover {
+  visibility: hidden;
+  opacity: 0;
+
+  color: white;
+  font-family: gong-gothic;
+  font-size: 2.5em;
+  text-shadow: 5px 5px 5px rgb(0 0 0 / 16%);
+
+  --animation-scale: 80%;
+  transform: var(--animation-scale);
+  -webkit-transform: var(--animation-scale);
+  -moz-transform: var(--animation-scale);
+  -ms-transform: var(--animation-scale);
+  -o-transform: var(--animation-scale);
+
+  --animation-duration: 700ms;
+  transition-duration: var(--animation-duration);
+  -webkit-transition-duration: var(--animation-duration);
+  -moz-transition-duration: var(--animation-duration);
+  -ms-transition-duration: var(--animation-duration);
+  -o-transition-duration: var(--animation-duration);
+}
+.home-sublist-box:hover > .home-sublist-box-hover {
+  visibility: visible;
+  opacity: 1;
+
+  transform: scale(100%);
+  -webkit-transform: scale(100%);
+  -moz-transform: scale(100%);
+  -ms-transform: scale(100%);
+  -o-transform: scale(100%);
+}

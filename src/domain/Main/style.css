@@ -1,3 +1,54 @@
+/* Seventeen Hearts Festival 소개 */
+.main-intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.main-intro-subsection {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+.main-intro-subsection-item {
+  max-width: 500px;
+  width: 100%;
+  height: 200px;
+  padding: 2em 1.5em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 0.5em;
+
+  text-align: center;
+  background-color: white;
+}
+/* 하위 섹션 이동버튼 (바로가기 버튼) */
+.main-intro-subsection-move-btn {
+  --animation-duration: 300ms;
+
+  width: fit-content;
+  padding: 0.5em 1.5em;
+
+  color: white;
+  text-align: center;
+  background-color: var(--color-dark-blue);
+  border-radius: 10em;
+
+  cursor: pointer;
+  transition: all var(--animation-duration);
+  -webkit-transition: all var(--animation-duration);
+  -moz-transition: all var(--animation-duration);
+  -ms-transition: all var(--animation-duration);
+  -o-transition: all var(--animation-duration);
+}
+.main-intro-subsection-move-btn:hover {
+  background-color: var(--color-light-blue);
+}
+
 /* 기업 리스트 */
 .home-company-list-page {
   position: relative;
@@ -17,17 +68,6 @@
     center center no-repeat;
   background-size: cover;
   filter: opacity(0.35);
-}
-.home-company-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-
-  column-gap: 1em;
-  row-gap: 1em;
-}
-.home-company-item {
-  position: relative;
-  height: 200px;
 }
 
 /* 동아리 리스트 */
@@ -51,99 +91,26 @@
   filter: opacity(0.3);
 }
 
-/* 기업 네모 상자 */
-.home-company-item .home-company-box {
-  --border-radius: 0.5rem;
-
-  width: 100%;
-  height: 100%;
-
-  border: 1px solid var(--color-gray);
-  border-radius: var(--border-radius);
-
-  transition-duration: 1s;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  -o-transform-style: preserve-3d;
-
-  perspective: 300px;
+/* 배리어프리 */
+.home-bf-list-page {
+  position: relative;
 }
-.home-company-box > .home-company-box-front,
-.home-company-box > .home-company-box-hover {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  background-color: white;
-  border-radius: var(--border-radius);
-
-  text-align: center;
+.home-bf-list-page::after {
+  content: "";
+  box-shadow: 0 5px 7px 0px rgb(0 0 0 / 16%);
 }
-/* 전면부 */
-.home-company-box > .home-company-box-front {
-  visibility: visible;
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-.home-company-box-front img {
-  width: auto;
-  height: auto;
-  max-width: 50%;
-  max-height: 50%;
-}
-/* 후면부 */
-.home-company-box > .home-company-box-hover {
-  visibility: hidden;
-  opacity: 0;
-
-  color: white;
-  font-family: gong-gothic;
-  font-size: 2.5em;
-  text-shadow: 5px 5px 5px rgb(0 0 0 / 16%);
-
-  --animation-scale: 80%;
-  transform: var(--animation-scale);
-  -webkit-transform: var(--animation-scale);
-  -moz-transform: var(--animation-scale);
-  -ms-transform: var(--animation-scale);
-  -o-transform: var(--animation-scale);
-
-  --animation-duration: 700ms;
-  transition-duration: var(--animation-duration);
-  -webkit-transition-duration: var(--animation-duration);
-  -moz-transition-duration: var(--animation-duration);
-  -ms-transition-duration: var(--animation-duration);
-  -o-transition-duration: var(--animation-duration);
-}
-.home-company-box:hover > .home-company-box-hover {
-  visibility: visible;
-  opacity: 1;
-
+/* 기업 후면부 */
+.home-company-list-page .home-sublist-box:hover > .home-sublist-box-hover {
   background: rgba(2, 86, 138, 0.75);
-
-  transform: scale(100%);
-  -webkit-transform: scale(100%);
-  -moz-transform: scale(100%);
-  -ms-transform: scale(100%);
-  -o-transform: scale(100%);
 }
-
 /* 동아리 후면부 */
-.home-club-list-page .home-company-box:hover > .home-company-box-hover {
+.home-club-list-page .home-sublist-box:hover > .home-sublist-box-hover {
   background: rgba(255, 166, 0, 0.75);
+}
+/* 배리어프리 후면부 */
+.home-bf-list-page .home-sublist-box:hover > .home-sublist-box-hover {
+  background: rgba(255, 102, 0, 0.75);
 }
 
 /* 반응형 */
@@ -154,7 +121,11 @@
 }
 
 @media screen and (max-width: 700px) {
-  .home-company-item {
+  .main-intro-subsection-move-btn {
+    width: 100%;
+  }
+
+  .home-sublist-item {
     width: 100%;
     height: 100px;
   }
@@ -163,14 +134,14 @@
     margin-bottom: 0.5em;
   }
 
-  .home-company-box {
+  .home-sublist-box {
     margin-bottom: 2em;
   }
-  .home-company-box > .home-company-box-hover {
+  .home-sublist-box > .home-sublist-box-hover {
     font-size: 1.5em;
     padding: 0 1em;
   }
-  .home-company-item:nth-child(even) .home-company-box {
+  .home-sublist-item:nth-child(even) .home-sublist-box {
     margin-left: auto;
   }
 
@@ -188,14 +159,23 @@
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
   }
-  .home-company-item:nth-child(odd) .home-company-info {
+  .home-sublist-item:nth-child(odd) .home-company-info {
     right: 0;
   }
-  .home-company-item:nth-child(even) .home-company-info {
+  .home-sublist-item:nth-child(even) .home-company-info {
     left: 0;
   }
 
-  .home-company-box-front img {
+  .home-sublist-box-front img {
     max-width: 85%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main-intro-subsection {
+    grid-template-columns: 1fr;
+  }
+  .main-intro-subsection-item {
+    max-width: none;
   }
 }

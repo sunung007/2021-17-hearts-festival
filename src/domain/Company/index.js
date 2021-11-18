@@ -8,7 +8,7 @@ import GuestComment from "./GuestComment";
 import Header from "../../components/Header";
 import Page from "../../components/Page";
 
-import {BACKGROUND_COLOR_GRAY, goToHome} from "../../hooks/common";
+import {BACKGROUND_COLOR_GRAY} from "../../hooks/common";
 import {useScrollToBody} from "../../hooks/useScrollToBody";
 
 import {banners} from "../../data/banner";
@@ -29,14 +29,22 @@ export default function Company({history, match}) {
   const [commentsRef, scrollToComments] = useScrollToBody(56);
 
   const [companyData, setCompanyData] = useState({});
+  const [prevNext, setPrevNext] = useState([{}, {}]);
 
   useEffect(() => {
     const cid = parseInt(match.params.cid);
     const tmpCompany = companyList.filter((entry) => entry.id === cid);
+
     if (tmpCompany.length === 0) history.push("/error");
-    else setCompanyData(tmpCompany[0]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    else {
+      const index = companyList.indexOf(tmpCompany[0]);
+      setCompanyData(tmpCompany[0]);
+      setPrevNext([
+        index > 0 ? companyList[index - 1] : {},
+        index + 1 < companyList.length ? companyList[index + 1] : {},
+      ]);
+    }
+  }, [history, match.params.cid]);
 
   return (
     <>
@@ -75,15 +83,39 @@ export default function Company({history, match}) {
           </div>
 
           <div className={"page-header-down-float"}>
-            {/* 홈으로 가는 버튼 */}
-            <button onClick={() => goToHome(history)}>
-              <FontAwesomeIcon icon={faHome} />
-            </button>
+            <Link
+              to={`/company/${prevNext[0]?.id}`}
+              className={"go-sibling font-light"}
+              style={
+                !prevNext[0].hasOwnProperty("id") ? {visibility: "hidden"} : {}
+              }
+            >
+              {"< " + prevNext[0]?.name}
+            </Link>
 
-            {/* 아래로 내려가는 버튼 */}
-            <button onClick={scrollToBody}>
-              <FontAwesomeIcon icon={faArrowDown} />
-            </button>
+            <div>
+              {/* 홈으로 가는 버튼 */}
+              <button>
+                <Link to={"/"}>
+                  <FontAwesomeIcon icon={faHome} />
+                </Link>
+              </button>
+
+              {/* 아래로 내려가는 버튼 */}
+              <button onClick={scrollToBody}>
+                <FontAwesomeIcon icon={faArrowDown} />
+              </button>
+            </div>
+
+            <Link
+              to={`/company/${prevNext[1]?.id}`}
+              className={"go-sibling font-light"}
+              style={
+                !prevNext[1].hasOwnProperty("id") ? {visibility: "hidden"} : {}
+              }
+            >
+              {prevNext[1]?.name + " >"}
+            </Link>
           </div>
         </Page>
 
@@ -107,7 +139,7 @@ export default function Company({history, match}) {
 
           {/* 방명록 */}
           <div style={{height: 0, padding: 0}} ref={commentsRef} />
-          <GuestComment cid={companyData.id} />
+          <GuestComment cid={companyData?.id} />
         </div>
       </div>
     </>

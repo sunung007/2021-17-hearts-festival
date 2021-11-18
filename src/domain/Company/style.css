@@ -130,6 +130,42 @@
   object-fit: cover;
 }
 
+/* 이전/이후 기업 */
+.company .page-header-down-float .go-sibling {
+  position: relative;
+  width: fit-content;
+  font-size: 1rem;
+}
+.company .page-header-down-float .go-sibling:first-child::after {
+  right: 0;
+}
+.company .page-header-down-float .go-sibling:last-child::after {
+  left: 0;
+}
+.company .page-header-down-float .go-sibling::after {
+  content: "";
+
+  position: absolute;
+  bottom: -0.4em;
+
+  width: 0;
+  height: 2px;
+
+  border-radius: 10em;
+  opacity: 1;
+  background-color: white;
+
+  --animatin-duration: 300ms;
+  transition: all var(--animatin-duration) ease-out;
+  -webkit-transition: all var(--animatin-duration) ease-out;
+  -moz-transition: all var(--animatin-duration) ease-out;
+  -ms-transition: all var(--animatin-duration) ease-out;
+  -o-transition: all var(--animatin-duration) ease-out;
+}
+.company .page-header-down-float .go-sibling:hover::after {
+  content: "";
+  width: 100%;
+}
 /* 아직 준비 안된 기업 */
 .company-not-ready {
   text-align: center;

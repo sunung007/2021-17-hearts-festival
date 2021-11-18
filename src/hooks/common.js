@@ -1,7 +1,3 @@
-export const goToHome = (history) => {
-  history.push("/");
-};
-
 export const SDGS = [
   "",
   "빈곤 종식",
