@@ -5,11 +5,7 @@
   },
   "hosting": {
     "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",
@@ -19,5 +15,10 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "emulators": {
+    "hosting": {
+      "port": "8000"
+    }
   }
 }

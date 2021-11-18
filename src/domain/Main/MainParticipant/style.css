@@ -13,13 +13,36 @@
   transition: all 2s ease-out;
 }
 .open-height {
-  max-height: 1000px;
+  max-height: 500px;
 }
 
 .home-with-people-detail {
   display: flex;
   flex-direction: row;
+
+  position: relative;
   font-size: 1.2em;
+}
+
+/* 닫기 버튼 */
+.home-with-people-detail-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 2rem;
+
+  color: var(--color-dark-blue);
+  font-size: 2rem;
+
+  cursor: pointer;
+
+  transition: color 300ms;
+  -webkit-transition: color 300ms;
+  -moz-transition: color 300ms;
+  -ms-transition: color 300ms;
+  -o-transition: color 300ms;
+}
+.home-with-people-detail-close-btn:hover {
+  color: var(--color-light-blue);
 }
 
 /* 사진 */

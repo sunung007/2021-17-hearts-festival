@@ -4,7 +4,7 @@ import Page from "../../../components/Page";
 
 import {BACKGROUND_COLOR_GRAY} from "../../../hooks/common";
 
-import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
+import {faTimesCircle, faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect, useState} from "react";
 import {getParticipants} from "../../../hooks/firebase";
@@ -23,10 +23,10 @@ export default function MainParticipant() {
   };
 
   useEffect(() => {
-    getParticipants().then((r) => {
-      setParticipants(r);
-    });
-    // setParticipants(dbParticipants);
+    // getParticipants().then((r) => {
+    //   setParticipants(r);
+    // });
+    setParticipants(dbParticipants);
   }, []);
 
   return (
@@ -50,6 +50,13 @@ export default function MainParticipant() {
         className={"home-with-people-detail"}
         shadow={false}
       >
+        <div
+          className={"home-with-people-detail-close-btn"}
+          onClick={() => setShowDetail(false)}
+        >
+          <FontAwesomeIcon icon={faTimesCircle} />
+        </div>
+
         <div className={"home-with-people-detail-img"}>
           {participants[curParticipant]?.img ? (
             <img src={participants[curParticipant].img} alt={""} />

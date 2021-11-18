@@ -11,7 +11,10 @@ export default function Error() {
   const path = `/${location.pathname.split("/")[1]}`;
 
   // URL 바꾸기
-  if (!URLS.includes(path) && path !== "/error") history.replace("/error");
+  if (!URLS.includes(path) && path !== "/error") {
+    console.log("존재하지 않는 URL 입니다.");
+    history.replace("/error");
+  }
 
   // 렌더링
   if (path === "/error")

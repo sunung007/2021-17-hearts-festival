@@ -6,7 +6,6 @@ import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import {useEffect} from "react";
 
 export default function Club({history, match}) {
-  console.log("TTTTT");
   useEffect(() => {
     const cid = parseInt(match.params.cid);
     // const tmpCompany = companyList.filter((entry) => entry.id === cid);

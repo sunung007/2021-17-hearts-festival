@@ -20,6 +20,7 @@ import {
   faChevronLeft,
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
+import {getCompanyInterview} from "../../hooks/firebase";
 
 export default function Company({history, match}) {
   const [body, scrollToBody] = useScrollToBody();
@@ -38,11 +39,26 @@ export default function Company({history, match}) {
     if (tmpCompany.length === 0) history.push("/error");
     else {
       const index = companyList.indexOf(tmpCompany[0]);
-      setCompanyData(tmpCompany[0]);
       setPrevNext([
         index > 0 ? companyList[index - 1] : {},
         index + 1 < companyList.length ? companyList[index + 1] : {},
       ]);
+      setCompanyData(tmpCompany[0]);
+
+      getCompanyInterview(cid)
+        .then((r) => {
+          setCompanyData({
+            ...r,
+            logo:
+              tmpCompany[0].logo ||
+              require("../../assets/logos/seventeen-hearts.png").default,
+          });
+          console.log(r);
+        })
+        .catch((e) => {
+          console.error("기업 정보 읽기에 실패하였습니다.");
+          console.error(e);
+        });
     }
   }, [history, match.params.cid]);
 
@@ -64,7 +80,7 @@ export default function Company({history, match}) {
                 <span className={"page-title-go-back-home-arrow"}>
                   <FontAwesomeIcon icon={faChevronLeft} />{" "}
                 </span>
-                <span>17 Hearts Festiver</span>
+                <span>Seventeen Hearts Festiver</span>
               </Link>
             </div>
 
@@ -74,6 +90,7 @@ export default function Company({history, match}) {
           <div className={"company-banner-background"}>
             <img
               src={
+                companyData?.banner ||
                 banners.filter((r) => r.id === companyData?.id)[0]
                   ?.background ||
                 require("../../assets/banners/default.png").default

@@ -104,8 +104,9 @@
   padding: 2rem;
   width: 100vw;
 
-  background: url("../../../assets/main-background.svg") center center no-repeat;
+  /* background: url("../../../assets/main-background.svg") center center no-repeat; */
   background-size: cover;
+  border: 3em solid var(--color-dark-blue);
 }
 
 .main-banner-item-poster .page-header {

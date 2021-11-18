@@ -16,11 +16,11 @@ function Qna({qna, index}) {
     >
       <div className={"company-interview-question"}>
         <div className={"company-interview-type"}>Q</div>
-        <div className={"company-interview-content"}>{qna[0]}</div>
+        <div className={"company-interview-content"}>{qna?.q}</div>
       </div>
       <div className={"company-interview-answer"}>
         <span className={"company-interview-type"}>A</span>
-        <span className={"company-interview-content"}>{qna[1]}</span>
+        <span className={"company-interview-content"}>{qna?.a}</span>
       </div>
     </li>
   );
@@ -107,7 +107,10 @@ export default function CompanyContent({
         className={"company-intro"}
         style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
       >
-        <div className={"company-intro-left"}>
+        <div
+          className={"company-intro-left"}
+          style={company?.intro.length === 0 ? {margin: "auto"} : {}}
+        >
           {/* 기업명 */}
           <h1 className={"section-title"}>
             <div className={"subtitle font-ultra-light"}>
@@ -136,7 +139,12 @@ export default function CompanyContent({
         </div>
 
         {/* 기업 소개 문구 */}
-        <div className={"font-light company-intro-right"}>{company?.intro}</div>
+        <div
+          className={"font-light company-intro-right"}
+          style={company?.intro.length === 0 ? {display: "none"} : {}}
+        >
+          <span dangerouslySetInnerHTML={{__html: company?.intro}}></span>
+        </div>
       </Page>
 
       {/* 인터뷰 요약 */}

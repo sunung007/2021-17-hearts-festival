@@ -3,7 +3,7 @@ import "./style.css";
 import {useCallback, useEffect, useState} from "react";
 
 import Page from "../../../components/Page";
-import titleBackground from "../../../assets/title-background.svg";
+// import titleBackground from "../../../assets/title-background.svg";
 
 import {banners} from "../../../data/banner";
 import {companyList} from "../../../data/company";
@@ -48,21 +48,27 @@ export default function MainBanner({scrollToBody}) {
             <div className={"page-title"}>
               <div className={"title"}>
                 <h4 className={"subtitle"}>6th</h4>
-                <div>17 Hearts</div>
-                <div>Festival</div>
+                <div>
+                  Seventeen
+                  <br />
+                  Hearts
+                  <br />
+                  Festival
+                </div>
+                <br />
                 <div className={"subtitle"}>2021.9.25~28</div>
-                <img
+                {/* <img
                   className={"main-header-title-background"}
                   src={titleBackground}
                   alt={""}
-                />
+                /> */}
               </div>
 
-              <br />
-              <h4 className={"subtitle"}>
+              {/* <br /> */}
+              {/* <h4 className={"subtitle"}>
                 사랑의 실천으로 세상과 사람을 바꾸는 한양의 사회혁신축제에
                 여러분을 초대합니다.
-              </h4>
+              </h4> */}
             </div>
           </Page>
         </li>

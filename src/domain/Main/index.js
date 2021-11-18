@@ -70,6 +70,13 @@ export default function Main() {
               >
                 바로가기
               </div>
+              <img
+                src={
+                  require("../../assets/backgrounds/main-section-interview.png")
+                    .default
+                }
+                alt={""}
+              />
             </li>
             <li className={"main-intro-subsection-item"}>
               <div className={"title"}>소셜벤처</div>
@@ -79,6 +86,13 @@ export default function Main() {
               >
                 바로가기
               </div>
+              <img
+                src={
+                  require("../../assets/backgrounds/main-section-interview.png")
+                    .default
+                }
+                alt={""}
+              />
             </li>
           </ul>
         </Page>
