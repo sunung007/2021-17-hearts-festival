@@ -1,0 +1,62 @@
+#check-email-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 300px;
+  padding: 2rem;
+
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: 1px 1px 5px 4px rgba(0, 0, 0, 0.2);
+}
+
+#check-email-modal .title {
+  margin-bottom: 0.5em;
+  font-size: 1.4em;
+}
+#check-email-modal .subtitle {
+  margin-bottom: 0.5em;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+#check-email-modal input,
+#check-email-modal button {
+  width: 100%;
+  height: 3rem;
+  margin: 0.1em 0;
+
+  font-size: 1em;
+
+  border: 1px solid var(--color-gray);
+  border-radius: 10rem;
+}
+#check-email-modal input {
+  margin: 0.5em 0;
+  padding: 0 2em;
+}
+#check-email-modal button {
+  cursor: pointer;
+  transition: background 300ms;
+  -webkit-transition: background 300ms;
+  -moz-transition: background 300ms;
+  -ms-transition: background 300ms;
+  -o-transition: background 300ms;
+}
+#check-email-modal button:hover {
+  background: var(--color-light-blue);
+}
+
+#check-email-modal .ok-btn {
+  color: white;
+  background: var(--color-dark-blue);
+}
+
+@media screen and (max-width: 700px) {
+  #check-email-modal input {
+    margin: 0.1em 0;
+    padding: 0 1.5em;
+  }
+}

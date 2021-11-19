@@ -1,0 +1,23 @@
+#comment-option-modal {
+  position: absolute;
+
+  width: 5rem;
+  border-radius: 0.3em;
+
+  text-align: center;
+  background-color: white;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
+
+  cursor: pointer;
+}
+
+.comment-option-modal-item {
+  padding: 0.5em;
+  border-bottom: 1px solid var(--color-gray);
+}
+.comment-option-modal-item:last-child {
+  border-bottom: none;
+}
+.comment-option-modal-item:hover {
+  background-color: var(--color-light-blue2);
+}

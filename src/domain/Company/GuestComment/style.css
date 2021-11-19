@@ -1,8 +1,6 @@
 .guest-comment input,
-.guest-comment textarea,
 .guest-comment-enroll-btn {
   height: 3em;
-
   padding: 0 2em;
   position: relative;
 
@@ -11,21 +9,14 @@
 
   font-size: 1em;
 }
-
 .guest-comment input:focus {
   outline: none;
 }
 
 /* 방명록 입력창 */
-.guest-comment-enroll textarea {
+.guest-comment-enroll input {
   width: 100%;
-  min-height: 3em;
-
-  padding: 0.6em 2em;
   margin: 0.5em 0;
-
-  resize: none;
-  vertical-align: middle;
 }
 /* 학과/이름 입력창 */
 .guest-comment-detail-info {
@@ -68,7 +59,31 @@
 
   padding: 1em 0;
   border-bottom: 1px dotted lightgray;
+
+  transition: background 500ms;
+}
+.guest-comment-item:hover {
+  background-color: var(--color-light-blue2);
 }
 .guest-comment-item-date {
   color: gray;
+}
+
+@media screen and (max-width: 700px) {
+  .guest-comment-detail-info {
+    flex-direction: column;
+  }
+  .guest-comment-detail-info input,
+  .guest-comment-enroll input {
+    width: 100%;
+    margin: 0.1em 0;
+    padding: 0 1.5em;
+  }
+  .guest-comment-item {
+    flex-direction: column;
+  }
+  .guest-comment-item-sub {
+    font-size: 0.9em;
+    color: gray;
+  }
 }

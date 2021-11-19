@@ -65,6 +65,18 @@ export async function enrollComments(companyId, newComment) {
   await setDoc(commentDoc, {comments: writeDatas}, {merge: true});
 }
 
+export async function deleteComment(companyId, target) {
+  const commentDoc = doc(fbDB, "comments", `${companyId}`);
+  const docSnap = await getDoc(commentDoc);
+  const datas = docSnap.data();
+
+  let comments = datas.comments;
+  comments.pop(target);
+  if (comments === undefined) comments = [];
+  await setDoc(commentDoc, {comments: comments}, {merge: true});
+  return comments;
+}
+
 export async function getParticipants() {
   const partCol = collection(fbDB, "participants");
   // const partDoc = doc(fbDB, "participants", `${pid}`);

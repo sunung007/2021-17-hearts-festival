@@ -47,7 +47,6 @@ export default function Company({history, match}) {
               tmpCompany[0].logo ||
               require("../../assets/logos/seventeen-hearts.png").default,
           });
-          console.log(r);
         })
         .catch((e) => {
           console.error("기업 정보 읽기에 실패하였습니다.");
@@ -63,6 +62,7 @@ export default function Company({history, match}) {
         scrollToInterview={scrollToInterview}
         scrollToPictures={scrollToPictures}
         scrollToComments={scrollToComments}
+        showMenu={companyData.hasOwnProperty("id") && companyData.isReady}
       />
 
       <div className={"company"}>

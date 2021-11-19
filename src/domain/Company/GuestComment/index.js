@@ -1,17 +1,30 @@
-import Page from "../../../components/Page";
 import "./style.css";
-import {useCallback, useEffect, useState} from "react";
-import {useRef} from "react";
-import {enrollComments, getComments} from "../../../hooks/firebase";
+
+import {useCallback, useEffect, useState, useRef} from "react";
+
+import Page from "../../../components/Page";
+import Modal from "../../../components/Modal";
+import CommentOptionModal from "../../../components/Modal/CommentOptionModal/index";
+
+import {
+  enrollComments,
+  getComments,
+  deleteComment as fbDeleteComment,
+} from "../../../hooks/firebase";
+
+import AlertModal from "../../../components/Modal/AlertModal";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
 
 export default function GuestComment({cid}) {
   const commentArea = useRef();
   const [comments, setComments] = useState([]);
 
-  const adjustHeight = useCallback(() => {
-    commentArea.current.style.height = "16px";
-    commentArea.current.style.height = commentArea.current.scrollHeight + "px";
-  }, []);
+  const [menuPos, setMenuPos] = useState([0, 0]);
+  const [menuTarget, setMenuTarget] = useState({});
+  const [showMenu, setShowMenu] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertContent, setAlertContent] = useState({title: "", msg: ""});
 
   const fetchComments = useCallback((cid) => {
     getComments(cid)
@@ -55,23 +68,127 @@ export default function GuestComment({cid}) {
         })
           .then(() => {
             fetchComments(cid);
-            console.log("방명록이 등록되었습니다.");
+            setAlertContent({
+              title: "방명록이 등록되었습니다.",
+            });
+            setShowAlert(true);
 
-            valueEl.value = "";
-            deptEl.value = "";
-            nameEl.value = "";
-            emailEl.value = "";
+            // 입력창 초기화
+            valueEl.value = deptEl.value = nameEl.value = emailEl.value = "";
           })
           .catch((e) => {
             console.error(e);
-            alert("방명록 작성에 실패하였습니다.");
+            setAlertContent({
+              title: (
+                <>
+                  <span style={{color: "red"}}>
+                    <FontAwesomeIcon icon={faExclamationTriangle} />
+                  </span>{" "}
+                  오류
+                </>
+              ),
+              msg: "방명록을 작성할 수 없습니다. 이 오류가 계속되면 한양대학교 사회혁신센터로 문의바랍니다.",
+            });
+            setShowAlert(true);
           });
-      } else alert("방명록 작성에 실패하였습니다.");
+      } else {
+        setAlertContent({
+          title: (
+            <>
+              <span style={{color: "red"}}>
+                <FontAwesomeIcon icon={faExclamationTriangle} />
+              </span>{" "}
+              오류
+            </>
+          ),
+          msg: "방명록을 작성할 수 없습니다. 이 오류가 계속되면 한양대학교 사회혁신센터로 문의바랍니다.",
+        });
+        setShowAlert(true);
+      }
 
       e.returnValue = true;
     },
     [cid, fetchComments]
   );
+
+  const openOption = (e) => {
+    e.preventDefault();
+    setMenuPos([e.clientX, e.clientY]);
+    setShowMenu(true);
+    setMenuTarget(comments[parseInt(e.target.id)]);
+  };
+
+  const deleteComment = (email) => {
+    if (setMenuTarget.hasOwnProperty("author_email")) {
+      setAlertContent({
+        title: (
+          <>
+            <span style={{color: "red"}}>
+              <FontAwesomeIcon icon={faExclamationTriangle} />
+            </span>{" "}
+            오류
+          </>
+        ),
+        msg: "방명록을 삭제할 수 없습니다.",
+      });
+      setShowAlert(true);
+      return;
+    }
+
+    if (menuTarget.author_email === email) {
+      fbDeleteComment(cid, menuTarget)
+        .then((r) => {
+          setAlertContent({
+            title: "방명록을 삭제하였습니다.",
+          });
+          setShowAlert(true);
+
+          setComments(
+            r
+              .sort((a, b) => b.time.seconds - a.time.seconds)
+              .map((tmp) => {
+                const date = new Date(tmp.time.seconds * 1000);
+                return {
+                  ...tmp,
+                  time: `${date.getFullYear() % 100}.${
+                    date.getMonth() + 1
+                  }.${date.getDate()}`,
+                };
+              })
+          );
+        })
+        .catch((e) => {
+          console.error("FIREBASE : 방명록 삭제 오류");
+          console.error(e);
+          setAlertContent({
+            title: (
+              <>
+                <span style={{color: "red"}}>
+                  <FontAwesomeIcon icon={faExclamationTriangle} />
+                </span>{" "}
+                오류
+              </>
+            ),
+            msg: "방명록을 삭제할 수 없습니다. 인터넷 연결이 올바른지 확인해주세요.",
+          });
+          setShowAlert(true);
+        })
+        .finally(() => setShowMenu(false));
+    } else {
+      setAlertContent({
+        title: (
+          <>
+            <span style={{color: "orange"}}>
+              <FontAwesomeIcon icon={faExclamationTriangle} />
+            </span>{" "}
+            주의
+          </>
+        ),
+        msg: "이메일이 일치하지 않습니다.",
+      });
+      setShowAlert(true);
+    }
+  };
 
   useEffect(() => {
     if (typeof cid === "number") fetchComments(cid);
@@ -111,13 +228,13 @@ export default function GuestComment({cid}) {
           </div>
 
           <div className={"guest-comment-enroll"}>
-            <textarea
+            <input
               ref={commentArea}
               id={"guest-comment-value"}
               className={"font-light"}
+              type={"text"}
               placeholder={"방명록"}
               required={true}
-              onKeyUp={adjustHeight}
             />
           </div>
 
@@ -125,8 +242,8 @@ export default function GuestComment({cid}) {
 
           <h5 className={"font-ultra-light"}>
             * 이메일은 경품 추첨 시 연락을 위해 받고 있습니다.
-            <br />* 이메일을 입력하지 않으면 경품 추첨 참여에 제한될 수
-            있습니다.
+            <br />* 이메일을 입력하지 않으면 댓글 수정/삭제 및 경품 추첨 참여에
+            제한될 수 있습니다.
           </h5>
         </form>
         <br />
@@ -134,9 +251,14 @@ export default function GuestComment({cid}) {
         <ul className={"guest-comment-wrapper font-light"}>
           {comments?.length > 0 ? (
             comments?.map((comment, index) => (
-              <li className={"guest-comment-item"} key={index}>
+              <li
+                id={index}
+                key={index}
+                className={"guest-comment-item"}
+                onContextMenu={openOption}
+              >
                 <div>{comment.value}</div>
-                <div>
+                <div className={"guest-comment-item-sub"}>
                   {comment.author_dept} {comment.author_name}{" "}
                   <span className={"guest-comment-item-date"}>
                     {comment.time}
@@ -146,11 +268,33 @@ export default function GuestComment({cid}) {
             ))
           ) : (
             <center className={"font-ultra-light"}>
-              등록된 방명록이 없습니다. 방명록을 남겨서 관심을 표현하세요.
+              등록된 방명록이 없습니다. 방명록을 남겨서 관심을 표현해주세요.
             </center>
           )}
         </ul>
       </div>
+
+      {/* 설정 팝업창 */}
+      {showMenu && (
+        <Modal>
+          <CommentOptionModal
+            pos={menuPos}
+            setShow={setShowMenu}
+            onDelete={deleteComment}
+          />
+        </Modal>
+      )}
+
+      {/* 경고창 */}
+      {showAlert && (
+        <Modal background={"rgba(0, 0, 0, 0.5)"} style={{zIndex: "140"}}>
+          <AlertModal
+            setShow={setShowAlert}
+            title={alertContent.title}
+            msg={alertContent.msg}
+          />
+        </Modal>
+      )}
     </Page>
   );
 }

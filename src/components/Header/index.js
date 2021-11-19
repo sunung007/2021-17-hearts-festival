@@ -9,6 +9,7 @@ export default function Header({
   scrollToInterview,
   scrollToPictures,
   scrollToComments,
+  showMenu,
 }) {
   const [headerShow, setHeaderShow] = useState(false);
 
@@ -29,17 +30,22 @@ export default function Header({
           <Link to={"/"}>
             <h2 className={"header-title"}>
               <FontAwesomeIcon icon={faArrowLeft} />
-              <span className={"only-browser"}> Seventeen Hearts Festival</span>
+              <span className={showMenu ? "only-browser" : ""}>
+                {" "}
+                Seventeen Hearts Festival
+              </span>
             </h2>
           </Link>
         </div>
 
-        <ul className={"header-menus font-light"}>
-          <li onClick={scrollToIntro}>기업소개</li>
-          <li onClick={scrollToInterview}>미리보기</li>
-          <li onClick={scrollToPictures}>인터뷰/사진</li>
-          <li onClick={scrollToComments}>방명록</li>
-        </ul>
+        {showMenu && (
+          <ul className={"header-menus font-light"}>
+            <li onClick={scrollToIntro}>기업소개</li>
+            <li onClick={scrollToInterview}>미리보기</li>
+            <li onClick={scrollToPictures}>인터뷰/사진</li>
+            <li onClick={scrollToComments}>방명록</li>
+          </ul>
+        )}
       </div>
     </header>
   );
