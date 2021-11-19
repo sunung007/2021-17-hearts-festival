@@ -47,7 +47,8 @@ export default function DetailHeaderPage({
           className={"go-sibling font-light"}
           style={!prev.hasOwnProperty("id") ? {visibility: "hidden"} : {}}
         >
-          {"< " + prev?.name}
+          <span>{"< "}</span>
+          <span>{prev?.name}</span>
         </Link>
 
         <div>
@@ -69,7 +70,8 @@ export default function DetailHeaderPage({
           className={"go-sibling font-light"}
           style={!next.hasOwnProperty("id") ? {visibility: "hidden"} : {}}
         >
-          {next?.name + " >"}
+          <span>{next?.name}</span>
+          <span>{" >"}</span>
         </Link>
       </div>
     </Page>

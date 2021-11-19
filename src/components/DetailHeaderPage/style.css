@@ -126,10 +126,17 @@
 }
 
 /* 이전/이후 */
+.detail-header .page-header-down-float > * {
+  width: 33%;
+  text-align: center;
+}
 .detail-header .page-header-down-float .go-sibling {
   position: relative;
-  width: fit-content;
   font-size: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .detail-header .page-header-down-float .go-sibling:first-child::after {
   right: 0;
@@ -166,5 +173,12 @@
   .detail-header .background img {
     max-width: none !important;
     max-height: 100% !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .detail-header .page-header-down-float {
+    width: 100%;
+    padding: 0 1rem;
   }
 }
