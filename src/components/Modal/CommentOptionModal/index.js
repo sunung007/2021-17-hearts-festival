@@ -10,8 +10,15 @@ export default function CommentOptionModal({pos, setShow, onEdit, onDelete}) {
   // 클릭 시 창 닫기
   const onClickOutside = useCallback(
     (e) => {
+      let path = [];
+      let currentElem = e.target;
+      while (currentElem) {
+        path.push(currentElem);
+        currentElem = currentElem.parentElement;
+      }
+
       const el = document.getElementById("comment-option-modal");
-      if (!e.path.includes(el) && !showEmailCheck) setShow(false);
+      if (!path.includes(el) && !showEmailCheck) setShow(false);
     },
     [setShow, showEmailCheck]
   );

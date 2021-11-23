@@ -1,6 +1,7 @@
 import "./style.css";
 
 import {useCallback, useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 
 import Page from "../../../components/Page";
 import mainTitle from "../../../assets/backgrounds/main-banner-logo.svg";
@@ -9,16 +10,14 @@ import {banners} from "../../../data/banner";
 import {companyList} from "../../../data/company";
 
 import {
-  faArrowDown,
   faChevronLeft,
   faChevronRight,
   faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import {faPauseCircle} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {Link} from "react-router-dom";
 
-export default function MainBanner({scrollToBody}) {
+export default function MainBanner() {
   const totalBanner = banners.length + 1;
   const [curBanner, setCurBanner] = useState(0);
   const [isStop, setIsStop] = useState(false);
@@ -34,7 +33,7 @@ export default function MainBanner({scrollToBody}) {
   useEffect(() => {
     const tick = setTimeout(() => {
       !isStop && changeBannerToRight();
-    }, 3500);
+    }, 3000);
     return () => clearTimeout(tick);
   }, [changeBannerToRight, isStop]);
 
@@ -121,11 +120,6 @@ export default function MainBanner({scrollToBody}) {
             </li>
           ))}
         </ul>
-
-        {/* 아래로 내려가는 버튼 */}
-        <button onClick={scrollToBody}>
-          <FontAwesomeIcon icon={faArrowDown} />
-        </button>
       </div>
 
       {/* 내 이름 */}

@@ -37,6 +37,9 @@
   font-family: noto-sans-ultra-light;
 }
 
+.only-mobile {
+  display: none;
+}
 .no-display {
   display: none;
 }
@@ -44,5 +47,13 @@
 @media screen and (max-width: 700px) {
   .only-browser {
     display: none !important;
+  }
+  .only-mobile {
+    display: inherit;
+  }
+
+  .inner-padding .page-inner,
+  .inner-padding > *:not(.page) {
+    padding: 3rem 1rem;
   }
 }

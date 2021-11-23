@@ -1,9 +1,9 @@
 import "./style.css";
 
-import {useScrollFadeIn} from "../../../hooks/useScrollFadeIn";
-import {BACKGROUND_COLOR_GRAY, SDGS} from "../../../data/common";
-import Page from "../../../components/Page";
 import {useState} from "react";
+import Page from "../../../components/Page";
+import {useScrollFadeIn} from "../../../hooks/useScrollFadeIn";
+import {SDGS} from "../../../data/common";
 
 function Qna({qna, index}) {
   const fadeInAnimation = useScrollFadeIn("up", 1, index / 5);
@@ -26,58 +26,36 @@ function Qna({qna, index}) {
   );
 }
 
-function CompanyPictures({movie, imgs}) {
+function CompanyPictures({imgs}) {
   const [curImgIndex, setCurImgIndex] = useState(imgs.length > 0 ? 0 : -1);
 
   return (
-    <Page style={{backgroundColor: BACKGROUND_COLOR_GRAY}}>
+    <Page
+      className={"company-pictures-page"}
+      // style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
+      // style={{backgroundColor: "var(--color-blue2)", color: "white"}}
+      style={{backgroundColor: "var(--color-dark-gray)", color: "white"}}
+    >
       <h1 className={"section-title"}>
-        <div>인터뷰</div>
-        <div className={"subtitle"}>Interview</div>
+        <div>갤러리</div>
+        <div className={"subtitle"}>Gallery</div>
       </h1>
       <br />
 
-      <div
-        className={`company-pictures-wrapper ${
-          curImgIndex === -1 && "only-youtube"
-        }`}
-      >
-        {/* 유튜브 */}
-        <div className={"company-youtube-wrapper"}>
-          {movie.length === 0 ? (
-            <div className={"youtube-player youtube-player-error"}>
-              준비 중입니다.
-            </div>
-          ) : (
-            <iframe
-              className={"youtube-player"}
-              id="youtube-player"
-              title="youtube"
-              type="text/html"
-              src={movie}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            ></iframe>
-          )}
-        </div>
-
-        {/* 확대 사진 */}
-        {curImgIndex > -1 && (
-          <div className={"company-picture"}>
+      {curImgIndex > -1 ? (
+        <div className={"company-pictures-wrapper"}>
+          {/* 확대 사진 */}
+          <div className={"company-picture-big"}>
             <img src={imgs[curImgIndex]} alt={""} />
           </div>
-        )}
-      </div>
 
-      {/* 사진 리스트 */}
-      {curImgIndex > -1 && (
-        <>
+          {/* 사진 리스트 */}
           <div className={"company-picture-slide-wrapper"}>
             <ul className={"company-picture-slide"}>
               {imgs.map((img, index) => (
                 <li
-                  className={"company-picture"}
                   key={index}
+                  className={"company-picture"}
                   onClick={() => setCurImgIndex(index)}
                 >
                   <img src={img} alt={""} />
@@ -88,7 +66,9 @@ function CompanyPictures({movie, imgs}) {
           <div className={"company-picture-slide-helper font-light"}>
             * 사진을 누르면 크게 보입니다.
           </div>
-        </>
+        </div>
+      ) : (
+        <center className={"font-ultra-light"}>준비 중입니다.</center>
       )}
     </Page>
   );
@@ -105,7 +85,7 @@ export default function CompanyContent({
       <div style={{height: 0, padding: 0}} ref={introSection} />
       <Page
         className={"company-intro"}
-        style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
+        // style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
       >
         <div
           className={"company-intro-left"}
@@ -113,9 +93,7 @@ export default function CompanyContent({
         >
           {/* 기업명 */}
           <h1 className={"section-title"}>
-            <div className={"subtitle font-ultra-light"}>
-              {company?.oneline}
-            </div>
+            <div className={"subtitle"}>{company?.oneline}</div>
             <div>{company?.name}</div>
           </h1>
           <br />
@@ -124,17 +102,21 @@ export default function CompanyContent({
           <div className={"company-intro-logo"}>
             <img src={company.logo} alt={""} />
           </div>
-          <br />
 
           {/* 기업과 연관된 SDGs */}
-          <ul className={"company-tag"}>
-            {company?.tags.map((tag, index) => (
-              <li key={index}>
-                <span className={"font-light"}>#SDGs{tag}_</span>
-                {SDGS[tag]}
-              </li>
-            ))}
-          </ul>
+          {company?.tags?.length > 0 && (
+            <>
+              <br />
+              <ul className={"company-tag"}>
+                {company.tags.map((tag, index) => (
+                  <li key={index}>
+                    <span className={"font-light"}>#SDGs{tag}_</span>
+                    {SDGS[tag]}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
           <br />
         </div>
 
@@ -147,20 +129,43 @@ export default function CompanyContent({
         </div>
       </Page>
 
-      {/* 인터뷰 요약 */}
+      {/* 유튜브 */}
       <div style={{height: 0, padding: 0}} ref={interviewSection} />
-      <Page parentClassName={"company-interview-page"}>
+      <Page
+        className={"company-interview-page"}
+        style={{backgroundColor: "var(--color-dark-blue)", color: "white"}}
+      >
         <h1 className={"section-title"}>
-          <div>미리보기</div>
-          <div className={"subtitle"}>Preview</div>
+          <div>인터뷰</div>
+          <div className={"subtitle"}>Interview</div>
         </h1>
         <br />
 
-        <ul>
+        {company?.movie.length > 0 ? (
+          <div className={"company-youtube-wrapper"}>
+            <iframe
+              className={"youtube-player"}
+              id="youtube-player"
+              title="youtube"
+              type="text/html"
+              src={company?.movie}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            ></iframe>
+          </div>
+        ) : (
+          <center className={"font-ultra-light"}>
+            인터뷰 예정입니다. 해당 기업에 대해 궁금한 점이 있다면 방명록으로
+            알려주세요.
+          </center>
+        )}
+
+        {/* 인터뷰 내용 요약 */}
+        {/* <ul>
           {company?.qna.map((qna, index) => (
             <Qna qna={qna} index={index} key={index} />
           ))}
-        </ul>
+        </ul> */}
       </Page>
 
       {/* 인터뷰 영상 & 사진 */}

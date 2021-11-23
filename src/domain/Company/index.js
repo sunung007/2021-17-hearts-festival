@@ -12,7 +12,6 @@ import DetailHeaderPage from "../../components/DetailHeaderPage";
 import {useScrollToBody} from "../../hooks/useScrollToBody";
 import {getCompanyInterview} from "../../hooks/firebase";
 
-import {BACKGROUND_COLOR_GRAY} from "../../data/common";
 import {banners} from "../../data/banner";
 import {companyList} from "../../data/company";
 
@@ -26,6 +25,13 @@ export default function Company({history, match}) {
   const [companyData, setCompanyData] = useState({});
   const [prevNext, setPrevNext] = useState([{}, {}]);
 
+  const headerMenu = [
+    ["기업소개", scrollToIntro],
+    ["인터뷰", scrollToInterview],
+    ["갤러리", scrollToPictures],
+    ["방명록", scrollToComments],
+  ];
+
   useEffect(() => {
     const cid = parseInt(match.params.cid);
     const tmpCompany = companyList.filter((entry) => entry.id === cid);
@@ -38,14 +44,13 @@ export default function Company({history, match}) {
         index + 1 < companyList.length ? companyList[index + 1] : {},
       ]);
       setCompanyData(tmpCompany[0]);
-
       getCompanyInterview(cid)
         .then((r) => {
           setCompanyData({
             ...r,
             logo:
               tmpCompany[0].logo ||
-              require("../../assets/logos/seventeen-hearts.png").default,
+              require("../../assets/logos/seventeen-hearts.svg").default,
           });
         })
         .catch((e) => {
@@ -58,10 +63,7 @@ export default function Company({history, match}) {
   return (
     <>
       <Header
-        scrollToIntro={scrollToIntro}
-        scrollToInterview={scrollToInterview}
-        scrollToPictures={scrollToPictures}
-        scrollToComments={scrollToComments}
+        menu={headerMenu}
         showMenu={companyData.hasOwnProperty("id") && companyData.isReady}
       />
 
@@ -91,9 +93,14 @@ export default function Company({history, match}) {
           ) : (
             <Page
               className={"company-not-ready font-light"}
-              style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
+              style={{
+                backgroundColor: "var(--color-dark-gray)",
+                color: "white",
+              }}
             >
               해당 기업은 인터뷰 준비 중입니다.
+              <br />
+              해당 기업에 대해 궁금한 점이 있다면 방명록으로 알려주세요.
             </Page>
           )}
 

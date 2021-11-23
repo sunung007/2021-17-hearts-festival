@@ -11,8 +11,8 @@ export default function MainSublist({info, index, link}) {
           <div className={"home-sublist-box-front"}>
             <img
               src={
-                info.logo ||
-                require("../../../assets/logos/seventeen-hearts.png").default
+                info?.logo ||
+                require("../../../assets/logos/seventeen-hearts.svg").default
               }
               alt={info.name}
             />

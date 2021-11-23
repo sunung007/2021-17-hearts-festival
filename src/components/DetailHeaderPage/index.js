@@ -51,7 +51,7 @@ export default function DetailHeaderPage({
           <span>{prev?.name}</span>
         </Link>
 
-        <div>
+        <div className={"middle-btn"}>
           {/* 홈으로 가는 버튼 */}
           <button>
             <Link to={"/"}>

@@ -1,3 +1,9 @@
+export const testCompany = {
+  id: 0,
+  name: "사회혁신센터(샘플)",
+  logo: require("../assets/logos/seventeen-hearts.png").default,
+};
+
 export const companyList = [
   {
     id: 0,

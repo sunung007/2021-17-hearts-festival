@@ -10,20 +10,17 @@
 }
 
 .main-banner-wrapper {
-  position: relative;
-
   display: flex;
   flex-direction: row;
   align-items: center;
 
+  position: relative;
   width: max-content;
   height: fit-content;
-
   white-space: nowrap;
-  /* overflow-x: hidden; */
 
   /* 배너 전환 애니메이션 속도 */
-  --animation-duration: 1.4s;
+  --animation-duration: 500ms;
   transition: all var(--animation-duration) ease-in-out;
   -webkit-transition: all var(--animation-duration) ease-in-out;
   -moz-transition: all var(--animation-duration) ease-in-out;
@@ -118,10 +115,9 @@
   width: 100vw;
 
   background: url("../../../assets/backgrounds/main-banner-background.svg")
-    center center;
+    center center no-repeat;
   background-color: var(--color-main-banner);
   background-size: contain;
-  background-repeat: space;
 }
 .main-banner-item-poster .page-header::after {
   content: "";
@@ -268,9 +264,6 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .main-banner-item-poster .page-header {
-    background-repeat: repeat;
-  }
   .main-banner-background img {
     max-width: none !important;
     max-height: 100% !important;
@@ -278,6 +271,13 @@
 }
 
 @media screen and (max-width: 700px) {
+  .main-banner-item-poster .page-header {
+    background: url("../../../assets/backgrounds/main-banner-background-mobile.svg")
+      center center no-repeat;
+    background-color: var(--color-main-banner);
+    background-size: contain;
+  }
+
   .main-banner-change-btn {
     padding: 0 1em;
   }

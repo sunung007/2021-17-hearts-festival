@@ -1,12 +1,12 @@
 import {useCallback, useEffect, useRef} from "react";
+import smoothscroll from "smoothscroll-polyfill";
+
+// 강제 scroll smooth 효과 (Safari)
+smoothscroll.polyfill();
 
 export const useScrollToBody = (offsetY) => {
   const scrollRef = useRef();
   const scrollToBottom = useCallback(() => {
-    // scrollRef.current.scrollIntoView({
-    //   behavior: "smooth",
-    //   top: scrollRef.current.offsetTop - (offsetY || 0),
-    // });
     window.scrollTo({
       behavior: "smooth",
       top: scrollRef.current.offsetTop - (offsetY || 0),

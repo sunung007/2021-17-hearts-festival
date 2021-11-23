@@ -126,23 +126,38 @@
 }
 
 /* 이전/이후 */
+.detail-header .page-header-down-float {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 .detail-header .page-header-down-float > * {
   width: 33%;
   text-align: center;
 }
 .detail-header .page-header-down-float .go-sibling {
   position: relative;
+  width: fit-content;
   font-size: 1rem;
 
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+.detail-header .page-header-down-float .middle-btn {
+  width: 100%;
+}
+.detail-header .page-header-down-float .go-sibling:first-child {
+  margin-right: auto;
+}
 .detail-header .page-header-down-float .go-sibling:first-child::after {
-  right: 0;
+  left: 0;
+}
+.detail-header .page-header-down-float .go-sibling:last-child {
+  margin-left: auto;
 }
 .detail-header .page-header-down-float .go-sibling:last-child::after {
-  left: 0;
+  right: 0;
 }
 .detail-header .page-header-down-float .go-sibling::after {
   content: "";

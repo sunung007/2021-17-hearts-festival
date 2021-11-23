@@ -1,14 +1,12 @@
 import "./style.css";
 
-import Page from "../../../components/Page";
+import {useEffect, useState} from "react";
 
-import {BACKGROUND_COLOR_GRAY} from "../../../data/common";
+import Page from "../../../components/Page";
+import {getParticipants} from "../../../hooks/firebase";
 
 import {faTimesCircle, faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {useEffect, useState} from "react";
-import {getParticipants} from "../../../hooks/firebase";
-// import {participants as dbParticipants} from "../../../data/not_used/participants";
 
 export default function MainParticipant() {
   const [participants, setParticipants] = useState([]);
@@ -21,19 +19,15 @@ export default function MainParticipant() {
       setCurParticipant(index);
     }
   };
-
   useEffect(() => {
-    getParticipants().then((r) => {
-      setParticipants(r);
-    });
-    // setParticipants(dbParticipants);
+    getParticipants().then((r) => setParticipants(r));
   }, []);
 
   return (
     <>
       <Page
         className={"home-with-people-title-page"}
-        style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
+        style={{backgroundColor: "var(--color-dark-blue)", color: "white"}}
       >
         <h1 className={"section-title"}>
           <div>함께한 사람들</div>
@@ -44,7 +38,7 @@ export default function MainParticipant() {
       {/* 참여자 상세보기 */}
       <Page
         parentClassName={`home-with-people-detail-page ${
-          showDetail ? "open-height" : undefined
+          showDetail && "open-height"
         }`}
         className={"home-with-people-detail"}
       >
@@ -79,17 +73,15 @@ export default function MainParticipant() {
 
       {/* 참여자 목록 */}
       <Page
-        style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
         className={"home-with-people-page"}
+        style={{backgroundColor: "var(--color-dark-blue)"}}
       >
         <ul className={"home-with-people-wrapper"}>
           {participants.length > 0 &&
             participants?.map((participant, index) => (
               <li
                 className={`home-with-people ${
-                  showDetail && curParticipant === index
-                    ? "cur-people"
-                    : undefined
+                  showDetail && curParticipant === index && "cur-people"
                 }`}
                 key={index}
                 onClick={() => changePeople(index)}

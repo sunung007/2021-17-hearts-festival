@@ -1,21 +1,11 @@
 import "./style.css";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
-export default function Header({
-  scrollToIntro,
-  scrollToInterview,
-  scrollToPictures,
-  scrollToComments,
-  showMenu,
-}) {
+export default function Header({menu, showMenu}) {
   const [headerShow, setHeaderShow] = useState(false);
-
-  const headerScrollEvent = () => setHeaderShow(window.scrollY >= 600);
-
   useEffect(() => {
+    const headerScrollEvent = () => setHeaderShow(window.scrollY >= 600);
     document.addEventListener("scroll", headerScrollEvent);
     return () => document.removeEventListener("scroll", headerScrollEvent);
   }, []);
@@ -26,24 +16,23 @@ export default function Header({
       className={headerShow ? "header-show" : "header-hide"}
     >
       <div className={"header-container"}>
-        <div>
-          <Link to={"/"}>
-            <h2 className={"header-title"}>
-              <FontAwesomeIcon icon={faArrowLeft} />
-              <span className={showMenu ? "only-browser" : ""}>
-                {" "}
-                Seventeen Hearts Festival
-              </span>
-            </h2>
-          </Link>
-        </div>
+        <Link to={"/"} className={"header-title"}>
+          <img
+            src={require("../../assets/logos/seventeen-hearts.svg").default}
+            alt={""}
+          />
+          <span className={showMenu ? "only-browser" : ""}>
+            Seventeen Hearts Festival
+          </span>
+        </Link>
 
-        {showMenu && (
+        {showMenu && menu && (
           <ul className={"header-menus font-light"}>
-            <li onClick={scrollToIntro}>기업소개</li>
-            <li onClick={scrollToInterview}>미리보기</li>
-            <li onClick={scrollToPictures}>인터뷰/사진</li>
-            <li onClick={scrollToComments}>방명록</li>
+            {menu.map((entry, index) => (
+              <li key={index} onClick={entry[1]}>
+                {entry[0]}
+              </li>
+            ))}
           </ul>
         )}
       </div>

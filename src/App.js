@@ -1,16 +1,23 @@
 import "./App.css";
 
+import {useEffect} from "react";
 import {HashRouter, Route} from "react-router-dom";
+import {logConnect} from "./hooks/firebase";
+
+import Footer from "./components/Footer";
 
 import Main from "./domain/Main";
-import Footer from "./components/Footer";
 import Company from "./domain/Company";
 import Club from "./domain/Club";
 import Error from "./domain/Error/index";
 
 export const URLS = ["/", "/error", "/company", "/club"];
 
-function App() {
+export default function App() {
+  useEffect(() => {
+    logConnect(); // Firebase logging 시작
+  }, []);
+
   return (
     <HashRouter>
       <Route exact path={"/"} component={Main} />
@@ -23,5 +30,3 @@ function App() {
     </HashRouter>
   );
 }
-
-export default App;

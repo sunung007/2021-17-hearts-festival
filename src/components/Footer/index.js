@@ -11,6 +11,7 @@ export default function Footer() {
               href={"https://www.hanyang.ac.kr/"}
               target={"_blank"}
               rel={"noreferrer"}
+              title={"한양대 홈페이지 바로가기"}
             >
               <img
                 src={require("../../assets/logos/hyu.png").default}
@@ -22,6 +23,7 @@ export default function Footer() {
               href={"https://lincplus.hanyang.ac.kr/"}
               target={"_blank"}
               rel={"noreferrer"}
+              title={"한양대 LINC 사업단 바로가기"}
             >
               <img
                 src={require("../../assets/logos/hyu-linc.png").default}
@@ -38,6 +40,7 @@ export default function Footer() {
               href={"https://hvc.hanyang.ac.kr"}
               target={"_blank"}
               rel={"noreferrer"}
+              title={"한양대 사회혁신센터 바로가기"}
             >
               <img
                 src={require("../../assets/logos/hyu-sic.png").default}
@@ -57,9 +60,13 @@ export default function Footer() {
         <br />
         <p>
           [04763] 서울특별시 왕십리로 222길 한양플라자 2층 사회혁신센터{" "}
-          <u>
-            <a href="tel:02.2220.1004">02.2220.1004</a>
-          </u>
+          <b>
+            <u>
+              <a href="tel:02.2220.1004" title={"한양대 사회혁신센터 전화걸기"}>
+                02.2220.1004
+              </a>
+            </u>
+          </b>
         </p>
       </div>
     </footer>

@@ -1,13 +1,22 @@
 /* Seventeen Hearts Festival 소개 */
+.main-intro-page {
+  text-align: center;
+}
+.main-intro-page .section-title {
+  width: 100%;
+  height: auto;
+  max-height: 3rem;
+
+  margin-bottom: 0.5em;
+}
 .main-intro-content {
   max-width: 800px;
   margin: 0 auto;
-  text-align: center;
 }
 .main-intro-subsection {
   display: grid;
   place-items: center;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1em;
 }
 .main-intro-subsection-item {
@@ -60,7 +69,7 @@
 .main-intro-subsection-item .title {
   font-family: nixgon-bold;
   font-size: 1.8em;
-  text-shadow: 0 0 6px black;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
 }
 
 /* 하위 섹션 이동버튼 (바로가기 버튼) */
@@ -90,7 +99,7 @@
 .home-company-list-page {
   position: relative;
 }
-.home-company-list-page::after {
+/* .home-company-list-page::after {
   content: "";
 
   position: absolute;
@@ -105,13 +114,13 @@
     center center no-repeat;
   background-size: cover;
   filter: opacity(0.35);
-}
+} */
 
 /* 동아리 리스트 */
 .home-club-list-page {
   position: relative;
 }
-.home-club-list-page::after {
+/* .home-club-list-page::after {
   content: "";
 
   position: absolute;
@@ -126,7 +135,7 @@
     center no-repeat;
   background-size: cover;
   filter: opacity(0.3);
-}
+} */
 
 /* 기업 후면부 */
 .home-company-list-page .home-sublist-box:hover > .home-sublist-box-hover {
@@ -150,6 +159,11 @@
 }
 
 @media screen and (max-width: 700px) {
+  .main-intro-page .section-title {
+    max-width: 300px;
+    max-height: none;
+    margin: 0 auto 0.3em auto;
+  }
   .main-intro-subsection-move-btn {
     width: 100%;
   }

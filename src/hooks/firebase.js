@@ -1,15 +1,17 @@
-// Import the functions you need from the SDKs you need
-import {initializeApp} from "firebase/app";
-import {getFirestore, getDoc, setDoc, Timestamp, doc} from "firebase/firestore";
-import {collection} from "firebase/firestore";
-import {getDocs} from "firebase/firestore";
 import {companyList} from "../data/company";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import {initializeApp} from "firebase/app";
+import {
+  getFirestore,
+  getDocs,
+  getDoc,
+  setDoc,
+  Timestamp,
+  doc,
+  collection,
+} from "firebase/firestore";
+import {getAnalytics, logEvent} from "firebase/analytics";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -23,13 +25,15 @@ const firebaseConfig = {
 // Initialize Firebase
 const fbApp = initializeApp(firebaseConfig);
 const fbDB = getFirestore(fbApp);
+const fbAnalytics = getAnalytics(fbApp);
 
-async function emptyArrayCreate(commentDoc) {
-  await setDoc(commentDoc, {comments: []});
-  return [];
-}
-
+// 댓글
 export async function getComments(companyId) {
+  async function emptyArrayCreate(commentDoc) {
+    await setDoc(commentDoc, {comments: []});
+    return [];
+  }
+
   const commentDoc = doc(fbDB, "comments", `${companyId}`);
   const docSnap = await getDoc(commentDoc);
 
@@ -77,6 +81,7 @@ export async function deleteComment(companyId, target) {
   return comments;
 }
 
+// DB
 export async function getParticipants() {
   const partCol = collection(fbDB, "participants");
   // const partDoc = doc(fbDB, "participants", `${pid}`);
@@ -125,4 +130,17 @@ export async function getCompanyInterview(companyId) {
     console.log(`Documment and array 생성 : Company id ${companyId}`);
     return createNewCompanyDoc();
   }
+}
+
+// Anaytics
+export function logConnect() {
+  logEvent(fbAnalytics, "connect");
+  console.log("DB Analytics Connection");
+}
+export function logScreenView(screenName, screenClass) {
+  logEvent(fbAnalytics, "screen_view", {
+    firebase_screen: screenName,
+    firebase_screen_class: screenClass,
+  });
+  console.log(`Analytics Event Log : ${screenName}`);
 }

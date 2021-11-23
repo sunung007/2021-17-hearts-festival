@@ -19,4 +19,4 @@ export const SDGS = [
   "이행수단과 글로벌 파트너십 강화",
 ];
 // export const BACKGROUND_COLOR_GRAY = "#e1eaf7";
-export const BACKGROUND_COLOR_GRAY = "#C5E5FF";
+// export const BACKGROUND_COLOR_GRAY = "#C5E5FF";

@@ -145,9 +145,11 @@
 
   width: 100%;
   margin-left: 1em;
+
   text-align: center;
+  line-height: 1.5em;
 }
-.home-with-people > h2 {
+.home-with-people-info > h2 {
   margin-bottom: 0.3em;
 }
 

@@ -1,11 +1,32 @@
+.company-comment-page {
+  position: relative;
+}
+/* .company-comment-page::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  width: 100%;
+  height: 100%;
+
+  background: url("../../../assets/backgrounds/circle-scatter-lightblue.svg")
+    center center no-repeat;
+  background-size: cover;
+  filter: opacity(0.35);
+} */
+
 .guest-comment input,
 .guest-comment-enroll-btn {
   height: 3em;
-  padding: 0 2em;
+  padding: 0 1em;
   position: relative;
 
   border: 1px solid var(--color-gray);
-  border-radius: 4em;
+  border-radius: 0.5em;
+  /* border-radius: 4em; */
 
   font-size: 1em;
 }
@@ -32,9 +53,9 @@
 /* 댓글 달기 버튼 */
 .guest-comment-enroll-btn {
   width: 100%;
+  margin-bottom: 0.5em;
   color: white;
   background-color: var(--color-dark-blue);
-  cursor: pointer;
 
   --animation-duration: 300ms;
   transition: all var(--animation-duration) ease-out;
@@ -67,6 +88,44 @@
 }
 .guest-comment-item-date {
   color: gray;
+}
+
+/* 댓글 목록 */
+.comment-index-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 1em;
+}
+.comment-index-list .current {
+  color: white;
+  background-color: var(--color-dark-blue);
+}
+.comment-index-item {
+  width: 1.8em;
+  height: 1.8em;
+  line-height: 1.7em;
+  margin: 0 0.5em;
+
+  border: 1px solid var(--color-gray);
+  border-radius: 10em;
+  background-color: white;
+
+  text-align: center;
+  vertical-align: middle;
+
+  cursor: pointer;
+
+  transition: background-color 300ms;
+  -webkit-transition: background-color 300ms;
+  -moz-transition: background-color 300ms;
+  -ms-transition: background-color 300ms;
+  -o-transition: background-color 300ms;
+}
+.comment-index-item:hover:not(.current) {
+  background-color: var(--color-light-blue2);
 }
 
 @media screen and (max-width: 700px) {
