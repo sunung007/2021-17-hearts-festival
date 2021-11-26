@@ -1,44 +1,106 @@
+/* 포스터 배너 */
+.main-banner-item-poster .page-header {
+  position: relative;
+  width: 100vw;
+  height: max-content;
+
+  padding: 4rem 2rem 0 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-main-banner);
+}
+.main-banner-item-poster .page-header::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  max-width: 950px;
+  max-height: 500px;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+
+  background-color: var(--color-main-banner);
+}
+.main-banner-item-poster .main-header-logo {
+  width: auto;
+  height: auto;
+  /* max-width: 100%; */
+  max-width: 1000px;
+  max-height: min(100%, 400px);
+}
+
 /* Seventeen Hearts Festival 소개 */
-.main-intro-page {
+.main-intro-page .page-inner {
+  display: flex;
+  flex-direction: row;
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
   text-align: center;
 }
+
 .main-intro-page .section-title {
   width: 100%;
   height: auto;
   max-height: 3rem;
-
   margin-bottom: 0.5em;
 }
+
 .main-intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+
+  padding: 2rem;
+  margin-right: 1em;
+
+  border-radius: 0.5em;
+  background-color: white;
 }
+
 .main-intro-subsection {
+  width: 100%;
+  max-width: 400px;
+
   display: grid;
   place-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   gap: 1em;
 }
 .main-intro-subsection-item {
-  max-width: 500px;
-  width: 100%;
-  height: 200px;
-
-  position: relative;
-  padding: 2.5em 1.5em;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
-  border-radius: 0.5em;
-
-  color: white;
-  text-align: center;
-  overflow: hidden;
-
+  position: relative;
   z-index: 10;
+
+  width: 100%;
+  height: 180px;
+  padding: 2.5em 1.5em;
+
+  border-radius: 0.5em;
+  color: white;
+  overflow: hidden;
+  background-color: #026296;
+
+  transition: background-color 700ms;
+  -webkit-transition: background-color 700ms;
+  -moz-transition: background-color 700ms;
+  -ms-transition: background-color 700ms;
+  -o-transition: background-color 700ms;
+}
+.main-intro-subsection-item:hover {
+  background-color: #004368;
 }
 .main-intro-subsection-item img {
   width: auto;
@@ -51,8 +113,8 @@
   transform: translateX(50%);
 
   overflow: hidden;
-  filter: brightness(0.7);
-  -webkit-filter: brightness(0.7);
+  filter: brightness(0.9);
+  -webkit-filter: brightness(0.9);
 
   transition: all 700ms;
   -webkit-transition: all 700ms;
@@ -69,7 +131,7 @@
 .main-intro-subsection-item .title {
   font-family: nixgon-bold;
   font-size: 1.8em;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
 }
 
 /* 하위 섹션 이동버튼 (바로가기 버튼) */
@@ -99,60 +161,90 @@
 .home-company-list-page {
   position: relative;
 }
-/* .home-company-list-page::after {
-  content: "";
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-
-  width: 100%;
-  height: 100%;
-
-  background: url("../../assets/backgrounds/circle-scatter-lightblue.svg")
-    center center no-repeat;
-  background-size: cover;
-  filter: opacity(0.35);
-} */
+.home-company-list-page > .page-inner {
+  max-width: none;
+  padding: 4rem 0 0 0 !important;
+}
+.home-company-list {
+  max-width: 1280px;
+  padding: 0 2rem;
+  margin: 2rem auto 0 auto;
+}
 
 /* 동아리 리스트 */
 .home-club-list-page {
   position: relative;
 }
-/* .home-club-list-page::after {
-  content: "";
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-
-  width: 100%;
-  height: 100%;
-
-  background: url("../../assets/backgrounds/circle-scatter-yellow.svg") center
-    center no-repeat;
-  background-size: cover;
-  filter: opacity(0.3);
-} */
 
 /* 기업 후면부 */
 .home-company-list-page .home-sublist-box:hover > .home-sublist-box-hover {
-  /* background: rgba(2, 86, 138, 0.75); */
-  background: #5b96cdc9;
+  background: rgba(0, 88, 170, 0.75);
 }
 /* 동아리 후면부 */
 .home-club-list-page .home-sublist-box:hover > .home-sublist-box-hover {
   background: rgba(255, 166, 0, 0.75);
 }
-/* 배리어프리 후면부 */
-.home-bf-list-page .home-sublist-box:hover > .home-sublist-box-hover {
-  background: rgba(255, 102, 0, 0.75);
+
+/* 배리어프리 */
+.home-bf-info-page .page-inner {
+  /* max-width: none !important; */
+  padding: 4rem 0 2rem 0 !important;
+}
+.home-bf-info-page .section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 2rem;
+}
+.home-bf-info-page .section > div {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  border-radius: 0.5em;
+}
+.home-bf-info-page .section .bg {
+  color: black;
+  background-color: white;
+}
+.home-bf-info-page .section img {
+  width: 100%;
+  height: auto;
+}
+.home-bf-info-page .section a {
+  position: relative;
+  color: var(--color-dark-blue);
+  font-family: noto-sans-ultra-bold;
+}
+.home-bf-info-page .section a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.7em;
+
+  width: 0;
+  height: 2px;
+
+  border-radius: 10em;
+  background-color: var(--color-dark-blue);
+  transition: width 500ms ease-out;
+}
+.home-bf-info-page .section a:hover::after {
+  width: 100%;
 }
 
 /* 반응형 */
 @media screen and (max-width: 1000px) {
+  .main-intro-page .page-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-intro-content {
+    margin: 0;
+  }
+  .main-intro-subsection {
+    max-width: none;
+    grid-template-rows: none;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
   .home-company-list {
     grid-template-columns: 1fr 1fr;
   }
@@ -168,9 +260,18 @@
     width: 100%;
   }
 
+  .home-company-list,
+  .home-club-list-page .page-inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .home-sublist-item {
     width: 100%;
     height: 100px;
+  }
+  .home-company-list {
+    margin-top: 1em;
   }
   .home-company-cname {
     font-size: 2em;
@@ -214,7 +315,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
   .main-intro-subsection {
     grid-template-columns: 1fr;
     gap: 0.5em;

@@ -10,28 +10,35 @@
 
   overflow: hidden;
 
-  transition: all 2s ease-out;
+  transition: all 1s ease-in-out;
+  border: none;
 }
 .open-height {
   max-height: 500px;
 }
-
 .home-with-people-detail {
+  position: relative;
   display: flex;
   flex-direction: row;
 
-  position: relative;
+  color: black;
   font-size: 1.2em;
+
+  border-radius: 0.5em;
+  background-color: white;
 }
+/* .open-height .home-with-people-detail {
+  border: 1px solid var(--color-gray);
+} */
 
 /* 닫기 버튼 */
 .home-with-people-detail-close-btn {
   position: absolute;
-  top: 10px;
+  top: 1.2rem;
   right: 2rem;
 
   color: var(--color-dark-blue);
-  font-size: 2rem;
+  font-size: 1.5rem;
 
   cursor: pointer;
 
@@ -115,7 +122,8 @@
 /* 현재 선택된 사람 */
 .home-with-people-wrapper .cur-people {
   color: white !important;
-  background-color: var(--color-dark-blue) !important;
+  background-color: var(--color-light-blue2);
+  /* background-color: var(--color-dark-blue) !important; */
 }
 .home-with-people-wrapper .cur-people .home-with-people-img {
   color: white;

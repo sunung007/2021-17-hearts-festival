@@ -3,74 +3,14 @@ import "./style.css";
 import {useState} from "react";
 import Page from "../../../components/Page";
 import {useScrollFadeIn} from "../../../hooks/useScrollFadeIn";
-import {SDGS} from "../../../data/common";
 
-function Qna({qna, index}) {
-  const fadeInAnimation = useScrollFadeIn("up", 1, index / 5);
-
+function CompanySectionCard({section, index}) {
+  const fadeAnimation = useScrollFadeIn("up", 1, (1 + index) / 3);
   return (
-    <li
-      key={index}
-      className={"company-interview-wrapper"}
-      {...fadeInAnimation}
-    >
-      <div className={"company-interview-question"}>
-        <div className={"company-interview-type"}>Q</div>
-        <div className={"company-interview-content"}>{qna?.q}</div>
-      </div>
-      <div className={"company-interview-answer"}>
-        <span className={"company-interview-type"}>A</span>
-        <span className={"company-interview-content"}>{qna?.a}</span>
-      </div>
+    <li className={"card-item"} {...fadeAnimation}>
+      <div className={"card-item-title"}>{section?.title}</div>
+      <div className={"card-item-content"}>{section?.content}</div>
     </li>
-  );
-}
-
-function CompanyPictures({imgs}) {
-  const [curImgIndex, setCurImgIndex] = useState(imgs.length > 0 ? 0 : -1);
-
-  return (
-    <Page
-      className={"company-pictures-page"}
-      // style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
-      // style={{backgroundColor: "var(--color-blue2)", color: "white"}}
-      style={{backgroundColor: "var(--color-dark-gray)", color: "white"}}
-    >
-      <h1 className={"section-title"}>
-        <div>갤러리</div>
-        <div className={"subtitle"}>Gallery</div>
-      </h1>
-      <br />
-
-      {curImgIndex > -1 ? (
-        <div className={"company-pictures-wrapper"}>
-          {/* 확대 사진 */}
-          <div className={"company-picture-big"}>
-            <img src={imgs[curImgIndex]} alt={""} />
-          </div>
-
-          {/* 사진 리스트 */}
-          <div className={"company-picture-slide-wrapper"}>
-            <ul className={"company-picture-slide"}>
-              {imgs.map((img, index) => (
-                <li
-                  key={index}
-                  className={"company-picture"}
-                  onClick={() => setCurImgIndex(index)}
-                >
-                  <img src={img} alt={""} />
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className={"company-picture-slide-helper font-light"}>
-            * 사진을 누르면 크게 보입니다.
-          </div>
-        </div>
-      ) : (
-        <center className={"font-ultra-light"}>준비 중입니다.</center>
-      )}
-    </Page>
   );
 }
 
@@ -80,53 +20,54 @@ export default function CompanyContent({
   interviewSection,
   picturesSection,
 }) {
+  const [curImgIndex, setCurImgIndex] = useState(
+    company?.imgs.length > 0 ? 0 : -1
+  );
+
+  const firstRef = useScrollFadeIn("up", 1, 0);
   return (
     <>
       <div style={{height: 0, padding: 0}} ref={introSection} />
-      <Page
-        className={"company-intro"}
-        // style={{backgroundColor: BACKGROUND_COLOR_GRAY}}
-      >
+      <Page className={"company-intro"}>
         <div
-          className={"company-intro-left"}
-          style={company?.intro.length === 0 ? {margin: "auto"} : {}}
-        >
-          {/* 기업명 */}
-          <h1 className={"section-title"}>
-            <div className={"subtitle"}>{company?.oneline}</div>
-            <div>{company?.name}</div>
-          </h1>
-          <br />
+          className={"intro-text font-light"}
+          dangerouslySetInnerHTML={{
+            __html: company?.intro || <></>,
+          }}
+        />
+        <br />
 
-          {/* 기업 로고 */}
-          <div className={"company-intro-logo"}>
-            <img src={company.logo} alt={""} />
-          </div>
+        <ul className={"card-wrapper"}>
+          <li className={"card-item"} {...firstRef}>
+            <div
+              style={{
+                fontFamily: "nixgon-light",
+                fontSize: "1.4em",
+              }}
+            >
+              {company?.oneline}
+            </div>
+            <br />
 
-          {/* 기업과 연관된 SDGs */}
-          {company?.tags?.length > 0 && (
-            <>
-              <br />
-              <ul className={"company-tag"}>
-                {company.tags.map((tag, index) => (
-                  <li key={index}>
-                    <span className={"font-light"}>#SDGs{tag}_</span>
-                    {SDGS[tag]}
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-          <br />
-        </div>
+            <div className={"company-logo"}>
+              <img src={company.logo} alt={""} />
+            </div>
+            <br />
 
-        {/* 기업 소개 문구 */}
-        <div
-          className={"font-light company-intro-right"}
-          style={company?.intro.length === 0 ? {display: "none"} : {}}
-        >
-          <span dangerouslySetInnerHTML={{__html: company?.intro}}></span>
-        </div>
+            <a
+              className={"more-info"}
+              href={company?.link}
+              target={"_blank"}
+              rel={"noreferrer"}
+            >
+              더 알아보기
+            </a>
+          </li>
+
+          {company?.sections?.map((section, index) => (
+            <CompanySectionCard key={index} section={section} index={index} />
+          ))}
+        </ul>
       </Page>
 
       {/* 유튜브 */}
@@ -159,18 +100,49 @@ export default function CompanyContent({
             알려주세요.
           </center>
         )}
-
-        {/* 인터뷰 내용 요약 */}
-        {/* <ul>
-          {company?.qna.map((qna, index) => (
-            <Qna qna={qna} index={index} key={index} />
-          ))}
-        </ul> */}
       </Page>
 
       {/* 인터뷰 영상 & 사진 */}
       <div style={{height: 0, padding: 0}} ref={picturesSection} />
-      <CompanyPictures movie={company?.movie} imgs={company?.imgs} />
+      <Page
+        className={"company-pictures-page"}
+        style={{backgroundColor: "var(--color-dark-gray)", color: "white"}}
+      >
+        <h1 className={"section-title"}>
+          <div>갤러리</div>
+          <div className={"subtitle"}>Gallery</div>
+        </h1>
+        <br />
+
+        {curImgIndex > -1 ? (
+          <div className={"company-pictures-wrapper"}>
+            {/* 확대 사진 */}
+            <div className={"company-picture-big"}>
+              <img src={company?.imgs[curImgIndex]} alt={""} />
+            </div>
+
+            {/* 사진 리스트 */}
+            <div className={"company-picture-slide-wrapper"}>
+              <ul className={"company-picture-slide"}>
+                {company?.imgs.map((img, index) => (
+                  <li
+                    key={index}
+                    className={"company-picture"}
+                    onClick={() => setCurImgIndex(index)}
+                  >
+                    <img src={img} alt={""} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={"company-picture-slide-helper font-light"}>
+              * 사진을 누르면 크게 보입니다.
+            </div>
+          </div>
+        ) : (
+          <center className={"font-ultra-light"}>준비 중입니다.</center>
+        )}
+      </Page>
     </>
   );
 }

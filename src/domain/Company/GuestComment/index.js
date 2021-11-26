@@ -8,7 +8,7 @@ import AlertModal from "../../../components/Modal/AlertModal";
 import CommentOptionModal from "../../../components/Modal/CommentOptionModal";
 
 import {
-  enrollComments,
+  enrollComment as faEnrollComment,
   getComments,
   deleteComment as fbDeleteComment,
 } from "../../../hooks/firebase";
@@ -53,8 +53,7 @@ export default function GuestComment({cid}) {
         console.error(e);
       });
   }, []);
-
-  const commentEnroll = useCallback(
+  const enrollComment = useCallback(
     (e) => {
       e.preventDefault();
 
@@ -65,7 +64,7 @@ export default function GuestComment({cid}) {
 
       if (typeof cid === "number") {
         // 댓글 등록
-        enrollComments(cid, {
+        faEnrollComment(cid, {
           value: valueEl.value,
           author_dept: deptEl.value,
           author_name: nameEl.value,
@@ -115,7 +114,6 @@ export default function GuestComment({cid}) {
     },
     [cid, fetchComments]
   );
-
   const deleteComment = (email) => {
     if (setMenuTarget.hasOwnProperty("author_email")) {
       setAlertContent({
@@ -194,11 +192,11 @@ export default function GuestComment({cid}) {
     setMenuTarget(comments[parseInt(e.target.id)]);
     setShowMenu(true);
   };
-
   const longTouch = (e) => {
-    setMenuPos([e.clientX, e.clientY]);
+    const {clientX, clientY} = e.changedTouches[0];
+    setMenuPos([clientX, clientY]);
     setMenuTarget(comments[parseInt(e.target.id)]);
-    setLongTouchTimer(setTimeout(() => setShowMenu(true), 600));
+    setLongTouchTimer(setTimeout(() => setShowMenu(true), 400));
   };
   const longTouchCancle = () => {
     if (longTouchTimer) clearTimeout(longTouchTimer);
@@ -218,7 +216,7 @@ export default function GuestComment({cid}) {
       <br />
 
       <div>
-        <form onSubmit={commentEnroll} className={"guest-comment"}>
+        <form onSubmit={enrollComment} className={"guest-comment"}>
           <div className={"guest-comment-detail-info"}>
             <input
               id={"guest-dept"}
@@ -257,8 +255,8 @@ export default function GuestComment({cid}) {
 
           <h5 className={"font-ultra-light"} style={{lineHeight: "1.5em"}}>
             * 이메일은 경품 추첨 시 연락을 위해 받고 있습니다.
-            <br />* 이메일을 입력하지 않으면 댓글 수정/삭제 및 경품 추첨 참여에
-            제한될 수 있습니다.
+            <br />* 이메일을 입력하지 않으면 댓글 수정/삭제가 불가능하며, 경품
+            추첨 이벤트 참여에 제한될 수 있습니다.
           </h5>
         </form>
         <br />
@@ -306,10 +304,10 @@ export default function GuestComment({cid}) {
             (v, i) => i
           ).map((i) => (
             <li
+              key={i}
               className={`comment-index-item ${
                 i === commentIndex && "current"
               }`}
-              key={i}
               onClick={() => setCommentIndex(i)}
             >
               {i + 1}

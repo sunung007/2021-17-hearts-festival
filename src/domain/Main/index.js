@@ -1,6 +1,8 @@
 import "./style.css";
 
 import Page from "../../components/Page";
+import mainTitle from "../../assets/backgrounds/main-banner-logo.svg";
+import mainTitleMobile from "../../assets/backgrounds/main-banner-logo-mobile.svg";
 
 import MainBanner from "./MainBanner";
 import MainParticipant from "./MainParticipant";
@@ -13,22 +15,21 @@ import {useScrollToBody} from "../../hooks/useScrollToBody";
 const festivalIntro = (
   <>
     <p>
-      한양대학교 사회혁신센터는 대학생들의 사회혁신에 대한 이해도를 높이고
-      주도적인 활동참여를 목적으로 2016년부터 사회혁신 성과공유의 장인{" "}
-      <span
-        style={{
-          fontFamily: "noto-sans-bold",
-          color: "var(--color-dark-blue)",
-        }}
-      >
-        Seventeen Hearts Festival
-      </span>
-      을 개최해오고 있습니다.
+      한양대학교 사회혁신센터는
+      <br />
+      대학생들의 사회혁신에 대한 이해도를 높이고 주도적인 활동참여를 목적으로
+      <br />
+      2016년부터 사회혁신 성과공유의 장인 <b>Seventeen Hearts Festival</b>을
+      개최해오고 있습니다.
     </p>
     <br />
     <p>
-      Seventeen Hearts Festival은 UN-SDGs(지속가능발전목표) 17개를 모티브로
-      하여, 사회혁신 선도대학이라는 브랜드 확립과 지역사회, 대학이 함께하는
+      Seventeen Hearts Festival은
+      <br />
+      UN-SDGs(지속가능발전목표) 17개를 모티브로 하여,
+      <br />
+      사회혁신 선도대학이라는 브랜드 확립과 지역사회, 대학이 함께하는
+      <br />
       지속가능한 임팩트 창출을 목표로 하고 있습니다.
     </p>
     <br />
@@ -36,20 +37,23 @@ const festivalIntro = (
       6번째를 맞는 2021년 Seventeen Hearts Festival에서는 ESG라는 사회적 이슈를
       중심으로
       <br />
-      <span
-        style={{
-          fontFamily: "noto-sans-bold",
-          color: "var(--color-dark-blue)",
-        }}
-      >
+      <b>
         국내 우수기관/기업에서 가지고 있는 ESG, 사회공헌에 대한 방향 및 목표를
         확인하는 인터뷰를 진행하고
         <br />
         교내에서 활발하게 활동하고 있는 재학생 소셜벤처 창업팀,
         사회혁신/사회공헌 활동 팀의 성과를 공유
-      </span>
+      </b>
       <br />
       하는 자리를 마련하였습니다.
+    </p>
+    <br />
+    <p>
+      6번째 Seventeen Hearts Festival은
+      <br />
+      12월 6일부터 10일까지 대면으로 병행하여 진행하오니,
+      <br />
+      많은 관심과 참여 부탁드립니다.
     </p>
   </>
 );
@@ -61,28 +65,23 @@ export default function Main() {
   return (
     <div className={"main"}>
       {/* 페이지 상단 헤더 */}
-      <MainBanner />
+      <Page
+        parentClassName={"main-banner-item-poster"}
+        className={"page-header"}
+      >
+        <img
+          className={"main-header-logo"}
+          src={window.innerWidth > 700 ? mainTitle : mainTitleMobile}
+          alt={""}
+        />
+      </Page>
 
       <div className={"inner-padding"}>
         {/* seventeen hearts festival 소개 */}
         <Page
-          className={"main-intro-page"}
-          // style={{backgroundColor: "var(--color-blue2)", color: "white"}}
-          style={{backgroundColor: "var(--color-light-blue3)"}}
+          parentClassName={"main-intro-page"}
+          style={{backgroundColor: "var(--color-main-banner)"}}
         >
-          <img
-            className={"section-title"}
-            src={
-              window.innerWidth > 700
-                ? require("../../assets/logos/seventeen-hearts-festival-logo-oneline.svg")
-                    .default
-                : require("../../assets/logos/seventeen-hearts-festival-logo.svg")
-                    .default
-            }
-            alt={"Seventeen Hearts Festival"}
-          />
-          <br />
-
           <div className={"main-intro-content font-light"}>{festivalIntro}</div>
           <br />
 
@@ -142,10 +141,13 @@ export default function Main() {
         <div style={{height: 0, padding: 0}} ref={section1} />
         <Page parentClassName={"home-company-list-page"}>
           <h1 className={"section-title"}>
-            <div>기업 인터뷰</div>
+            <div>기업/기관 인터뷰</div>
             <div className={"subtitle"}>Interview to Companies</div>
           </h1>
           <br />
+
+          {/* 배너 */}
+          <MainBanner />
 
           <ul className={"home-sublist-list home-company-list"}>
             {companyList.map((company, index) => (
@@ -181,14 +183,101 @@ export default function Main() {
         </Page>
 
         {/* 배리어프리 */}
-        <Page parentClassName={"home-bf-list-page"}>
+        <Page
+          parentClassName={"home-bf-info-page"}
+          className={"font-light"}
+          style={{backgroundColor: "var(--color-light-blue3)"}}
+          // style={{backgroundColor: "var(--color-dark-gray)", color: "white"}}
+        >
           <h1 className={"section-title"}>
-            <div>배리어프리</div>
-            <div className={"subtitle"}>Barrier-Free</div>
+            <div>배리어프리 영화</div>
+            <div className={"subtitle"}>Barrier-Free Movie</div>
           </h1>
           <br />
 
-          <div>소개</div>
+          <div className={"section"}>
+            <div className={"bg"}>
+              <p>
+                배리어프리영화란 "기존의 영화에 화면을 설명해주는{" "}
+                <b>음성해설</b>과 화자 및 대사, 음악, 소리정보를 알려주는{" "}
+                <b>배리어프리자막</b>을 넣어{" "}
+                <b>모든 사람이 함께 즐길 수 있도록 만든 영화</b>"입니다.
+              </p>
+              <br />
+
+              <p>
+                다음 영화는 "극한직업"의 일부 입니다. 왼쪽과 비교해서 오른쪽에는
+                기존의 영화 화면을 설명해주는 음성해설과 더불어 전화벨이 울리고
+                있음을 알려주는 <b>배리어프리자막이 존재</b>합니다. 이로 인해
+                신체적 제약이 덜해져서 조금 더 함께 즐길 수 있게 되었습니다.
+              </p>
+              <br />
+
+              <p>배리어프리에 대한 더 많은 내용은 아래를 참고해주세요.</p>
+              <a
+                href={"http://barrierfreefilms.or.kr/main"}
+                target={"_blank"}
+                rel={"noreferrer"}
+              >
+                배리어프리영화위원회 바로가기
+              </a>
+            </div>
+
+            <div>
+              <img
+                src={require("../../assets/barrierfree/intro.png").default}
+                alt={"배리어프리 안내"}
+              />
+              <br />
+              <i>
+                극한직업 예고편 중 (출처 : 유튜브 CJ ENM Movie 극한직업 2차
+                예고편)
+              </i>
+            </div>
+          </div>
+
+          <div className={"section"}>
+            <div>
+              <img
+                scr={
+                  require("../../assets/barrierfree/people-celebrity.png")
+                    .default
+                }
+                alt={"배리어프리 연예인 홍보대사"}
+              />
+              <br />
+              <img
+                scr={
+                  require("../../assets/barrierfree/people-normal.png").default
+                }
+                alt={"배리어프리 일반인 홍보대사"}
+              />
+              <br />
+              <i>배리어프리 홍보대사 (출처 : 서울배리어프리영화제)</i>
+            </div>
+            <div className={"bg"}>
+              <p>
+                2022 배리어프리영화 홍보대사로 장동윤 배우, 김보라 배우, 오성윤
+                감독이 위촉되었으며, 관객 홍보대사로 시각장애인 박현선,
+                청각장애인 이정하, 비장애 홍보대사{" "}
+                <b>한양대학교 '같이걷개'팀의 최정윤, 공주현, 김세인</b> 등 총
+                5인이 위촉되었습니다.
+              </p>
+              <br />
+              <p>
+                같이걷개 팀은 장애인도우미견 뉴스레터 발송 및 MD 제작을 통한
+                장애인도우미견 육성 사업을 돕는 SK LOOKIE 활동도 진행 중입니다.
+              </p>
+              <br />
+              <a
+                href={"https://www.youtube.com/user/BarrierFreeFrilms"}
+                target={"_blank"}
+                rel={"noreferrer"}
+              >
+                2022 배리어프리 홍보대사 위촉식 보기
+              </a>
+            </div>
+          </div>
         </Page>
 
         {/* 함께한 사람들 */}

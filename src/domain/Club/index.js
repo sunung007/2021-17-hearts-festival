@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {clubs} from "../../data/clubs";
 import {useScrollToBody} from "../../hooks/useScrollToBody";
 import DetailHeaderPage from "../../components/DetailHeaderPage/index";
+import Page from "../../components/Page";
 
 export default function Club({history, match}) {
   const [body, scrollToBody] = useScrollToBody();
@@ -12,12 +13,12 @@ export default function Club({history, match}) {
 
   useEffect(() => {
     const cid = parseInt(match.params.cid);
-    const tmpCompany = clubs.filter((entry) => entry.id === cid);
+    const tmpClub = clubs.filter((entry) => entry.id === cid);
 
-    if (tmpCompany.length === 0) history.push("/error");
+    if (tmpClub.length === 0) history.push("/error");
     else {
-      const index = clubs.indexOf(tmpCompany[0]);
-      setClubData(tmpCompany[0]);
+      const index = clubs.indexOf(tmpClub[0]);
+      setClubData(tmpClub[0]);
       setPrevNext([
         index > 0 ? clubs[index - 1] : {},
         index + 1 < clubs.length ? clubs[index + 1] : {},
@@ -39,7 +40,9 @@ export default function Club({history, match}) {
 
       {/* 내용 */}
       <div className={"inner-padding"} ref={body}>
-        {clubData.hasOwnProperty("id") && clubData.isReady && <></>}
+        {clubData.hasOwnProperty("id") && (
+          <Page>소셜벤처팀 {clubData.name}을 소개합니다.</Page>
+        )}
       </div>
     </div>
   );

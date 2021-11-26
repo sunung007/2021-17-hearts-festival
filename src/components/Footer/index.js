@@ -52,6 +52,7 @@ export default function Footer() {
       </div>
 
       <div>
+        <p>POWERED BY. GOFO</p>
         <p>Copyright 2021. Hanyang University Social Innovation Center</p>
         <p>
           본 사이트는 한양대학교 사회봉사단 사회혁신센터 주관으로 Seventeen

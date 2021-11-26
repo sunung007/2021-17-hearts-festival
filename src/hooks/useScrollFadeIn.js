@@ -24,10 +24,11 @@ export const useScrollFadeIn = (direction = "up", duration = 1, delay = 0) => {
     ([entry]) => {
       const {current} = dom;
       if (entry.isIntersecting) {
-        current.style.transitionProperty = "all";
-        current.style.transitionDuration = `${duration}s`;
+        current.style.transitionProperty =
+          "transform, opacity, margin, background";
+        current.style.transitionDuration = `${duration}s, ${duration}s, 500ms, 500ms`;
         current.style.transitionTimingFunction = "cubic-bezier(0, 0, 0.2, 1)";
-        current.style.transitionDelay = `${delay}s`;
+        current.style.transitionDelay = `${delay}s, ${delay}s, 0s, 0s`;
         current.style.opacity = 1;
         current.style.transform = "translate3d(0, 0, 0)";
       }

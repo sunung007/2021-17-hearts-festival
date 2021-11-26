@@ -41,6 +41,7 @@ header {
   flex-direction: row;
   align-items: center;
 
+  width: 100%;
   height: 100%;
 
   font-family: logo;
@@ -56,15 +57,17 @@ header {
   width: auto;
   height: 100%;
   padding: 10px 0;
-  margin-right: 0.5em;
 }
-.header-title:hover {
-  color: var(--color-dark-blue);
+.header-title > span {
+  margin-left: 0.5em;
 }
 
 /* 헤더 메뉴 */
 .header-menus {
+  width: 100%;
+
   display: flex;
+  justify-content: flex-end;
 }
 .header-menus > li {
   position: relative;
@@ -103,6 +106,11 @@ header {
     padding: 0 1rem;
     justify-content: flex-start;
   }
+
+  .header-title {
+    width: min-content;
+  }
+
   .header-menus {
     flex-wrap: wrap;
   }

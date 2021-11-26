@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import Page from "../../../components/Page";
 import {getParticipants} from "../../../hooks/firebase";
 
-import {faTimesCircle, faUserCircle} from "@fortawesome/free-solid-svg-icons";
+import {faTimes, faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default function MainParticipant() {
@@ -41,12 +41,13 @@ export default function MainParticipant() {
           showDetail && "open-height"
         }`}
         className={"home-with-people-detail"}
+        style={{backgroundColor: "var(--color-dark-blue)", color: "white"}}
       >
         <div
           className={"home-with-people-detail-close-btn"}
           onClick={() => setShowDetail(false)}
         >
-          <FontAwesomeIcon icon={faTimesCircle} />
+          <FontAwesomeIcon icon={faTimes} />
         </div>
 
         <div className={"home-with-people-detail-img"}>

@@ -4,8 +4,6 @@ import {useCallback, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 import Page from "../../../components/Page";
-import mainTitle from "../../../assets/backgrounds/main-banner-logo.svg";
-
 import {banners} from "../../../data/banner";
 import {companyList} from "../../../data/company";
 
@@ -18,7 +16,7 @@ import {faPauseCircle} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default function MainBanner() {
-  const totalBanner = banners.length + 1;
+  const totalBanner = banners.length;
   const [curBanner, setCurBanner] = useState(0);
   const [isStop, setIsStop] = useState(false);
 
@@ -31,9 +29,7 @@ export default function MainBanner() {
   }, [curBanner, totalBanner]);
 
   useEffect(() => {
-    const tick = setTimeout(() => {
-      !isStop && changeBannerToRight();
-    }, 3000);
+    const tick = setTimeout(() => !isStop && changeBannerToRight(), 3000);
     return () => clearTimeout(tick);
   }, [changeBannerToRight, isStop]);
 
@@ -41,16 +37,17 @@ export default function MainBanner() {
     <div className={"main-banner"}>
       <ul
         className={"main-banner-wrapper"}
-        style={{marginLeft: `-${curBanner * 100}vw`}}
+        style={{
+          marginLeft: `${(window.innerWidth - 610) / 2 - 590 * curBanner}px`,
+        }}
       >
-        <li className={"main-banner-item-poster"}>
-          <Page className={"page-header"}>
-            <img className={"main-header-logo"} src={mainTitle} alt={""} />
-          </Page>
-        </li>
-
         {banners.map((banner, index) => (
-          <li className={"main-banner-item"} key={index}>
+          <li
+            className={`main-banner-item ${
+              index === curBanner && "main-banenr-item-current"
+            }`}
+            key={index}
+          >
             <Page className={"page-header"}>
               <div className={"page-header-content"}>
                 <div className={"page-title"}>
@@ -69,7 +66,7 @@ export default function MainBanner() {
 
                 <div className={"main-banner-logo"}>
                   <img
-                    src={companyList.filter((c) => c.id === banner.id)[0].logo}
+                    src={companyList.filter((c) => c.id === banner.id)[0]?.logo}
                     alt={""}
                   />
                 </div>
@@ -121,9 +118,6 @@ export default function MainBanner() {
           ))}
         </ul>
       </div>
-
-      {/* 내 이름 */}
-      <div className={"gofo-name"}>DESIGNED BY. GOFO</div>
     </div>
   );
 }

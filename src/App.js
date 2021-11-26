@@ -1,7 +1,7 @@
 import "./App.css";
 
 import {useEffect} from "react";
-import {HashRouter, Route} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 import {logConnect} from "./hooks/firebase";
 
 import Footer from "./components/Footer";
@@ -19,7 +19,7 @@ export default function App() {
   }, []);
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Route exact path={"/"} component={Main} />
       <Route exact path={"/company/:cid"} component={Company} />
       <Route exact path={"/club/:cid"} component={Club} />
@@ -27,6 +27,6 @@ export default function App() {
       <Route path={"*"} component={Error} />
 
       <Footer />
-    </HashRouter>
+    </BrowserRouter>
   );
 }

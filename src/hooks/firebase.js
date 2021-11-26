@@ -54,7 +54,7 @@ export async function getComments(companyId) {
   }
 }
 
-export async function enrollComments(companyId, newComment) {
+export async function enrollComment(companyId, newComment) {
   const commentDoc = doc(fbDB, "comments", `${companyId}`);
   const docSnap = await getDoc(commentDoc);
   const datas = docSnap.data();
@@ -98,15 +98,21 @@ export async function getCompanyInterview(companyId) {
     const result = {
       id: localInfo.id,
       name: localInfo.name,
+      link: "",
+
       banner: "",
-      date: "",
-      imgs: [],
-      intro: "",
-      isReady: false,
       movie: "",
+      imgs: [],
+
       oneline: "",
-      qna: [],
-      tags: [],
+      intro: "",
+      sections: [
+        {title: "", content: ""},
+        {title: "", content: ""},
+        {title: "", content: ""},
+      ],
+
+      isReady: true,
     };
     await setDoc(companyDoc, result);
     return result;

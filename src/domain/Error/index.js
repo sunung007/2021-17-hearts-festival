@@ -1,9 +1,10 @@
 import "./style.css";
 import {useHistory, useLocation} from "react-router";
 import {URLS} from "../../App";
+import Page from "../../components/Page/index";
+
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
-import Page from "../../components/Page/index";
 
 export default function Error() {
   const history = useHistory();
@@ -36,7 +37,7 @@ export default function Error() {
         {/* 배경 */}
         <div className={"error-background"}>
           <img
-            src={require("../../assets/banners/hyu-love.jpg").default}
+            src={require("../../assets/banners/default.png").default}
             alt={""}
           />
         </div>

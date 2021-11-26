@@ -49,7 +49,7 @@ export default function Company({history, match}) {
           setCompanyData({
             ...r,
             logo:
-              tmpCompany[0].logo ||
+              tmpCompany[0].logoWhite ||
               require("../../assets/logos/seventeen-hearts.svg").default,
           });
         })

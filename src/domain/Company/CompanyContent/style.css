@@ -1,134 +1,61 @@
 /* 기업소개 */
-.company-intro {
-  display: flex;
-  flex-direction: row;
-}
-.company-intro-left {
-  width: 35%;
-  margin: auto 0;
+.company-intro .intro-text {
   text-align: center;
 }
-.company-intro-right {
-  width: 65%;
+
+.company-intro .card-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1em;
 }
-
-/* 기업 소개 제목 */
-.company-intro-left .subtitle {
-  margin-bottom: 0.8em;
-}
-
-/* 기업 로고 */
-.company-intro-logo {
-  height: 5em;
-}
-.company-intro-logo img {
-  width: auto;
-  height: auto;
-  max-height: 100%;
-}
-
-/* 기업 태그들 */
-.company-tag {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.company-tag > li {
-  width: fit-content;
-  padding: 0.2em 0.7em;
-
-  color: white;
-  background-color: var(--color-dark-blue);
-
-  border-radius: 10em;
-  margin: 2px;
-}
-
-/* 질의응답 */
-.company-interview-page {
-  position: relative;
-}
-/* .company-interview-page::after {
-  content: "";
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-
+.company-intro .card-item {
   width: 100%;
   height: 100%;
 
-  background: url("../../../assets/backgrounds/circle-scatter-lightblue.svg")
-    center center no-repeat;
-  background-size: cover;
-  filter: opacity(0.35);
-} */
-.company-interview-wrapper {
-  --background-color: white;
+  margin: 0 auto;
+  padding: 2rem;
 
-  padding: 1.2em;
-  margin-bottom: 1em;
-
-  background-color: var(--background-color);
-
-  border: 1px solid var(--color-dark-blue);
-  border-radius: 0.5rem;
-}
-.company-interview-wrapper:hover {
-  margin: -0.5em 0 1.5em 0;
-}
-
-.company-interview-question,
-.company-interview-answer {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  border: 1px solid var(--color-gray);
+  border-radius: 0.5em;
+
+  background-color: white;
+  box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.3);
 }
-.company-interview-answer {
-  margin-top: 1em;
+.company-intro .card-item:hover {
+  margin-top: -5px;
+  margin-bottom: 5px;
+  background-color: var(--color-light-blue3);
+}
+.company-intro .card-item:first-child {
+  justify-content: center;
+  color: white;
+  background-color: var(--color-dark-blue);
+}
+
+.company-intro .card-item-title {
+  font-family: noto-sans-ultra-bold;
+  margin-bottom: 0.5em;
+}
+.company-intro .card-item-content {
   font-family: noto-sans-light;
 }
-.company-interview-content {
-  position: relative;
-  z-index: 10;
-  margin-top: 0.8rem;
+.company-intro .company-logo img {
+  width: auto;
+  height: auto;
+  max-width: 200px;
+  max-height: 200px;
 }
-
-/* 질의응답 : Q or A */
-.company-interview-type {
-  position: relative;
-
-  width: fit-content;
-  height: fit-content;
-
-  margin-right: 0.5em;
-
-  font-size: 2rem;
+.company-intro .card-item .more-info {
+  font-family: noto-sans-light;
+}
+.company-intro .card-item .more-info:hover {
   font-family: noto-sans-ultra-bold;
-}
-.company-interview-type::after {
-  content: "";
-
-  position: absolute;
-  top: 60%;
-  left: 100%;
-  z-index: 0;
-
-  width: 1.2em;
-  height: 0.5em;
-  border-top: 0.5px solid var(--color-dark-blue);
-
-  --rotate-deg: -45deg;
-  transform: translateX(-50%) rotate(var(--rotate-deg));
-  -webkit-transform: translateX(-50%) rotate(var(--rotate-deg));
-  -moz-transform: translateX(-50%) rotate(var(--rotate-deg));
-  -ms-transform: translateX(-50%) rotate(var(--rotate-deg));
-  -o-transform: translateX(-50%) rotate(var(--rotate-deg));
-}
-.company-interview-question .company-interview-type::after {
-  background-color: var(--background-color);
-}
-.company-interview-answer .company-interview-type::after {
-  background-color: white;
 }
 
 /* 유튜브 */
@@ -146,7 +73,6 @@
 .company-youtube-wrapper {
   width: 100%;
   height: 100%;
-  margin-bottom: 2rem;
 
   display: flex;
   flex-direction: row;
@@ -155,6 +81,8 @@
 .company-youtube-wrapper .youtube-player {
   width: 100%;
   height: 600px;
+  border-radius: 0.5em;
+  /* border: 0.5em solid white; */
 }
 .company-youtube-wrapper .youtube-player-error {
   display: flex;
@@ -194,7 +122,9 @@
   width: auto;
   max-width: 100%;
   height: 100%;
-  border: 0.5em solid white;
+
+  border-radius: 0.5em;
+  /* border: 0.5em solid white; */
 }
 
 /* 슬라이드쇼 */
@@ -216,19 +146,16 @@
 
   min-width: 100%;
   width: max-content;
-  /* height: fit-content; */
 
   white-space: nowrap;
 
   padding: 0.5em 0;
-  background-color: white;
+  /* background-color: white; */
 }
 .company-picture-slide > .company-picture {
   height: 150px;
   margin-right: 0.5em;
   cursor: pointer;
-
-  opacity: 1;
 
   --animation-duration: 300ms;
   transition: all var(--animation-duration);
@@ -248,7 +175,12 @@
   height: auto;
   max-width: 100%;
   max-height: 100%;
+
   object-fit: cover;
+
+  border-radius: 0.3em;
+  /* border: 0.3em solid white; */
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
 }
 /* 도움말 */
 .company-picture-slide-helper {
@@ -261,6 +193,11 @@
 @media screen and (max-width: 1280px) {
   .company-youtube-wrapper {
     padding: 0;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .company-intro .card-wrapper {
+    grid-template-columns: 1fr 1fr;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -297,6 +234,9 @@
 }
 
 @media screen and (max-width: 600px) {
+  .company-intro .card-wrapper {
+    grid-template-columns: 1fr;
+  }
   .company-youtube-wrapper .youtube-player {
     height: 300px;
   }
