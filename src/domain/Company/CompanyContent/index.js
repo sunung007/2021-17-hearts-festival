@@ -5,7 +5,7 @@ import Page from "../../../components/Page";
 import {useScrollFadeIn} from "../../../hooks/useScrollFadeIn";
 
 function CompanySectionCard({section, index}) {
-  const fadeAnimation = useScrollFadeIn("up", 1, (1 + index) / 3);
+  const fadeAnimation = useScrollFadeIn("up", 1, 0.3 * (1 + index));
   return (
     <li className={"card-item"} {...fadeAnimation}>
       <div className={"card-item-title"}>{section?.title}</div>
@@ -30,7 +30,7 @@ export default function CompanyContent({
       <div style={{height: 0, padding: 0}} ref={introSection} />
       <Page className={"company-intro"}>
         <div
-          className={"intro-text font-light"}
+          className={"intro-text"}
           dangerouslySetInnerHTML={{
             __html: company?.intro || <></>,
           }}

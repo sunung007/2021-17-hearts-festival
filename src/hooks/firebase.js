@@ -67,6 +67,7 @@ export async function enrollComment(companyId, newComment) {
   ];
 
   await setDoc(commentDoc, {comments: writeDatas}, {merge: true});
+  logEvent(fbAnalytics, "comment_enroll");
 }
 
 export async function deleteComment(companyId, target) {
@@ -77,7 +78,10 @@ export async function deleteComment(companyId, target) {
   let comments = datas.comments;
   comments.pop(target);
   if (comments === undefined) comments = [];
+
   await setDoc(commentDoc, {comments: comments}, {merge: true});
+  logEvent(fbAnalytics, "comment_delete");
+
   return comments;
 }
 

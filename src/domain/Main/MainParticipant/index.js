@@ -66,9 +66,12 @@ export default function MainParticipant() {
             </span>
           </div>
 
-          <div className={"font-light"}>
-            {participants[curParticipant]?.feel}
-          </div>
+          <div
+            className={"font-light"}
+            dangerouslySetInnerHTML={{
+              __html: participants[curParticipant]?.feel,
+            }}
+          ></div>
         </div>
       </Page>
 

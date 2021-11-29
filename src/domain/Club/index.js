@@ -4,6 +4,44 @@ import {clubs} from "../../data/clubs";
 import {useScrollToBody} from "../../hooks/useScrollToBody";
 import DetailHeaderPage from "../../components/DetailHeaderPage/index";
 import Page from "../../components/Page";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
+
+const ClubContent = ({club}) => {
+  return (
+    <>
+      <Page style={{backgroundColor: "var(--color-dark-blue)", color: "white"}}>
+        <center className={"font-light"}>
+          <FontAwesomeIcon icon={faExclamationTriangle} /> 본 페이지는 웹에
+          최적화 되어 있습니다.
+        </center>
+        <br />
+        <img
+          src={club?.poster}
+          alt={""}
+          style={{width: "auto", height: "auto", maxWidth: "100%"}}
+        />
+      </Page>
+      <div
+        style={{
+          textAlign: "center",
+          padding: "2rem",
+        }}
+      >
+        <img
+          src={club?.logo}
+          alt={""}
+          style={{
+            width: "auto",
+            height: "auto",
+            maxWidth: "min(100%, 200px)",
+            maxHeight: "400px",
+          }}
+        />
+      </div>
+    </>
+  );
+};
 
 export default function Club({history, match}) {
   const [body, scrollToBody] = useScrollToBody();
@@ -40,9 +78,7 @@ export default function Club({history, match}) {
 
       {/* 내용 */}
       <div className={"inner-padding"} ref={body}>
-        {clubData.hasOwnProperty("id") && (
-          <Page>소셜벤처팀 {clubData.name}을 소개합니다.</Page>
-        )}
+        {clubData.hasOwnProperty("id") && <ClubContent club={clubData} />}
       </div>
     </div>
   );

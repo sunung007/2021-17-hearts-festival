@@ -92,7 +92,7 @@ export default function Company({history, match}) {
             />
           ) : (
             <Page
-              className={"company-not-ready font-light"}
+              className={"company-not-ready"}
               style={{
                 backgroundColor: "var(--color-dark-gray)",
                 color: "white",

@@ -54,24 +54,33 @@
 
 /* 사진 */
 .home-with-people-detail-img {
-  margin: 0 auto;
-  border-radius: 0.5em;
-  overflow: hidden;
-
   width: 200px;
+  height: fit-content;
   max-height: 300px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto;
+  overflow: hidden;
 }
 .home-with-people-detail-img img,
 .home-with-people-detail-img svg {
   width: 100% !important;
-  height: 100% !important;
+  height: auto;
+
   color: gray;
+  border-radius: 0.5em;
 }
 
 /* 내용 */
 .home-with-people-detail-content {
   width: 100%;
   margin-left: 2em;
+
+  font-size: 0.9em;
+  line-height: 2em;
 }
 
 /* 정보 */

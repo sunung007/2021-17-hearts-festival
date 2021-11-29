@@ -11,6 +11,7 @@ import MainSublist from "./MainSublist";
 import {companyList} from "../../data/company";
 import {clubs} from "../../data/clubs";
 import {useScrollToBody} from "../../hooks/useScrollToBody";
+import {useScrollFadeIn} from "../../hooks/useScrollFadeIn";
 
 const festivalIntro = (
   <>
@@ -34,26 +35,23 @@ const festivalIntro = (
     </p>
     <br />
     <p>
-      6번째를 맞는 2021년 Seventeen Hearts Festival에서는 ESG라는 사회적 이슈를
-      중심으로
+      6번째를 맞는 2021년 Seventeen Hearts Festival에서는
+      <br />
+      ESG라는 사회적 이슈를 중심으로
       <br />
       <b>
-        국내 우수기관/기업에서 가지고 있는 ESG, 사회공헌에 대한 방향 및 목표를
-        확인하는 인터뷰를 진행하고
-        <br />
-        교내에서 활발하게 활동하고 있는 재학생 소셜벤처 창업팀,
+        국내 우수기관/기업에서 가지고 있는 ESG와 사회공헌에 대한 방향 및 목표를
+        확인하는 인터뷰를 진행
+      </b>
+      하고
+      <br />
+      <b>
+        교내에서 활발하게 활동하고 있는 재학생 소셜벤처 창업팀과
         사회혁신/사회공헌 활동 팀의 성과를 공유
       </b>
+      하는
       <br />
-      하는 자리를 마련하였습니다.
-    </p>
-    <br />
-    <p>
-      6번째 Seventeen Hearts Festival은
-      <br />
-      12월 6일부터 10일까지 대면으로 병행하여 진행하오니,
-      <br />
-      많은 관심과 참여 부탁드립니다.
+      자리를 마련하였습니다.
     </p>
   </>
 );
@@ -61,6 +59,10 @@ const festivalIntro = (
 export default function Main() {
   const [section1, scrollToSection1] = useScrollToBody();
   const [section2, scrollToSection2] = useScrollToBody();
+
+  const animation1 = useScrollFadeIn("up", 1, 0);
+  const animation2 = useScrollFadeIn("up", 1, 0.3);
+  const animation3 = useScrollFadeIn("up", 1, 0.6);
 
   return (
     <div className={"main"}>
@@ -82,13 +84,14 @@ export default function Main() {
           parentClassName={"main-intro-page"}
           style={{backgroundColor: "var(--color-main-banner)"}}
         >
-          <div className={"main-intro-content font-light"}>{festivalIntro}</div>
+          <div className={"main-intro-content"}>{festivalIntro}</div>
           <br />
 
           <ul className={"main-intro-subsection"}>
             <li
               className={"main-intro-subsection-item"}
               onClick={scrollToSection1}
+              {...animation1}
             >
               <div className={"title"}>기업 인터뷰</div>
               <div className={"main-intro-subsection-move-btn"}>바로가기</div>
@@ -104,6 +107,7 @@ export default function Main() {
             <li
               className={"main-intro-subsection-item"}
               onClick={scrollToSection2}
+              {...animation2}
             >
               <div className={"title"}>소셜벤처</div>
               <div className={"main-intro-subsection-move-btn"}>바로가기</div>
@@ -123,6 +127,7 @@ export default function Main() {
                   "http://hvc.hanyang.ac.kr/hyu-사회혁신센터/hyu-social-innovation/hyu-sdgs-선언과-행동/"
                 );
               }}
+              {...animation3}
             >
               <div className={"title"}>한양의 SDGs</div>
               <div className={"main-intro-subsection-move-btn"}>바로가기</div>
@@ -185,7 +190,7 @@ export default function Main() {
         {/* 배리어프리 */}
         <Page
           parentClassName={"home-bf-info-page"}
-          className={"font-light"}
+          // className={"font-light"}
           style={{backgroundColor: "var(--color-light-blue3)"}}
           // style={{backgroundColor: "var(--color-dark-gray)", color: "white"}}
         >
@@ -198,7 +203,17 @@ export default function Main() {
           <div className={"section"}>
             <div className={"bg"}>
               <p>
-                배리어프리영화란 "기존의 영화에 화면을 설명해주는{" "}
+                배러어프리란, '장벽 없는 건축설계(BARRIER FREE DESIGN)'에 관한
+                보고서에서 유래한 말로, <b>장애인들도 편하게</b> 살아갈 수 있는
+                도시를 만들기 위해 물리적/제도적 장벽을 허물자는 개념입니다.
+                <br />
+                오늘날에는 건축 시설물의 변화 뿐만 아니라 문화와 예술 분야로
+                적용되고 확장되어 모든 분야에서 사용되고 있습니다.
+              </p>
+              <br />
+
+              <p>
+                <b>배리어프리영화</b>란 "기존의 영화에 화면을 설명해주는{" "}
                 <b>음성해설</b>과 화자 및 대사, 음악, 소리정보를 알려주는{" "}
                 <b>배리어프리자막</b>을 넣어{" "}
                 <b>모든 사람이 함께 즐길 수 있도록 만든 영화</b>"입니다.
@@ -213,7 +228,7 @@ export default function Main() {
               </p>
               <br />
 
-              <p>배리어프리에 대한 더 많은 내용은 아래를 참고해주세요.</p>
+              <p>배리어프리영화에 대한 더 많은 내용은 아래를 참고해주세요.</p>
               <a
                 href={"http://barrierfreefilms.or.kr/main"}
                 target={"_blank"}
@@ -225,8 +240,8 @@ export default function Main() {
 
             <div>
               <img
-                src={require("../../assets/barrierfree/intro.png").default}
-                alt={"배리어프리 안내"}
+                src={require("../../assets/etc/intro.png").default}
+                alt={"배리어프리영화 안내"}
               />
               <br />
               <i>
@@ -239,26 +254,27 @@ export default function Main() {
           <div className={"section"}>
             <div>
               <img
-                scr={
-                  require("../../assets/barrierfree/people-celebrity.png")
-                    .default
-                }
+                src={require("../../assets/etc/people-celebrity.png").default}
                 alt={"배리어프리 연예인 홍보대사"}
               />
               <br />
               <img
-                scr={
-                  require("../../assets/barrierfree/people-normal.png").default
-                }
+                src={require("../../assets/etc/people-normal.png").default}
                 alt={"배리어프리 일반인 홍보대사"}
               />
               <br />
-              <i>배리어프리 홍보대사 (출처 : 서울배리어프리영화제)</i>
+              <i>배리어프리영화 홍보대사 (출처 : 서울배리어프리영화제)</i>
             </div>
             <div className={"bg"}>
               <p>
-                2022 배리어프리영화 홍보대사로 장동윤 배우, 김보라 배우, 오성윤
-                감독이 위촉되었으며, 관객 홍보대사로 시각장애인 박현선,
+                2022 배리어프리영화 홍보대사로 &lt;조선로코 녹두전&gt;,
+                &lt;태일이&gt;의 장동윤 배우, &lt;스카이 캐슬&gt;,
+                &lt;괴기맨숀&gt;의 김보라 배우, &lt;마당을 나온
+                암탉&gt;,&lt;언더독&gt;의 오성윤 감독이 위촉되었습니다.
+              </p>
+              <p>
+                <br />
+                2022 배리어프리영화 관객 홍보대사로는 시각장애인 박현선,
                 청각장애인 이정하, 비장애 홍보대사{" "}
                 <b>한양대학교 '같이걷개'팀의 최정윤, 공주현, 김세인</b> 등 총
                 5인이 위촉되었습니다.
@@ -274,7 +290,7 @@ export default function Main() {
                 target={"_blank"}
                 rel={"noreferrer"}
               >
-                2022 배리어프리 홍보대사 위촉식 보기
+                2022 배리어프리영화 홍보대사 위촉식 보기
               </a>
             </div>
           </div>

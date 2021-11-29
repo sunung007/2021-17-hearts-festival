@@ -323,4 +323,15 @@
   .main-intro-subsection-item {
     max-width: none;
   }
+  .home-bf-info-page .section {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+    margin: 0;
+  }
+  .home-bf-info-page .section > div {
+    padding: 2rem 1rem;
+  }
+  .home-bf-info-page .section:last-child > div:first-child {
+    grid-row: 2;
+  }
 }

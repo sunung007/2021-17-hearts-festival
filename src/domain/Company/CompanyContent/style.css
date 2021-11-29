@@ -43,7 +43,7 @@
   margin-bottom: 0.5em;
 }
 .company-intro .card-item-content {
-  font-family: noto-sans-light;
+  /* font-family: noto-sans-light; */
 }
 .company-intro .company-logo img {
   width: auto;
@@ -52,7 +52,7 @@
   max-height: 200px;
 }
 .company-intro .card-item .more-info {
-  font-family: noto-sans-light;
+  /* font-family: noto-sans-light; */
 }
 .company-intro .card-item .more-info:hover {
   font-family: noto-sans-ultra-bold;
@@ -194,6 +194,9 @@
   .company-youtube-wrapper {
     padding: 0;
   }
+  .company-youtube-wrapper .youtube-player {
+    border-radius: 0;
+  }
 }
 @media screen and (max-width: 1100px) {
   .company-intro .card-wrapper {
@@ -230,6 +233,7 @@
   .company-picture-big img {
     height: auto;
     max-height: 100%;
+    border-radius: 0;
   }
 }
 

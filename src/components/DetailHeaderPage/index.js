@@ -25,7 +25,7 @@ export default function DetailHeaderPage({
             <span className={"page-title-go-back-home-arrow"}>
               <FontAwesomeIcon icon={faChevronLeft} />{" "}
             </span>
-            <span>Seventeen Hearts Festiver</span>
+            <span>Seventeen Hearts Festival</span>
           </Link>
         </div>
 
