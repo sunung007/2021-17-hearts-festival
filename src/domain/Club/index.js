@@ -15,13 +15,23 @@ const ClubContent = ({club}) => {
           <FontAwesomeIcon icon={faExclamationTriangle} /> 본 페이지는 웹에
           최적화 되어 있습니다.
         </center>
+
+        {club?.poster?.map((poster) => (
+          <>
+            <br />
+            <img
+              src={poster}
+              alt={""}
+              style={{width: "auto", height: "auto", maxWidth: "100%"}}
+            />
+          </>
+        ))}
         <br />
-        <img
-          src={club?.poster}
-          alt={""}
-          style={{width: "auto", height: "auto", maxWidth: "100%"}}
-        />
+        {club.hasOwnProperty("other") && (
+          <div className={"club-other"}>{club?.other}</div>
+        )}
       </Page>
+
       <div
         style={{
           textAlign: "center",
@@ -78,7 +88,11 @@ export default function Club({history, match}) {
 
       {/* 내용 */}
       <div className={"inner-padding"} ref={body}>
-        {clubData.hasOwnProperty("id") && <ClubContent club={clubData} />}
+        {clubData.hasOwnProperty("id") ? (
+          <ClubContent club={clubData} />
+        ) : (
+          <center>로딩 중 입니다. 잠시만 기다려 주세요.</center>
+        )}
       </div>
     </div>
   );

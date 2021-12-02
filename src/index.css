@@ -97,27 +97,32 @@ b {
 /* 얇은 폰트 */
 @font-face {
   font-family: "noto-sans-ultra-light";
-  src: url("./fonts/NanumSquareL.ttf");
+  src: url("./fonts/NotoSansKR-Thin.otf");
+  /* src: url("./fonts/NanumSquareL.ttf"); */
 }
 @font-face {
   font-family: "noto-sans-light";
-  src: url("./fonts/NanumSquareL.ttf");
+  src: url("./fonts/NotoSansKR-Light.otf");
+  /* src: url("./fonts/NanumSquareL.ttf"); */
 }
 
 /* 일반 폰트 */
 @font-face {
   font-family: "noto-sans-regular";
-  src: url("./fonts/NanumSquareR.ttf");
+  src: url("./fonts/NotoSansKR-Regular.otf");
+  /* src: url("./fonts/NanumSquareR.ttf"); */
 }
 
 /* 굵은 폰트 */
 @font-face {
   font-family: "noto-sans-bold";
-  src: url("./fonts/NanumSquareB.ttf");
+  src: url("./fonts/NotoSansKR-Bold.otf");
+  /* src: url("./fonts/NanumSquareB.ttf"); */
 }
 @font-face {
   font-family: "noto-sans-ultra-bold";
-  src: url("./fonts/NanumSquareEB.ttf");
+  src: url("./fonts/NotoSansKR-Black.otf");
+  /* src: url("./fonts/NanumSquareEB.ttf"); */
 }
 
 /* 타이틀 폰트 */

@@ -11,7 +11,9 @@ import Company from "./domain/Company";
 import Club from "./domain/Club";
 import Error from "./domain/Error/index";
 
-export const URLS = ["/", "/error", "/company", "/club"];
+import NotOpen from "./domain/NotOpen";
+
+export const URLS = ["/", "/home", "/error", "/company", "/club"];
 
 export default function App() {
   useEffect(() => {
@@ -20,7 +22,9 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Route exact path={"/"} component={Main} />
+      <Route exact path={"/"} component={NotOpen} />
+
+      <Route exact path={"/home"} component={Main} />
       <Route exact path={"/company/:cid"} component={Company} />
       <Route exact path={"/club/:cid"} component={Club} />
 

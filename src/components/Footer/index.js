@@ -52,13 +52,6 @@ export default function Footer() {
       </div>
 
       <div>
-        <p>POWERED BY. GOFO</p>
-        <p>Copyright 2021. Hanyang University Social Innovation Center</p>
-        <p>
-          본 사이트는 한양대학교 사회봉사단 사회혁신센터 주관으로 Seventeen
-          Hearts Festival을 위해 제작되었습니다.
-        </p>
-        <br />
         <p>
           [04763] 서울특별시 왕십리로 222길 한양플라자 2층 사회혁신센터{" "}
           <b>
@@ -68,6 +61,26 @@ export default function Footer() {
               </a>
             </u>
           </b>
+        </p>
+        <br />
+
+        <p>
+          본 사이트는 한양대학교 사회봉사단 사회혁신센터 주관으로 Seventeen
+          Hearts Festival을 위해 제작되었습니다.
+        </p>
+        <p>Copyright 2021. Hanyang University Social Innovation Center</p>
+        <br />
+
+        <p>
+          <a
+            href={"https://github.com/sunung007"}
+            target={"_blank"}
+            rel={"noreferrer"}
+            title={"GITHUB"}
+          >
+            {" "}
+            POWERED BY. GOFO(Sunwoong Kim)
+          </a>
         </p>
       </div>
     </footer>

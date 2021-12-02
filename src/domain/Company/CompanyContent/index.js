@@ -1,6 +1,5 @@
 import "./style.css";
 
-import {useState} from "react";
 import Page from "../../../components/Page";
 import {useScrollFadeIn} from "../../../hooks/useScrollFadeIn";
 
@@ -18,12 +17,7 @@ export default function CompanyContent({
   company,
   introSection,
   interviewSection,
-  picturesSection,
 }) {
-  const [curImgIndex, setCurImgIndex] = useState(
-    company?.imgs.length > 0 ? 0 : -1
-  );
-
   const firstRef = useScrollFadeIn("up", 1, 0);
   return (
     <>
@@ -35,6 +29,7 @@ export default function CompanyContent({
             __html: company?.intro || <></>,
           }}
         />
+        <br />
         <br />
 
         <ul className={"card-wrapper"}>
@@ -99,48 +94,6 @@ export default function CompanyContent({
             인터뷰 예정입니다. 해당 기업에 대해 궁금한 점이 있다면 방명록으로
             알려주세요.
           </center>
-        )}
-      </Page>
-
-      {/* 인터뷰 영상 & 사진 */}
-      <div style={{height: 0, padding: 0}} ref={picturesSection} />
-      <Page
-        className={"company-pictures-page"}
-        style={{backgroundColor: "var(--color-dark-gray)", color: "white"}}
-      >
-        <h1 className={"section-title"}>
-          <div>갤러리</div>
-          <div className={"subtitle"}>Gallery</div>
-        </h1>
-        <br />
-
-        {curImgIndex > -1 ? (
-          <div className={"company-pictures-wrapper"}>
-            {/* 확대 사진 */}
-            <div className={"company-picture-big"}>
-              <img src={company?.imgs[curImgIndex]} alt={""} />
-            </div>
-
-            {/* 사진 리스트 */}
-            <div className={"company-picture-slide-wrapper"}>
-              <ul className={"company-picture-slide"}>
-                {company?.imgs.map((img, index) => (
-                  <li
-                    key={index}
-                    className={"company-picture"}
-                    onClick={() => setCurImgIndex(index)}
-                  >
-                    <img src={img} alt={""} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className={"company-picture-slide-helper font-light"}>
-              * 사진을 누르면 크게 보입니다.
-            </div>
-          </div>
-        ) : (
-          <center className={"font-ultra-light"}>준비 중입니다.</center>
         )}
       </Page>
     </>

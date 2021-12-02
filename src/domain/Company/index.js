@@ -12,14 +12,12 @@ import DetailHeaderPage from "../../components/DetailHeaderPage";
 import {useScrollToBody} from "../../hooks/useScrollToBody";
 import {getCompanyInterview} from "../../hooks/firebase";
 
-import {banners} from "../../data/banner";
 import {companyList} from "../../data/company";
 
 export default function Company({history, match}) {
   const [body, scrollToBody] = useScrollToBody();
   const [intro, scrollToIntro] = useScrollToBody(56);
   const [interviewRef, scrollToInterview] = useScrollToBody(56);
-  const [picturesRef, scrollToPictures] = useScrollToBody(56);
   const [commentsRef, scrollToComments] = useScrollToBody(56);
 
   const [companyData, setCompanyData] = useState({});
@@ -28,7 +26,6 @@ export default function Company({history, match}) {
   const headerMenu = [
     ["기업소개", scrollToIntro],
     ["인터뷰", scrollToInterview],
-    ["갤러리", scrollToPictures],
     ["방명록", scrollToComments],
   ];
 
@@ -48,6 +45,7 @@ export default function Company({history, match}) {
         .then((r) => {
           setCompanyData({
             ...r,
+            banner: tmpCompany[0].banner,
             logo:
               tmpCompany[0].logoWhite ||
               require("../../assets/logos/seventeen-hearts.svg").default,
@@ -73,7 +71,7 @@ export default function Company({history, match}) {
           title={companyData?.name}
           background={
             companyData?.banner ||
-            banners.filter((r) => r.id === companyData?.id)[0]?.background
+            require("../../assets/banners/default.png").default
           }
           prev={prevNext[0]}
           next={prevNext[1]}
@@ -88,7 +86,6 @@ export default function Company({history, match}) {
               company={companyData}
               introSection={intro}
               interviewSection={interviewRef}
-              picturesSection={picturesRef}
             />
           ) : (
             <Page

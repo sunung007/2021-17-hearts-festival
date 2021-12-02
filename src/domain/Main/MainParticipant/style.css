@@ -14,12 +14,15 @@
   border: none;
 }
 .open-height {
-  max-height: 500px;
+  max-height: 350px;
 }
 .home-with-people-detail {
   position: relative;
+  height: 350px;
+
   display: flex;
   flex-direction: row;
+  align-items: center;
 
   color: black;
   font-size: 1.2em;
@@ -77,16 +80,23 @@
 /* 내용 */
 .home-with-people-detail-content {
   width: 100%;
+  height: calc(350px - 8rem);
   margin-left: 2em;
 
   font-size: 0.9em;
   line-height: 2em;
+
+  overflow-y: auto;
+}
+.home-with-people-detail-content::-webkit-scrollbar {
+  width: 5px;
 }
 
 /* 정보 */
 .home-with-people-detail-info {
   margin-bottom: 0.7em;
 }
+
 .home-with-people-detail-info > span:first-child {
   font-size: 1.6em;
   font-family: nixgon-bold;
@@ -95,13 +105,16 @@
   font-family: nixgon-light;
 }
 
+.home-with-people-detail-text {
+}
+
 /* 전체 리스트 */
 .home-with-people-page {
   padding-top: 1em !important;
 }
 .home-with-people-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   row-gap: 1em;
   column-gap: 1em;
 }
@@ -127,6 +140,12 @@
 .home-with-people:hover {
   background: rgba(255, 255, 255, 0.6);
 }
+.no-hover {
+  cursor: default;
+}
+.no-hover:hover {
+  background-color: white;
+}
 
 /* 현재 선택된 사람 */
 .home-with-people-wrapper .cur-people {
@@ -140,8 +159,8 @@
 
 /* 이미지 */
 .home-with-people-img {
-  width: 180px;
-  height: 130px;
+  width: 170px;
+  height: 140px;
 
   color: gray;
 
@@ -180,11 +199,18 @@
   .home-with-people-wrapper {
     grid-template-columns: 1fr 1fr;
   }
+  .home-with-people-detail {
+    border-radius: 0;
+  }
 }
 
 @media screen and (max-width: 700px) {
   .home-with-people-page {
     padding: 1em 0 3rem 0 !important;
+  }
+
+  .open-height {
+    max-height: 1000px;
   }
 
   .home-with-people-wrapper {
@@ -195,6 +221,34 @@
   /* 스크롤바 */
   .home-with-people-wrapper::-webkit-scrollbar {
     height: 0;
+  }
+
+  .open-height {
+    max-height: 500px;
+  }
+  .home-with-people-detail {
+    flex-direction: column;
+    height: 500px;
+    padding: 2rem 1rem !important;
+  }
+  .home-with-people-detail-content::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .home-with-people-detail-info {
+    text-align: center;
+  }
+  .home-with-people-detail-img {
+    max-height: 150px;
+  }
+  .home-with-people-detail-img img,
+  .home-with-people-detail-img svg {
+    width: auto !important;
+    height: 100%;
+  }
+  .home-with-people-detail-content {
+    margin: 1.5em 0 0 0;
+    height: calc(100% - 4rem);
   }
 
   .home-with-people {

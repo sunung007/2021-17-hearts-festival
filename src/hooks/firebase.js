@@ -106,7 +106,6 @@ export async function getCompanyInterview(companyId) {
 
       banner: "",
       movie: "",
-      imgs: [],
 
       oneline: "",
       intro: "",
@@ -139,6 +138,15 @@ export async function getCompanyInterview(companyId) {
     // documment and array create
     console.log(`Documment and array 생성 : Company id ${companyId}`);
     return createNewCompanyDoc();
+  }
+}
+
+export async function getCompanyOnelines() {
+  const companyDoc = doc(fbDB, "companies", "oneline");
+  const docSnap = await getDoc(companyDoc);
+  if (docSnap.exists()) {
+    const datas = docSnap.data();
+    return datas;
   }
 }
 

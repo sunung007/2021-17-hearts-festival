@@ -1,0 +1,27 @@
+.not-open .page-inner {
+  padding: 4rem 1rem;
+}
+
+.not-open .dday {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 1rem;
+
+  font-size: 40px;
+  line-height: 65px;
+  font-family: logo;
+}
+.not-open .dday > li {
+  width: 80px;
+  height: 80px;
+
+  padding: 10px;
+  margin: 5px;
+
+  color: white;
+  background-color: var(--color-dark-gray);
+  border-radius: 0.5em;
+}

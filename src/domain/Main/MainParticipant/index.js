@@ -51,8 +51,8 @@ export default function MainParticipant() {
         </div>
 
         <div className={"home-with-people-detail-img"}>
-          {participants[curParticipant]?.img ? (
-            <img src={participants[curParticipant].img} alt={""} />
+          {participants[curParticipant + 3]?.img ? (
+            <img src={participants[curParticipant + 3].img} alt={""} />
           ) : (
             <FontAwesomeIcon icon={faUserCircle} />
           )}
@@ -60,16 +60,16 @@ export default function MainParticipant() {
 
         <div className={"home-with-people-detail-content"}>
           <div className={"home-with-people-detail-info"}>
-            <span>{participants[curParticipant]?.name} </span>
+            <span>{participants[curParticipant + 3]?.name} </span>
             <span className={"font-light"}>
-              {participants[curParticipant]?.dept.join(" ")}
+              {participants[curParticipant + 3]?.dept.join(" ")}
             </span>
           </div>
 
           <div
             className={"font-light"}
             dangerouslySetInnerHTML={{
-              __html: participants[curParticipant]?.feel,
+              __html: participants[curParticipant + 3]?.feel,
             }}
           ></div>
         </div>
@@ -82,7 +82,7 @@ export default function MainParticipant() {
       >
         <ul className={"home-with-people-wrapper"}>
           {participants.length > 0 &&
-            participants?.map((participant, index) => (
+            participants?.slice(3).map((participant, index) => (
               <li
                 className={`home-with-people ${
                   showDetail && curParticipant === index && "cur-people"
@@ -90,6 +90,35 @@ export default function MainParticipant() {
                 key={index}
                 onClick={() => changePeople(index)}
               >
+                {/* 사람 사진 */}
+                <div className={"home-with-people-img"}>
+                  {participant?.img ? (
+                    <img src={participant?.img} alt={""} />
+                  ) : (
+                    <FontAwesomeIcon icon={faUserCircle} />
+                  )}
+                </div>
+
+                {/* 사람 정보 */}
+                <div className={"home-with-people-info"}>
+                  <h2>{participant?.name}</h2>
+                  <div className={"font-light"}>
+                    {participant?.dept.map((dept, index) => (
+                      <p key={index}>{dept}</p>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            ))}
+        </ul>
+
+        <br />
+        <br />
+
+        <ul className={"home-with-people-wrapper"}>
+          {participants.length > 0 &&
+            participants?.slice(0, 3).map((participant, index) => (
+              <li className={"home-with-people no-hover"} key={index}>
                 {/* 사람 사진 */}
                 <div className={"home-with-people-img"}>
                   {participant?.img ? (

@@ -113,6 +113,12 @@
   border: 1px solid var(--color-gray);
   border-radius: 0.5em;
   background-color: rgba(0, 0, 0, 0.55);
+
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
 }
 
 .main-banner-item:not(.main-banenr-item-current) {
@@ -170,6 +176,7 @@
 .main-banner-item .page-title {
   font-family: noto-sans-regular;
   font-size: 1.5em;
+  width: 80%;
 }
 .main-banner-item .page-title .subtitle {
   font-family: nixgon-light;
@@ -243,9 +250,11 @@
 }
 
 @media screen and (max-width: 1000px) {
-  .main-banner-background img {
-    max-width: none !important;
-    max-height: 100% !important;
+  .main-banner-item .main-banner-background img {
+    /* max-width: none !important;
+    max-height: 100% !important; */
+    max-height: none !important;
+    max-width: 100% !important;
   }
 }
 

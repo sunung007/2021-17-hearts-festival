@@ -194,6 +194,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-bottom: 2rem;
+  padding: 0 2rem;
 }
 .home-bf-info-page .section > div {
   width: 100%;

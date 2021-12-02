@@ -12,6 +12,7 @@ import {companyList} from "../../data/company";
 import {clubs} from "../../data/clubs";
 import {useScrollToBody} from "../../hooks/useScrollToBody";
 import {useScrollFadeIn} from "../../hooks/useScrollFadeIn";
+import {Link} from "react-router-dom";
 
 const festivalIntro = (
   <>
@@ -280,11 +281,6 @@ export default function Main() {
                 5인이 위촉되었습니다.
               </p>
               <br />
-              <p>
-                같이걷개 팀은 장애인도우미견 뉴스레터 발송 및 MD 제작을 통한
-                장애인도우미견 육성 사업을 돕는 SK LOOKIE 활동도 진행 중입니다.
-              </p>
-              <br />
               <a
                 href={"https://www.youtube.com/user/BarrierFreeFrilms"}
                 target={"_blank"}
@@ -292,6 +288,20 @@ export default function Main() {
               >
                 2022 배리어프리영화 홍보대사 위촉식 보기
               </a>
+              <br />
+              <br />
+
+              <p>
+                같이걷개 팀은 장애인 도우미견의 확산과 인식 개선을 위해
+                노력하고, 장애인 및 교통약자 이동권 증진 서비스를 기획, 운영하는
+                사회혁신 팀입니다. 같이걷개 팀은 장애인도우미견 뉴스레터 발송 및
+                MD 제작을 통한 장애인도우미견 육성 사업을 돕는 SK LOOKIE 활동도
+                진행 중입니다.
+              </p>
+              <br />
+
+              <p>같이걷개 팀에 대한 더 많은 내용은 아래를 참고해주세요.</p>
+              <Link to={"/club/1"}>사회혁신팀, '같이걷개'란?</Link>
             </div>
           </div>
         </Page>

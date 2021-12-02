@@ -4,7 +4,6 @@ import {useCallback, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 import Page from "../../../components/Page";
-import {banners} from "../../../data/banner";
 import {companyList} from "../../../data/company";
 
 import {
@@ -14,9 +13,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {faPauseCircle} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {getCompanyOnelines} from "../../../hooks/firebase";
 
 export default function MainBanner() {
-  const totalBanner = banners.length;
+  const totalBanner = companyList.length;
+
+  const [companyOnelines, setCompanyOnelines] = useState({});
   const [curBanner, setCurBanner] = useState(0);
   const [isStop, setIsStop] = useState(false);
 
@@ -27,6 +29,17 @@ export default function MainBanner() {
   const changeBannerToRight = useCallback(() => {
     setCurBanner((curBanner + 1) % totalBanner);
   }, [curBanner, totalBanner]);
+
+  useEffect(() => {
+    getCompanyOnelines()
+      .then((r) => {
+        if (r !== undefined) setCompanyOnelines(r);
+      })
+      .catch((e) => {
+        console.error("기업별 소개 문구 로딩에 실패하였습니다.");
+        console.error(e);
+      });
+  }, []);
 
   useEffect(() => {
     const tick = setTimeout(() => !isStop && changeBannerToRight(), 3000);
@@ -41,7 +54,7 @@ export default function MainBanner() {
           marginLeft: `${(window.innerWidth - 610) / 2 - 590 * curBanner}px`,
         }}
       >
-        {banners.map((banner, index) => (
+        {companyList.map((company, index) => (
           <li
             className={`main-banner-item ${
               index === curBanner && "main-banenr-item-current"
@@ -51,8 +64,10 @@ export default function MainBanner() {
             <Page className={"page-header"}>
               <div className={"page-header-content"}>
                 <div className={"page-title"}>
-                  <div className={"subtitle"}>{banner.subtitle}</div>
-                  <div className={"title"}>{banner.title}</div>
+                  <div className={"subtitle"}>
+                    {companyOnelines[company.id]}
+                  </div>
+                  <div className={"title"}>{company?.name}</div>
 
                   {/* 인터뷰 보기 버튼 */}
                   <button
@@ -60,20 +75,29 @@ export default function MainBanner() {
                     onMouseOver={() => setIsStop(true)}
                     onMouseLeave={() => setIsStop(false)}
                   >
-                    <Link to={`/company/${banner.id}`}>인터뷰 보기</Link>
+                    <Link to={`/company/${company.id}`}>인터뷰 보기</Link>
                   </button>
                 </div>
 
                 <div className={"main-banner-logo"}>
                   <img
-                    src={companyList.filter((c) => c.id === banner.id)[0]?.logo}
+                    src={
+                      companyList.filter((c) => c.id === company.id)[0]
+                        ?.logoWhite
+                    }
                     alt={""}
                   />
                 </div>
               </div>
 
               <div className={"main-banner-background"}>
-                <img src={banner.background} alt={""} />
+                <img
+                  src={
+                    company?.banner ||
+                    require("../../../assets/banners/default.png").default
+                  }
+                  alt={""}
+                />
               </div>
             </Page>
           </li>
