@@ -1,6 +1,7 @@
 /* 기업소개 */
 .company-intro .intro-text {
   text-align: center;
+  word-break: keep-all;
 }
 
 .company-intro .card-wrapper {
@@ -20,6 +21,7 @@
   align-items: center;
 
   text-align: center;
+  word-break: keep-all;
 
   border: 1px solid var(--color-gray);
   border-radius: 0.5em;
@@ -27,6 +29,7 @@
   background-color: white;
   box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.3);
 }
+
 .company-intro .card-item:hover {
   margin-top: -5px;
   margin-bottom: 5px;
@@ -215,6 +218,10 @@
   .company-intro-left,
   .company-intro-right {
     width: 100%;
+  }
+
+  .company-intro .intro-text p br {
+    display: none !important;
   }
 
   .company-tag {

@@ -69,10 +69,7 @@ export default function Company({history, match}) {
         {/* 페이지 상단 헤더 */}
         <DetailHeaderPage
           title={companyData?.name}
-          background={
-            companyData?.banner ||
-            require("../../assets/banners/default.png").default
-          }
+          background={companyData?.banner}
           prev={prevNext[0]}
           next={prevNext[1]}
           scrollToBody={scrollToBody}
@@ -95,9 +92,9 @@ export default function Company({history, match}) {
                 color: "white",
               }}
             >
-              해당 기업은 인터뷰 준비 중입니다.
+              로딩 중입니다.
               <br />
-              해당 기업에 대해 궁금한 점이 있다면 방명록으로 알려주세요.
+              잠시만 기다려주세요.
             </Page>
           )}
 

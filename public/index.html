@@ -5,7 +5,6 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -16,6 +15,16 @@
       android:name="google_analytics_automatic_screen_reporting_enabled"
       android:value="false"
     />
+    <!-- ie 호환 -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <!-- ie css 변수적용 -->
+    <script>
+      window.MSInputMethodContext &&
+        document.documentMode &&
+        document.write(
+          '<script src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js"><\/script>'
+        );
+    </script>
 
     <title>Seventeen Hearts Festival</title>
 

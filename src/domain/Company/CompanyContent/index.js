@@ -39,9 +39,10 @@ export default function CompanyContent({
                 fontFamily: "nixgon-light",
                 fontSize: "1.4em",
               }}
-            >
-              {company?.oneline}
-            </div>
+              dangerouslySetInnerHTML={{
+                __html: company?.oneline || <></>,
+              }}
+            />
             <br />
 
             <div className={"company-logo"}>
@@ -83,8 +84,7 @@ export default function CompanyContent({
               className={"youtube-player"}
               id="youtube-player"
               title="youtube"
-              type="text/html"
-              src={company?.movie}
+              src={company?.movie + "?loop=1"}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             ></iframe>

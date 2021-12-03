@@ -35,7 +35,7 @@ export default function DetailHeaderPage({
       <div className={"background"}>
         <img
           src={
-            background || require("../../assets/banners/default.png").default
+            background || require("../../assets/banners/default.jpg").default
           }
           alt={""}
         />

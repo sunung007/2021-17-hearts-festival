@@ -1,24 +1,32 @@
 import "./style.css";
 import {useCallback, useEffect, useState} from "react";
+import {useHistory} from "react-router";
 
 import Page from "../../components/Page";
-
 import mainTitle from "../../assets/backgrounds/not-open-banner-logo.svg";
 import mainTitleMobile from "../../assets/backgrounds/not-open-banner-logo-mobile.svg";
 
 export default function NotOpen() {
+  const isBrowser = window.innerWidth > 700;
+
+  const history = useHistory();
   const [dday, setDday] = useState({});
+
   const fetchDday = useCallback(() => {
-    const gap = new Date("2021-12-6 00:00") - new Date();
+    const gap = new Date("2021-12-06") - new Date();
+    if (gap <= 0) history.replace("/home");
+
     setDday({
       day: Math.floor(gap / (1000 * 60 * 60 * 24)),
       hours: Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
       minutes: Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60)),
       seconds: Math.floor((gap % (1000 * 60)) / 1000),
     });
-  }, []);
+  }, [history]);
 
   useEffect(() => {
+    fetchDday();
+
     const tick = setInterval(fetchDday, 1000);
     return () => clearInterval(tick);
   }, [fetchDday]);
@@ -31,7 +39,7 @@ export default function NotOpen() {
       >
         <img
           className={"main-header-logo"}
-          src={window.innerWidth > 700 ? mainTitle : mainTitleMobile}
+          src={isBrowser ? mainTitle : mainTitleMobile}
           alt={""}
         />
       </Page>

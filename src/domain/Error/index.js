@@ -37,7 +37,7 @@ export default function Error() {
         {/* 배경 */}
         <div className={"error-background"}>
           <img
-            src={require("../../assets/banners/default.png").default}
+            src={require("../../assets/banners/default.jpg").default}
             alt={""}
           />
         </div>

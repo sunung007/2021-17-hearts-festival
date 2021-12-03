@@ -91,13 +91,7 @@ export default function MainBanner() {
               </div>
 
               <div className={"main-banner-background"}>
-                <img
-                  src={
-                    company?.banner ||
-                    require("../../../assets/banners/default.png").default
-                  }
-                  alt={""}
-                />
+                <img src={company?.banner} alt={""} />
               </div>
             </Page>
           </li>

@@ -27,10 +27,12 @@ const ClubContent = ({club}) => {
           </>
         ))}
         <br />
-        {club.hasOwnProperty("other") && (
-          <div className={"club-other"}>{club?.other}</div>
+        {club.hasOwnProperty("inside") && (
+          <div className={"club-other"}>{club?.inside}</div>
         )}
       </Page>
+
+      {club.hasOwnProperty("outside") && club?.outside}
 
       <div
         style={{

@@ -159,7 +159,7 @@
 
 /* 이미지 */
 .home-with-people-img {
-  width: 170px;
+  width: 184px;
   height: 140px;
 
   color: gray;
@@ -187,6 +187,9 @@
 }
 .home-with-people-info > h2 {
   margin-bottom: 0.3em;
+}
+.home-with-people-info * {
+  word-break: break-all !important;
 }
 
 /* 반응형 */

@@ -32,7 +32,7 @@ export const companyList = [
     name: "어썸스쿨",
     logo: require("../assets/logos/awesome-school.png").default,
     logoWhite: require("../assets/logos/awesome-school-white.png").default,
-    banner: require("../assets/banners/awesome-school.png").default,
+    banner: require("../assets/banners/awesome-school.jpg").default,
   },
   {
     id: 6,
@@ -46,7 +46,7 @@ export const companyList = [
     name: "한국국제협력단(KOICA)",
     logo: require("../assets/logos/koica.png").default,
     logoWhite: require("../assets/logos/koica-white.png").default,
-    banner: require("../assets/banners/koica.png").default,
+    banner: require("../assets/banners/koica.jpg").default,
   },
   {
     id: 8,
