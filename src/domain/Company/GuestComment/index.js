@@ -279,7 +279,7 @@ export default function GuestComment({cid}) {
                   onTouchStart={longTouch}
                   onTouchEnd={longTouchCancle}
                 >
-                  <div>{comment.value}</div>
+                  <div className={"guest-comment-item-1"}>{comment.value}</div>
                   <div className={"guest-comment-item-sub"}>
                     {comment.author_dept} {comment.author_name}{" "}
                     <span className={"guest-comment-item-date"}>
