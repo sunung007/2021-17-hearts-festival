@@ -159,15 +159,21 @@
 
 /* 이미지 */
 .home-with-people-img {
-  width: 184px;
-  height: 140px;
+  width: 170px;
+  height: 150px;
 
   color: gray;
 
   border-radius: 0.5em;
   overflow: hidden;
+
+  text-align: center;
 }
-.home-with-people-img img,
+.home-with-people-img img {
+  width: auto;
+  height: 100%;
+  margin: 0 -50%;
+}
 .home-with-people-img svg {
   width: 100% !important;
   height: 100% !important;

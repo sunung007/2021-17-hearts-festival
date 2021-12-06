@@ -1,5 +1,9 @@
 import "./style.css";
 
+import logoHYU from "../../assets/logos/hyu.png";
+import logoLinc from "../../assets/logos/hyu-linc.png";
+import logoHVC from "../../assets/logos/hyu-sic.png";
+
 export default function Footer() {
   return (
     <footer>
@@ -13,10 +17,7 @@ export default function Footer() {
               rel={"noreferrer"}
               title={"한양대 홈페이지 바로가기"}
             >
-              <img
-                src={require("../../assets/logos/hyu.png").default}
-                alt={"한양대"}
-              />
+              <img src={logoHYU} alt={"한양대"} />
             </a>
 
             <a
@@ -25,10 +26,7 @@ export default function Footer() {
               rel={"noreferrer"}
               title={"한양대 LINC 사업단 바로가기"}
             >
-              <img
-                src={require("../../assets/logos/hyu-linc.png").default}
-                alt={"한양대 LINC"}
-              />
+              <img src={logoLinc} alt={"한양대 LINC"} />
             </a>
           </div>
         </div>
@@ -42,10 +40,7 @@ export default function Footer() {
               rel={"noreferrer"}
               title={"한양대 사회혁신센터 바로가기"}
             >
-              <img
-                src={require("../../assets/logos/hyu-sic.png").default}
-                alt={"한양대 사회혁신센터"}
-              />
+              <img src={logoHVC} alt={"한양대 사회혁신센터"} />
             </a>
           </div>
         </div>
@@ -72,15 +67,17 @@ export default function Footer() {
         <br />
 
         <p>
-          <a
-            href={"https://github.com/sunung007"}
-            target={"_blank"}
-            rel={"noreferrer"}
-            title={"GITHUB"}
-          >
-            {" "}
-            POWERED BY. GOFO(Sunwoong Kim)
-          </a>
+          <u>
+            <a
+              href={"https://github.com/sunung007"}
+              target={"_blank"}
+              rel={"noreferrer"}
+              title={"GITHUB"}
+            >
+              {" "}
+              POWERED BY. GOFO(Sunwoong Kim)
+            </a>
+          </u>
         </p>
       </div>
     </footer>

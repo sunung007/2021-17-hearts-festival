@@ -4,17 +4,27 @@ import {Link} from "react-router-dom";
 import {isIE} from "react-device-detect";
 
 import Page from "../../components/Page";
-import mainTitle from "../../assets/backgrounds/main-banner-logo.svg";
-import mainTitleMobile from "../../assets/backgrounds/main-banner-logo-mobile.svg";
 
 import MainBanner from "./MainBanner";
 import MainParticipant from "./MainParticipant";
 import MainSublist from "./MainSublist";
 
-import {companyList} from "../../data/company";
-import {clubs} from "../../data/clubs";
 import {useScrollToBody} from "../../hooks/useScrollToBody";
 import {useScrollFadeIn} from "../../hooks/useScrollFadeIn";
+
+import {companyList} from "../../data/company";
+import {clubs} from "../../data/clubs";
+
+import mainTitle from "../../assets/backgrounds/main-banner-logo.svg";
+import mainTitleMobile from "../../assets/backgrounds/main-banner-logo-mobile.svg";
+
+import mainSection1 from "../../assets/backgrounds/main-section-interview.svg";
+import mainSection2 from "../../assets/backgrounds/main-section-social-venture.svg";
+import mainSection3 from "../../assets/backgrounds/main-section-hyu-sdgs.svg";
+
+import mainBF1 from "../../assets/etc/intro.png";
+import mainBF2 from "../../assets/etc/people-celebrity.jpg";
+import mainBF3 from "../../assets/etc/people-normal.jpg";
 
 export default function Main() {
   const isBrowser = window.innerWidth > 700;
@@ -128,13 +138,7 @@ export default function Main() {
               >
                 <div className={"title"}>기업 인터뷰</div>
                 <div className={"main-intro-subsection-move-btn"}>바로가기</div>
-                <img
-                  src={
-                    require("../../assets/backgrounds/main-section-interview.svg")
-                      .default
-                  }
-                  alt={""}
-                />
+                <img src={mainSection1} alt={""} />
               </li>
 
               <li
@@ -144,13 +148,7 @@ export default function Main() {
               >
                 <div className={"title"}>소셜벤처</div>
                 <div className={"main-intro-subsection-move-btn"}>바로가기</div>
-                <img
-                  src={
-                    require("../../assets/backgrounds/main-section-social-venture.svg")
-                      .default
-                  }
-                  alt={""}
-                />
+                <img src={mainSection2} alt={""} />
               </li>
 
               <li
@@ -164,13 +162,7 @@ export default function Main() {
               >
                 <div className={"title"}>한양의 SDGs</div>
                 <div className={"main-intro-subsection-move-btn"}>바로가기</div>
-                <img
-                  src={
-                    require("../../assets/backgrounds/main-section-hyu-sdgs.svg")
-                      .default
-                  }
-                  alt={""}
-                />
+                <img src={mainSection3} alt={""} />
               </li>
             </ul>
           </Page>
@@ -272,10 +264,7 @@ export default function Main() {
               </div>
 
               <div>
-                <img
-                  src={require("../../assets/etc/intro.png").default}
-                  alt={"배리어프리영화 안내"}
-                />
+                <img src={mainBF1} alt={"배리어프리영화 안내"} />
                 <br />
                 <i>
                   극한직업 예고편 중 (출처 : 유튜브 CJ ENM Movie 극한직업 2차
@@ -286,15 +275,9 @@ export default function Main() {
 
             <div className={"section"}>
               <div>
-                <img
-                  src={require("../../assets/etc/people-celebrity.jpg").default}
-                  alt={"배리어프리 연예인 홍보대사"}
-                />
+                <img src={mainBF2} alt={"배리어프리 연예인 홍보대사"} />
                 <br />
-                <img
-                  src={require("../../assets/etc/people-normal.jpg").default}
-                  alt={"배리어프리 일반인 홍보대사"}
-                />
+                <img src={mainBF3} alt={"배리어프리 일반인 홍보대사"} />
                 <br />
                 <i>배리어프리영화 홍보대사 (출처 : 서울배리어프리영화제)</i>
               </div>

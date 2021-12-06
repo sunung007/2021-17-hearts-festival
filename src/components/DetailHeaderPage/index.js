@@ -1,6 +1,8 @@
 import "./style.css";
 import {Link} from "react-router-dom";
+
 import Page from "../Page";
+import defaultBackground from "../../assets/banners/default.jpg";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
@@ -33,12 +35,7 @@ export default function DetailHeaderPage({
       </div>
 
       <div className={"background"}>
-        <img
-          src={
-            background || require("../../assets/banners/default.jpg").default
-          }
-          alt={""}
-        />
+        <img src={background || defaultBackground} alt={""} />
       </div>
 
       <div className={"page-header-down-float"}>

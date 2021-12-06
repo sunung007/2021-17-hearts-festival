@@ -92,9 +92,13 @@ export default function Company({history, match}) {
                 color: "white",
               }}
             >
-              로딩 중입니다.
+              로딩 중입니다. 잠시만 기다려주세요.
               <br />
-              잠시만 기다려주세요.
+              해당 오류가 계속된다면 한양대학교 사회혁신센터(
+              <a href="tel:02.2220.1004" title={"한양대 사회혁신센터 전화걸기"}>
+                02.2220.1004
+              </a>
+              )로 연락바랍니다.
             </Page>
           )}
 

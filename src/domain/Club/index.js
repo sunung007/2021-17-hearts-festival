@@ -93,7 +93,15 @@ export default function Club({history, match}) {
         {clubData.hasOwnProperty("id") ? (
           <ClubContent club={clubData} />
         ) : (
-          <center>로딩 중 입니다. 잠시만 기다려 주세요.</center>
+          <center>
+            로딩 중 입니다. 잠시만 기다려 주세요.
+            <br />
+            해당 오류가 계속된다면 한양대학교 사회혁신센터(
+            <a href="tel:02.2220.1004" title={"한양대 사회혁신센터 전화걸기"}>
+              02.2220.1004
+            </a>
+            )로 연락바랍니다.
+          </center>
         )}
       </div>
     </div>

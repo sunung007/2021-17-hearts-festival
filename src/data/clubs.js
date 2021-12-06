@@ -97,7 +97,10 @@ export const clubs = [
       </>
     ),
     outside: (
-      <Page style={{backgroundColor: "var(--color-dark-gray)"}}>
+      <Page
+        className={"company-interview-page"}
+        style={{backgroundColor: "var(--color-dark-gray)"}}
+      >
         <div className={"company-youtube-wrapper"}>
           <iframe
             className={"youtube-player"}

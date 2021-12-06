@@ -84,15 +84,24 @@ export default function CompanyContent({
               className={"youtube-player"}
               id="youtube-player"
               title="youtube"
-              src={company?.movie + "?loop=1"}
+              src={
+                company?.movie +
+                "?modestbranding=1&playsinline=0&vq=hd1080&listType=playlist&list=PLBZPLe5PUG0EP30VgjaiGwkaGF7t3Q4Hm&origin=https://hearts-festival.web.app"
+              }
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
             ></iframe>
           </div>
         ) : (
           <center className={"font-ultra-light"}>
-            인터뷰 예정입니다. 해당 기업에 대해 궁금한 점이 있다면 방명록으로
-            알려주세요.
+            인터뷰 영상을 로딩 중입니다.
+            <br />
+            해당 오류가 계속된다면 한양대학교 사회혁신센터(
+            <a href="tel:02.2220.1004" title={"한양대 사회혁신센터 전화걸기"}>
+              02.2220.1004
+            </a>
+            )로 연락바랍니다.
           </center>
         )}
       </Page>

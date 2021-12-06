@@ -196,4 +196,9 @@
     width: 100%;
     padding: 0 1rem;
   }
+
+  /* 제목 */
+  .detail-header .page-header .title {
+    line-height: 1.2em;
+  }
 }
