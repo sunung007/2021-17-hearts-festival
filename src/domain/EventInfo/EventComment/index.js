@@ -8,9 +8,9 @@ import AlertModal from "../../../components/Modal/AlertModal";
 import CommentOptionModal from "../../../components/Modal/CommentOptionModal";
 
 import {
-  enrollComment as faEnrollComment,
-  getComments,
-  deleteComment as fbDeleteComment,
+  getEventComments,
+  enrollEventComment as faEnrollComment,
+  deleteEventComment as fbDeleteComment,
 } from "../../../hooks/firebase";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -18,8 +18,10 @@ import {faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
 
 const COMMENT_NUM = 5;
 
-export default function GuestComment({cid}) {
+export default function EventComment() {
   const commentArea = useRef();
+
+  const [eventType, setEventType] = useState("answerN");
 
   const [comments, setComments] = useState([]);
   const [commentIndex, setCommentIndex] = useState(0);
@@ -31,8 +33,8 @@ export default function GuestComment({cid}) {
   const [alertContent, setAlertContent] = useState({title: "", msg: ""});
   const [longTouchTimer, setLongTouchTimer] = useState();
 
-  const fetchComments = useCallback((cid) => {
-    getComments(cid)
+  const fetchComments = useCallback(() => {
+    getEventComments()
       .then((r) =>
         setComments(
           r
@@ -53,6 +55,7 @@ export default function GuestComment({cid}) {
         console.error(e);
       });
   }, []);
+
   const enrollComment = useCallback(
     (e) => {
       e.preventDefault();
@@ -62,57 +65,43 @@ export default function GuestComment({cid}) {
       const nameEl = e.target["guest-name"];
       const emailEl = e.target["guest-email"];
 
-      if (typeof cid === "number") {
-        // 댓글 등록
-        faEnrollComment(cid, {
-          value: valueEl.value,
-          author_dept: deptEl.value,
-          author_name: nameEl.value,
-          author_email: emailEl.value,
-        })
-          .then(() => {
-            fetchComments(cid);
-            setAlertContent({
-              title: "방명록이 등록되었습니다.",
-            });
-            setShowAlert(true);
-
-            // 입력창 초기화
-            valueEl.value = deptEl.value = nameEl.value = emailEl.value = "";
-          })
-          .catch((e) => {
-            console.error(e);
-            setAlertContent({
-              title: (
-                <>
-                  <span style={{color: "red"}}>
-                    <FontAwesomeIcon icon={faExclamationTriangle} />
-                  </span>{" "}
-                  오류
-                </>
-              ),
-              msg: "방명록을 작성할 수 없습니다. 이 오류가 계속되면 한양대학교 사회혁신센터로 문의바랍니다.",
-            });
-            setShowAlert(true);
+      // 댓글 등록
+      faEnrollComment({
+        type: eventType === "answerN" ? "N 맞추기" : "하이리온",
+        value: valueEl.value,
+        author_dept: deptEl.value,
+        author_name: nameEl.value,
+        author_email: emailEl.value,
+      })
+        .then(() => {
+          fetchComments();
+          setAlertContent({
+            title: "정답이 등록되었습니다.",
           });
-      } else {
-        setAlertContent({
-          title: (
-            <>
-              <span style={{color: "red"}}>
-                <FontAwesomeIcon icon={faExclamationTriangle} />
-              </span>{" "}
-              오류
-            </>
-          ),
-          msg: "방명록을 작성할 수 없습니다. 이 오류가 계속되면 한양대학교 사회혁신센터로 문의바랍니다.",
+          setShowAlert(true);
+
+          // 입력창 초기화
+          valueEl.value = deptEl.value = nameEl.value = emailEl.value = "";
+        })
+        .catch((e) => {
+          console.error(e);
+          setAlertContent({
+            title: (
+              <>
+                <span style={{color: "red"}}>
+                  <FontAwesomeIcon icon={faExclamationTriangle} />
+                </span>{" "}
+                오류
+              </>
+            ),
+            msg: "정답을 작성할 수 없습니다. 이 오류가 계속되면 한양대학교 사회혁신센터로 문의바랍니다.",
+          });
+          setShowAlert(true);
         });
-        setShowAlert(true);
-      }
 
       e.returnValue = true;
     },
-    [cid, fetchComments]
+    [eventType, fetchComments]
   );
   const deleteComment = (email) => {
     if (setMenuTarget.hasOwnProperty("author_email")) {
@@ -125,17 +114,17 @@ export default function GuestComment({cid}) {
             오류
           </>
         ),
-        msg: "방명록을 삭제할 수 없습니다.",
+        msg: "정답을 삭제할 수 없습니다.",
       });
       setShowAlert(true);
       return;
     }
 
     if (menuTarget?.author_email === email) {
-      fbDeleteComment(cid, menuTarget)
+      fbDeleteComment(menuTarget)
         .then((r) => {
           setAlertContent({
-            title: "방명록을 삭제하였습니다.",
+            title: "정답을 삭제하였습니다.",
           });
           setShowAlert(true);
 
@@ -154,7 +143,7 @@ export default function GuestComment({cid}) {
           );
         })
         .catch((e) => {
-          console.error("FIREBASE : 방명록 삭제 오류");
+          console.error("FIREBASE : 정답 삭제 오류");
           console.error(e);
           setAlertContent({
             title: (
@@ -165,7 +154,7 @@ export default function GuestComment({cid}) {
                 오류
               </>
             ),
-            msg: "방명록을 삭제할 수 없습니다. 인터넷 연결이 올바른지 확인해주세요.",
+            msg: "정답을 삭제할 수 없습니다. 인터넷 연결이 올바른지 확인해주세요.",
           });
           setShowAlert(true);
         })
@@ -203,20 +192,36 @@ export default function GuestComment({cid}) {
     setLongTouchTimer(undefined);
   };
 
-  useEffect(() => {
-    if (typeof cid === "number") fetchComments(cid);
-  }, [cid, fetchComments]);
+  useEffect(() => fetchComments(), [fetchComments]);
 
   return (
     <Page parentClassName={"company-comment-page"}>
-      <h1 className={"section-title"}>
-        <div>방명록</div>
-        <div className={"subtitle"}>Guestbook</div>
-      </h1>
-      <br />
-
       <div>
         <form onSubmit={enrollComment} className={"guest-comment"}>
+          <div className={"guest-comment-event-type"}>
+            <div onClick={() => setEventType("answerN")}>
+              <input
+                type={"radio"}
+                name="event-type"
+                value="answerN"
+                checked={eventType === "answerN"}
+                onChange={() => setEventType("answerN")}
+              />
+              <label>N 맞추기</label>
+            </div>
+
+            <div onClick={() => setEventType("hylion")}>
+              <input
+                type={"radio"}
+                name="event-type"
+                value="hylion"
+                checked={eventType === "hylion"}
+                onChange={() => setEventType("hylion")}
+              />
+              <label>하이리온 맞추기</label>
+            </div>
+          </div>
+
           <div className={"guest-comment-detail-info"}>
             <input
               id={"guest-dept"}
@@ -236,7 +241,8 @@ export default function GuestComment({cid}) {
               id={"guest-email"}
               type={"email"}
               className={"font-light"}
-              placeholder={"이메일(선택)"}
+              placeholder={"이메일"}
+              required={true}
             />
           </div>
 
@@ -244,25 +250,25 @@ export default function GuestComment({cid}) {
             <input
               ref={commentArea}
               id={"guest-comment-value"}
-              className={"font-light"}
               type={"text"}
-              placeholder={"방명록"}
+              placeholder={"정답"}
               required={true}
+              className={"font-light"}
             />
           </div>
 
-          <button className={"guest-comment-enroll-btn"}>방명록 쓰기</button>
+          <button className={"guest-comment-enroll-btn"}>정답 달기</button>
 
-          <h5 className={"font-ultra-light"} style={{lineHeight: "1.5em"}}>
+          <h5 className={"font-light"} style={{lineHeight: "1.5em"}}>
             * 이메일은 경품 추첨 시 연락을 위해 받고 있습니다.
             <br />* 이메일을 입력하지 않으면 댓글 수정/삭제가 불가능하며, 경품
-            추첨 이벤트 참여에 제한될 수 있습니다.
+            당첨 시 수령이 제한됩니다.
           </h5>
         </form>
         <br />
 
         <ul className={"guest-comment-wrapper font-light"}>
-          {comments?.length > 0 ? (
+          {comments?.length > 0 &&
             comments
               ?.slice(
                 COMMENT_NUM * commentIndex,
@@ -279,6 +285,9 @@ export default function GuestComment({cid}) {
                   onTouchStart={longTouch}
                   onTouchEnd={longTouchCancle}
                 >
+                  <div className={"guest-comment-item-0"} id={index}>
+                    {comment.type}
+                  </div>
                   <div className={"guest-comment-item-1"} id={index}>
                     {comment.value}
                   </div>
@@ -289,12 +298,7 @@ export default function GuestComment({cid}) {
                     </span>
                   </div>
                 </li>
-              ))
-          ) : (
-            <center className={"font-ultra-light"}>
-              등록된 방명록이 없습니다. 방명록을 남겨서 관심을 표현해주세요.
-            </center>
-          )}
+              ))}
         </ul>
       </div>
 

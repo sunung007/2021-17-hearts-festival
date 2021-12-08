@@ -162,3 +162,95 @@ export function logScreenView(screenName, screenClass) {
   });
   console.log(`Analytics Event Log : ${screenName}`);
 }
+
+// 이벤트 답글
+export async function getEventComments() {
+  async function emptyArrayCreate(commentDoc) {
+    await setDoc(commentDoc, {comments: []});
+    return [];
+  }
+
+  const commentDoc = doc(fbDB, "eventComments", "event");
+  const docSnap = await getDoc(commentDoc);
+
+  if (docSnap.exists()) {
+    const datas = docSnap.data();
+    if (datas.hasOwnProperty("comments")) {
+      console.log("댓글을 성공적으로 읽어왔습니다.");
+      return datas.comments;
+    } else {
+      // comment array create
+      console.log(`Event Comment array 생성 : 문서 id event`);
+      return emptyArrayCreate(commentDoc);
+    }
+  } else {
+    // documment and array create
+    console.log(`Event Documment and array 생성 : 문서 id event`);
+    return emptyArrayCreate(commentDoc);
+  }
+}
+
+export async function enrollEventComment(newComment) {
+  const commentDoc = doc(fbDB, "eventComments", "event");
+  const docSnap = await getDoc(commentDoc);
+  const datas = docSnap.data();
+  const writeDatas = [
+    ...datas?.comments,
+    {
+      ...newComment,
+      time: Timestamp.fromDate(new Date()),
+    },
+  ];
+
+  await setDoc(commentDoc, {comments: writeDatas}, {merge: true});
+  logEvent(fbAnalytics, "event_comment_enroll");
+}
+
+export async function deleteEventComment(target) {
+  const commentDoc = doc(fbDB, "eventComments", "event");
+  const docSnap = await getDoc(commentDoc);
+  const datas = docSnap.data();
+
+  let comments = datas.comments;
+  comments.pop(target);
+  if (comments === undefined) comments = [];
+
+  await setDoc(commentDoc, {comments: comments}, {merge: true});
+  logEvent(fbAnalytics, "event_comment_delete");
+
+  return comments;
+}
+
+// 당첨자
+export async function getNthVisitor() {
+  logConnect();
+
+  const commentDoc = doc(fbDB, "eventComments", "visitor");
+  const docSnap = await getDoc(commentDoc);
+
+  let visitors = 0;
+
+  if (docSnap.exists()) {
+    const datas = docSnap.data();
+    if (datas.hasOwnProperty("count")) visitors = datas.count;
+  }
+
+  await setDoc(commentDoc, {count: visitors + 1}, {merge: false});
+  return visitors;
+}
+
+export async function enrollNthComment(newComment) {
+  const commentDoc = doc(fbDB, "eventComments", "nthVisitor");
+  const docSnap = await getDoc(commentDoc);
+  const datas = docSnap.data();
+  const writeDatas = [
+    ...datas?.comments,
+    {
+      ...newComment,
+      time: Timestamp.fromDate(new Date()),
+    },
+  ];
+
+  await setDoc(commentDoc, {comments: writeDatas}, {merge: true});
+  logEvent(fbAnalytics, "event_nth_comment_enroll");
+}

@@ -1,9 +1,13 @@
 import "./style.css";
 
+import {useEffect, useState} from "react";
+import {useHistory} from "react-router";
 import {Link} from "react-router-dom";
 import {isIE} from "react-device-detect";
 
 import Page from "../../components/Page";
+import Modal from "../../components/Modal";
+import {EventModal} from "../../components/Modal/EventModal";
 
 import MainBanner from "./MainBanner";
 import MainParticipant from "./MainParticipant";
@@ -26,8 +30,10 @@ import mainBF1 from "../../assets/etc/intro.png";
 import mainBF2 from "../../assets/etc/people-celebrity.jpg";
 import mainBF3 from "../../assets/etc/people-normal.jpg";
 
-export default function Main() {
+export default function Main({visitor}) {
   const isBrowser = window.innerWidth > 700;
+
+  const history = useHistory();
 
   const [section1, scrollToSection1] = useScrollToBody();
   const [section2, scrollToSection2] = useScrollToBody();
@@ -35,6 +41,25 @@ export default function Main() {
   const animation1 = useScrollFadeIn("up", 1, 0);
   const animation2 = useScrollFadeIn("up", 1, 0.3);
   const animation3 = useScrollFadeIn("up", 1, 0.6);
+
+  const [showEventModal, setShowEventModal] = useState(false);
+
+  useEffect(() => {
+    const today = new Date();
+
+    if (localStorage.getItem("event-modal") === "false") {
+      const logDate = new Date(localStorage.getItem("event-modal-time"));
+      if (logDate.getDate() === today.getDate()) setShowEventModal(false);
+    } else setShowEventModal(true);
+  }, []);
+
+  useEffect(() => {
+    if (visitor === 2030) {
+      history.push("/nth-visitor", {
+        isNth: true,
+      });
+    }
+  }, [history, visitor]);
 
   if (isIE) {
     return (
@@ -323,6 +348,13 @@ export default function Main() {
 
           {/* 함께한 사람들 */}
           <MainParticipant />
+
+          {/* 이벤트 팝업창 */}
+          {showEventModal && (
+            <Modal background={"rgba(0, 0, 0, 0.5)"} style={{zIndex: "140"}}>
+              <EventModal setShow={setShowEventModal} />
+            </Modal>
+          )}
         </div>
       </div>
     );

@@ -1,0 +1,18 @@
+.event .company-comment-page .page-inner {
+  padding-top: 0 !important;
+}
+
+.event .guest-comment-enroll-btn {
+  border: none;
+}
+
+.event .hylion-question {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 10rem;
+}
+
+.event .guest-comment-item-0 {
+  width: 10%;
+}
