@@ -2,7 +2,7 @@ import "./App.css";
 
 import {useEffect, useState} from "react";
 import {BrowserRouter, Route} from "react-router-dom";
-import {getNthVisitor, logConnect} from "./hooks/firebase";
+import {getNthVisitor} from "./hooks/firebase";
 
 import Footer from "./components/Footer";
 

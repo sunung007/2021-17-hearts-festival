@@ -22,25 +22,25 @@ export default function EventInfo({closeFunc = undefined}) {
             src={seventeenLogo}
             alt={"Seventeen Hearts Festival"}
           />
-          <div style={{fontSize: "3rem", marginTop: "0.5em"}}>
-            <span style={{color: "yellow"}}>!</span>EVENT 안내
-            <span style={{color: "yellow"}}>!</span>
+          <div
+            style={{
+              fontSize: "5rem",
+              margin: "0.5em auto",
+              backgroundColor: "var(--color-red)",
+              width: "fit-content",
+            }}
+          >
+            EVENT
           </div>
         </div>
-        <center>푸짐한 상품이 팍팍팍!</center>
+        <center>푸짐한 상품이 팍!팍!팍! 제공됩니다!</center>
       </Page>
 
       <Page className={"event-info-container"}>
         <ul className={"event-wrapper"}>
           <li>
-            <div
-              className={"title"}
-              style={{backgroundColor: "rgb(233, 0, 0)"}}
-            >
-              EVENT 1.{" "}
-              <span className={"highlight"}>
-                동영상을 시청하고 방명록을 작성하라!
-              </span>
+            <div className={"title"}>
+              EVENT 1. <span className={"highlight"}>방명록을 작성하라!</span>
             </div>
 
             <div className={"content"}>
@@ -63,11 +63,8 @@ export default function EventInfo({closeFunc = undefined}) {
           </li>
 
           <li>
-            <div
-              className={"title"}
-              style={{backgroundColor: "rgb(0, 109, 233)"}}
-            >
-              EVENT 2. <span className={"highlight"}>N번째 방문자?!</span>
+            <div className={"title"}>
+              EVENT 2. <span className={"highlight"}>'N'번째 방문자!</span>
             </div>
 
             <div className={"subtitle"}>
@@ -107,12 +104,8 @@ export default function EventInfo({closeFunc = undefined}) {
           </li>
 
           <li>
-            <div
-              className={"title"}
-              style={{backgroundColor: "rgb(219, 0, 233)"}}
-            >
-              EVENT 3.{" "}
-              <span className={"highlight"}>이 하이리온은 어떤 SDGs?</span>
+            <div className={"title"}>
+              EVENT 3. <span className={"highlight"}>이 하이리온은 누구?</span>
             </div>
             <div className={"content"}>
               아래 하이리온들은 어떤 SDGs를 나타내고 있을까요? 각 하이리온들이

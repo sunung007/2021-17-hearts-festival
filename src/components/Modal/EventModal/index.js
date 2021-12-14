@@ -1,10 +1,25 @@
 import "./style.css";
 import EventInfo from "../../../domain/EventInfo/index";
 import {useHistory} from "react-router";
+import {useEffect} from "react";
 
 export function EventModal({setShow}) {
   const history = useHistory();
   const closeFunc = () => setShow(false);
+
+  useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    };
+  }, []);
+
   return (
     <div id="event-modal">
       <EventInfo closeFunc={closeFunc} />

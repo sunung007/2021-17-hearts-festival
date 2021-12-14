@@ -76,11 +76,33 @@ export async function deleteComment(companyId, target) {
   const datas = docSnap.data();
 
   let comments = datas.comments;
-  comments.pop(target);
-  if (comments === undefined) comments = [];
+  if (comments === undefined) {
+    comments = [];
+    await setDoc(commentDoc, {comments: comments}, {merge: true});
+    return comments;
+  }
+
+  const tmpDate = target.time.split(".");
+  const targetDate = new Date("20" + tmpDate[0], tmpDate[1], tmpDate[2]);
+
+  let i = 0;
+  for (; i < comments.length; i++) {
+    const c = comments[i];
+    const postDate = new Date(c.time.seconds * 1000);
+    if (
+      postDate.getDate() === targetDate.getDate() &&
+      c.author_name === target.author_name &&
+      c.author_email === target.author_email &&
+      c.value === target.value
+    )
+      break;
+  }
+
+  if (i < comments.length) comments.splice(i, 1);
+  else throw Error("Delete Error : Index");
 
   await setDoc(commentDoc, {comments: comments}, {merge: true});
-  logEvent(fbAnalytics, "comment_delete");
+  logEvent(fbAnalytics, "event_comment_delete");
 
   return comments;
 }
@@ -212,8 +234,31 @@ export async function deleteEventComment(target) {
   const datas = docSnap.data();
 
   let comments = datas.comments;
-  comments.pop(target);
-  if (comments === undefined) comments = [];
+  if (comments === undefined) {
+    comments = [];
+    await setDoc(commentDoc, {comments: comments}, {merge: true});
+    return comments;
+  }
+
+  const tmpDate = target.time.split(".");
+  const targetDate = new Date("20" + tmpDate[0], tmpDate[1], tmpDate[2]);
+
+  let i = 0;
+  for (; i < comments.length; i++) {
+    const c = comments[i];
+    const postDate = new Date(c.time.seconds * 1000);
+    if (
+      postDate.getDate() === targetDate.getDate() &&
+      c.author_name === target.author_name &&
+      c.author_email === target.author_email &&
+      c.value === target.value &&
+      c.type === target.type
+    )
+      break;
+  }
+
+  if (i > -1 && i < comments.length) comments.splice(i, 1);
+  else throw Error("Delete Error : Index");
 
   await setDoc(commentDoc, {comments: comments}, {merge: true});
   logEvent(fbAnalytics, "event_comment_delete");

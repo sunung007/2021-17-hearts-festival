@@ -16,3 +16,32 @@
 .event .guest-comment-item-0 {
   width: 10%;
 }
+
+.event .guest-comment-event-type {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.5em;
+
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.event .guest-comment-event-type > div {
+  height: 3rem;
+
+  border-radius: 0.3em;
+
+  text-align: center;
+  line-height: 3rem;
+
+  color: gray;
+  background-color: white;
+
+  cursor: pointer;
+
+  transition: all 300ms;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -ms-transition: all 300ms;
+  -o-transition: all 300ms;
+}

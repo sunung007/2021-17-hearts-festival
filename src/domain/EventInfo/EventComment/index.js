@@ -199,26 +199,25 @@ export default function EventComment() {
       <div>
         <form onSubmit={enrollComment} className={"guest-comment"}>
           <div className={"guest-comment-event-type"}>
-            <div onClick={() => setEventType("answerN")}>
-              <input
-                type={"radio"}
-                name="event-type"
-                value="answerN"
-                checked={eventType === "answerN"}
-                onChange={() => setEventType("answerN")}
-              />
-              <label>N 맞추기</label>
+            <div
+              onClick={() => setEventType("answerN")}
+              style={
+                eventType === "answerN"
+                  ? {backgroundColor: "var(--color-dark-blue)", color: "white"}
+                  : {}
+              }
+            >
+              N 맞추기
             </div>
-
-            <div onClick={() => setEventType("hylion")}>
-              <input
-                type={"radio"}
-                name="event-type"
-                value="hylion"
-                checked={eventType === "hylion"}
-                onChange={() => setEventType("hylion")}
-              />
-              <label>하이리온 맞추기</label>
+            <div
+              onClick={() => setEventType("hylion")}
+              style={
+                eventType === "hylion"
+                  ? {backgroundColor: "var(--color-dark-blue)", color: "white"}
+                  : {}
+              }
+            >
+              하이리온 맞추기
             </div>
           </div>
 
@@ -261,8 +260,11 @@ export default function EventComment() {
 
           <h5 className={"font-light"} style={{lineHeight: "1.5em"}}>
             * 이메일은 경품 추첨 시 연락을 위해 받고 있습니다.
-            <br />* 이메일을 입력하지 않으면 댓글 수정/삭제가 불가능하며, 경품
-            당첨 시 수령이 제한됩니다.
+            <br />
+            * 입력하신 개인정보는 경품 제공을 위해서만 사용되며, 행사 종료 후
+            1년의 보관기간 이후 파기됩니다.
+            <br />* 제출버튼을 누르시는 것은 위 사항에 대해 동의함으로
+            간주합니다.
           </h5>
         </form>
         <br />

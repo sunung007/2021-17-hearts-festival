@@ -54,7 +54,7 @@ export default function Main({visitor}) {
   }, []);
 
   useEffect(() => {
-    if (visitor === 2030) {
+    if (!isIE && visitor === 2030) {
       history.push("/nth-visitor", {
         isNth: true,
       });
@@ -351,7 +351,7 @@ export default function Main({visitor}) {
 
           {/* 이벤트 팝업창 */}
           {showEventModal && (
-            <Modal background={"rgba(0, 0, 0, 0.5)"} style={{zIndex: "140"}}>
+            <Modal background={"rgba(0, 0, 0, 0.3)"} style={{zIndex: "140"}}>
               <EventModal setShow={setShowEventModal} />
             </Modal>
           )}
