@@ -2,7 +2,6 @@
   "name": "17-hearts-festival",
   "version": "0.1.0",
   "license": "Copyright 2021 Gofo(SunwoongKim), MIT License",
-  "homepage": "http://sunung007.github.io/2021-17-hearts-festival/",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -29,7 +28,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
