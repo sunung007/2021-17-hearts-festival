@@ -1,15 +1,14 @@
 import "./style.css";
 
-import {useEffect, useState} from "react";
-
+import {useState} from "react";
 import Page from "../../../components/Page";
-import {getParticipants} from "../../../hooks/firebase";
+
+import {participants} from "../../../data/participants";
 
 import {faTimes, faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default function MainParticipant() {
-  const [participants, setParticipants] = useState([]);
   const [curParticipant, setCurParticipant] = useState(0);
   const [showDetail, setShowDetail] = useState(false);
   const changePeople = (index) => {
@@ -19,9 +18,6 @@ export default function MainParticipant() {
       setCurParticipant(index);
     }
   };
-  useEffect(() => {
-    getParticipants().then((r) => setParticipants(r));
-  }, []);
 
   return (
     <>

@@ -1,9 +1,11 @@
 import "./style.css";
 import {useEffect, useState} from "react";
-import {clubs} from "../../data/clubs";
-import {useScrollToBody} from "../../hooks/useScrollToBody";
+
 import DetailHeaderPage from "../../components/DetailHeaderPage/index";
 import Page from "../../components/Page";
+import {useScrollToBody} from "../../hooks/useScrollToBody";
+import {clubs} from "../../data/clubs";
+
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faExclamationTriangle} from "@fortawesome/free-solid-svg-icons";
 

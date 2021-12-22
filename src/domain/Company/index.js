@@ -10,8 +10,6 @@ import Page from "../../components/Page";
 import DetailHeaderPage from "../../components/DetailHeaderPage";
 
 import {useScrollToBody} from "../../hooks/useScrollToBody";
-import {getCompanyInterview} from "../../hooks/firebase";
-
 import {companyList} from "../../data/company";
 
 export default function Company({history, match}) {
@@ -34,28 +32,13 @@ export default function Company({history, match}) {
     const tmpCompany = companyList.filter((entry) => entry.id === cid);
 
     if (tmpCompany.length === 0) history.push("/error");
-    else {
-      const index = companyList.indexOf(tmpCompany[0]);
-      setPrevNext([
-        index > 0 ? companyList[index - 1] : {},
-        index + 1 < companyList.length ? companyList[index + 1] : {},
-      ]);
-      setCompanyData(tmpCompany[0]);
-      getCompanyInterview(cid)
-        .then((r) => {
-          setCompanyData({
-            ...r,
-            banner: tmpCompany[0].banner,
-            logo:
-              tmpCompany[0].logoWhite ||
-              require("../../assets/logos/seventeen-hearts.svg").default,
-          });
-        })
-        .catch((e) => {
-          console.error("기업 정보 읽기에 실패하였습니다.");
-          console.error(e);
-        });
-    }
+    const index = companyList.indexOf(tmpCompany[0]);
+
+    setPrevNext([
+      index > 0 ? companyList[index - 1] : {},
+      index + 1 < companyList.length ? companyList[index + 1] : {},
+    ]);
+    setCompanyData(tmpCompany[0]);
   }, [history, match.params.cid]);
 
   return (
@@ -104,7 +87,7 @@ export default function Company({history, match}) {
 
           {/* 방명록 */}
           <div style={{height: 0, padding: 0}} ref={commentsRef} />
-          <GuestComment cid={companyData?.id} />
+          <GuestComment />
         </div>
       </div>
     </>

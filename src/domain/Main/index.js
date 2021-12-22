@@ -1,7 +1,6 @@
 import "./style.css";
 
 import {useEffect, useState} from "react";
-import {useHistory} from "react-router";
 import {Link} from "react-router-dom";
 import {isIE} from "react-device-detect";
 
@@ -30,10 +29,8 @@ import mainBF1 from "../../assets/etc/intro.png";
 import mainBF2 from "../../assets/etc/people-celebrity.jpg";
 import mainBF3 from "../../assets/etc/people-normal.jpg";
 
-export default function Main({visitor}) {
+export default function Main() {
   const isBrowser = window.innerWidth > 700;
-
-  const history = useHistory();
 
   const [section1, scrollToSection1] = useScrollToBody();
   const [section2, scrollToSection2] = useScrollToBody();
@@ -52,14 +49,6 @@ export default function Main({visitor}) {
       if (logDate.getDate() === today.getDate()) setShowEventModal(false);
     } else setShowEventModal(true);
   }, []);
-
-  useEffect(() => {
-    if (!isIE && visitor === 2030) {
-      history.push("/nth-visitor", {
-        isNth: true,
-      });
-    }
-  }, [history, visitor]);
 
   if (isIE) {
     return (

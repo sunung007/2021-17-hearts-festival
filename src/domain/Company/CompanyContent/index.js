@@ -46,7 +46,7 @@ export default function CompanyContent({
             <br />
 
             <div className={"company-logo"}>
-              <img src={company.logo} alt={""} />
+              <img src={company?.logoWhite} alt={""} />
             </div>
             <br />
 

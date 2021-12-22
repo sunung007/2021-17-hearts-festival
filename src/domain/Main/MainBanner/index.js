@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 
 import Page from "../../../components/Page";
 import {companyList} from "../../../data/company";
+import {companyOnelines} from "../../../data/companyOnelines";
 
 import {
   faChevronLeft,
@@ -13,12 +14,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {faPauseCircle} from "@fortawesome/free-regular-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {getCompanyOnelines} from "../../../hooks/firebase";
 
 export default function MainBanner() {
   const totalBanner = companyList.length;
 
-  const [companyOnelines, setCompanyOnelines] = useState({});
   const [curBanner, setCurBanner] = useState(0);
   const [isStop, setIsStop] = useState(false);
 
@@ -29,17 +28,6 @@ export default function MainBanner() {
   const changeBannerToRight = useCallback(() => {
     setCurBanner((curBanner + 1) % totalBanner);
   }, [curBanner, totalBanner]);
-
-  useEffect(() => {
-    getCompanyOnelines()
-      .then((r) => {
-        if (r !== undefined) setCompanyOnelines(r);
-      })
-      .catch((e) => {
-        console.error("기업별 소개 문구 로딩에 실패하였습니다.");
-        console.error(e);
-      });
-  }, []);
 
   useEffect(() => {
     const tick = setTimeout(() => !isStop && changeBannerToRight(), 3000);
