@@ -14,7 +14,7 @@ export const URLS = ["/", "/home", "/error", "/company", "/club", "/event"];
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/2021-17-hearts-festival">
       <Route exact path={"/"} render={() => <Main />} />
       <Route exact path={"/company/:cid"} component={Company} />
       <Route exact path={"/club/:cid"} component={Club} />
